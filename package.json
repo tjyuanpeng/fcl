@@ -1,0 +1,35 @@
+{
+  "type": "module",
+  "private": true,
+  "packageManager": "pnpm@10.23.0",
+  "engines": {
+    "node": ">=20",
+    "pnpm": ">=10"
+  },
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "lint": "turbo lint",
+    "typecheck": "turbo typecheck",
+    "clean": "rm -rf ./**/node_modules; rm -rf ./**/dist ; rm -rf ./**/.turbo",
+    "preinstall": "npx only-allow pnpm",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "catalog:",
+    "@changesets/cli": "catalog:",
+    "@commitlint/cli": "catalog:",
+    "@commitlint/config-conventional": "catalog:",
+    "@types/node": "catalog:",
+    "eslint": "catalog:",
+    "eslint-plugin-format": "catalog:",
+    "husky": "catalog:",
+    "lint-staged": "catalog:",
+    "turbo": "catalog:"
+  },
+  "lint-staged": {
+    "*.{js,ts,jsx,tsx,vue,json,md,html,css,scss}": [
+      "eslint --fix"
+    ]
+  }
+}

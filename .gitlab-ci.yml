@@ -1,0 +1,105 @@
+variables:
+  GIT_CLEAN_FLAGS: -fdx -e node_modules/ -e .turbo/
+
+default:
+  image: node:20.19.4-alpine
+  tags:
+    - EF
+
+stages:
+  - install
+  - check
+  - build
+  - publish
+
+install:
+  stage: install
+  rules:
+    - if: $CI_COMMIT_TAG
+      when: never
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_COMMIT_BRANCH == "main"
+      when: on_success
+    - when: never
+  before_script:
+    - node -v
+    - pnpm -v
+    - pnpm config set cache ~/.cache/npm
+    - echo $CI_COMMIT_SHORT_SHA
+  script:
+    - pnpm install --frozen-lockfile
+
+check:
+  stage: check
+  rules:
+    - if: $CI_COMMIT_TAG
+      when: never
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_COMMIT_BRANCH == "main"
+      when: on_success
+    - when: never
+  dependencies:
+    - install
+  script:
+    - pnpm lint
+    - pnpm typecheck
+
+build:
+  stage: build
+  rules:
+    - if: $CI_COMMIT_TAG
+      when: never
+    - if: $CI_COMMIT_BRANCH == "main"
+      when: on_success
+    - when: never
+  dependencies:
+    - check
+  script:
+    - pnpm build
+  after_script:
+    - rm -rf fep
+  artifacts:
+    paths:
+      - packages/*/dist
+    expire_in: 1 day
+    when: on_success
+
+publish:
+  stage: publish
+  rules:
+    - if: $CI_COMMIT_TAG
+      when: never
+    - if: $CI_COMMIT_BRANCH == "main"
+      when: on_success
+    - when: never
+  dependencies:
+    - build
+  script:
+    - git tag | xargs git tag -d
+    - pnpm changeset version
+    - |
+      if git diff --exit-code --quiet; then
+        echo "No changes found after versioning. Exiting."
+        exit 1
+      fi
+    # - ssh-keyscan -H 10.168.2.105 >> ~/.ssh/known_hosts
+    # - cat ~/.ssh/known_hosts
+    - git config user.name "$GIT_OP_USER_NAME"
+    - git config user.email "$GIT_OP_EMAIL"
+    - git remote set-url origin git@${CI_SERVER_HOST}:${CI_PROJECT_PATH}.git
+    - git fetch origin main && git checkout -B main origin/main
+    - git add .
+    - |
+      git commit -m "chore(release): update versions [skip ci]"
+    - |
+      curl --silent --show-error --fail -L \
+      --header "PRIVATE-TOKEN: $SNIPPET_TOKEN" \
+      --url "http://10.168.2.105:8888/api/v4/snippets/2/raw" | \
+      sed "s|{{NPM_AUTH_TOKEN}}|$NPM_AUTH_TOKEN|g" \
+      > .npmrc
+    - npm_config_registry=http://10.168.2.110:31001/repository/ym-hosted/ pnpm changeset publish
+    - |
+      if git tag | grep -q "^@falconix/"; then
+        git push origin main --follow-tags
+      else
+        echo "No tags found after publishing. Exiting."
+        exit 1
+      fi

@@ -1,0 +1,35 @@
+{
+  "name": "play",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview",
+    "typecheck": "vue-tsc --noEmit",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "catalog:",
+    "@falconix/fep": "catalog:",
+    "@falconix/use-ajax": "workspace:^",
+    "promise-portal": "catalog:",
+    "vue": "catalog:"
+  },
+  "devDependencies": {
+    "@falconix/configs": "workspace:^",
+    "@falconix/fep-resolver": "workspace:^",
+    "@types/node": "catalog:",
+    "@vitejs/plugin-vue": "catalog:",
+    "@vitejs/plugin-vue-jsx": "catalog:",
+    "@vue/tsconfig": "catalog:",
+    "sass-embedded": "catalog:",
+    "typescript": "catalog:",
+    "unplugin-auto-import": "catalog:",
+    "unplugin-vue-components": "catalog:",
+    "vite": "catalog:",
+    "vite-plugin-pages": "catalog:",
+    "vue-router": "catalog:",
+    "vue-tsc": "catalog:"
+  }
+}

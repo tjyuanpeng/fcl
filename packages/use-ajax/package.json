@@ -1,0 +1,30 @@
+{
+  "name": "@falconix/use-ajax",
+  "type": "module",
+  "version": "1.0.6",
+  "description": "falconix http request handler",
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "tsdown --watch",
+    "build": "tsdown",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "axios": "catalog:"
+  },
+  "devDependencies": {
+    "@falconix/configs": "workspace:^",
+    "tsdown": "catalog:",
+    "typescript": "catalog:"
+  }
+}

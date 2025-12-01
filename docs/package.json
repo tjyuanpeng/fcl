@@ -1,0 +1,13 @@
+{
+  "name": "docs",
+  "type": "module",
+  "private": true,
+  "scripts": {
+  },
+  "dependencies": {
+
+  },
+  "devDependencies": {
+
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "name": "@falconix/fep-resolver",
+  "type": "module",
+  "version": "1.0.6",
+  "description": "@falconix/fep resolver for unplugin-vue-components",
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsdown",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint ."
+  },
+  "peerDependencies": {
+    "unplugin-vue-components": "^30.0.0",
+    "vue": "3"
+  },
+  "dependencies": {
+    "local-pkg": "catalog:"
+  },
+  "devDependencies": {
+    "@falconix/configs": "workspace:^",
+    "tsdown": "catalog:",
+    "typescript": "catalog:"
+  }
+}

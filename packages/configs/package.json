@@ -1,0 +1,17 @@
+{
+  "name": "@falconix/configs",
+  "type": "module",
+  "version": "1.0.6",
+  "description": "@falconix common configs",
+  "exports": {
+    ".": "./eslint.config.app.js",
+    "./*": "./*"
+  },
+  "peerDependencies": {
+    "@antfu/eslint-config": "catalog:",
+    "@types/node": "catalog:",
+    "@vue/tsconfig": "catalog:",
+    "eslint": "catalog:",
+    "eslint-plugin-format": "catalog:"
+  }
+}
