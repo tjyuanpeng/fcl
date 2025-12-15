@@ -15,8 +15,6 @@ stages:
 install:
   stage: install
   rules:
-    - if: $CI_COMMIT_TAG
-      when: never
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_COMMIT_BRANCH == "main"
       when: on_success
     - when: never
@@ -31,8 +29,6 @@ install:
 check:
   stage: check
   rules:
-    - if: $CI_COMMIT_TAG
-      when: never
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_COMMIT_BRANCH == "main"
       when: on_success
     - when: never
@@ -45,8 +41,6 @@ check:
 build:
   stage: build
   rules:
-    - if: $CI_COMMIT_TAG
-      when: never
     - if: $CI_COMMIT_BRANCH == "main"
       when: on_success
     - when: never
@@ -65,14 +59,13 @@ build:
 publish:
   stage: publish
   rules:
-    - if: $CI_COMMIT_TAG
-      when: never
     - if: $CI_COMMIT_BRANCH == "main"
       when: on_success
     - when: never
   dependencies:
     - build
   script:
+    - set -e
     - git tag | xargs git tag -d
     - pnpm changeset version
     - |
@@ -80,8 +73,7 @@ publish:
         echo "No changes found after versioning. Exiting."
         exit 1
       fi
-    # - ssh-keyscan -H 10.168.2.105 >> ~/.ssh/known_hosts
-    # - cat ~/.ssh/known_hosts
+    - ssh-keyscan -H ${CI_SERVER_HOST} > ~/.ssh/known_hosts
     - git config user.name "$GIT_OP_USER_NAME"
     - git config user.email "$GIT_OP_EMAIL"
     - git remote set-url origin git@${CI_SERVER_HOST}:${CI_PROJECT_PATH}.git

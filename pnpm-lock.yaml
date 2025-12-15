@@ -7,7 +7,7 @@ settings:
 catalogs:
   default:
     '@antfu/eslint-config':
-      specifier: 6.4.1
+      specifier: ^6.4.1
       version: 6.4.1
     '@changesets/cli':
       specifier: ^2.29.8
@@ -22,10 +22,10 @@ catalogs:
       specifier: ^2.3.2
       version: 2.3.2
     '@falconix/fep':
-      specifier: 0.0.4
+      specifier: ^0.0.4
       version: 0.0.4
     '@types/node':
-      specifier: 24.10.1
+      specifier: ^24.10.1
       version: 24.10.1
     '@vitejs/plugin-vue':
       specifier: ^6.0.2
@@ -40,10 +40,10 @@ catalogs:
       specifier: ^1.13.2
       version: 1.13.2
     eslint:
-      specifier: 9.39.1
+      specifier: ^9.39.1
       version: 9.39.1
     eslint-plugin-format:
-      specifier: 1.1.0
+      specifier: ^1.1.0
       version: 1.1.0
     husky:
       specifier: ^9.1.7
@@ -90,6 +90,9 @@ catalogs:
     vue-tsc:
       specifier: ^3.1.8
       version: 3.1.8
+    wujie-vue3:
+      specifier: ^1.0.29
+      version: 1.0.29
 
 importers:
 
@@ -155,6 +158,25 @@ importers:
       vue:
         specifier: '3'
         version: 3.5.25(typescript@5.9.3)
+    devDependencies:
+      '@falconix/configs':
+        specifier: workspace:^
+        version: link:../configs
+      tsdown:
+        specifier: 'catalog:'
+        version: 0.16.8(synckit@0.11.11)(typescript@5.9.3)(vue-tsc@3.1.8(typescript@5.9.3))
+      typescript:
+        specifier: 'catalog:'
+        version: 5.9.3
+
+  packages/rpc:
+    dependencies:
+      vue:
+        specifier: '3'
+        version: 3.5.25(typescript@5.9.3)
+      wujie-vue3:
+        specifier: 'catalog:'
+        version: 1.0.29(vue@3.5.25(typescript@5.9.3))
     devDependencies:
       '@falconix/configs':
         specifier: workspace:^
@@ -3664,6 +3686,14 @@ packages:
   wrap-ansi@9.0.2:
     resolution: {integrity: sha512-42AtmgqjV+X1VpdOfyTGOYRi0/zsoLqtXQckTmqTeybT+BDIbM/Guxo7x3pE2vtpr1ok6xRqM9OpBe+Jyoqyww==}
     engines: {node: '>=18'}
+
+  wujie-vue3@1.0.29:
+    resolution: {integrity: sha512-OGt5Veyq/DtmFzHQCANmv8nZgu877u7ZjS5qjFpSrtKARKhLjID3x99D40a4pb3Kj5UmRatkV5Gn5hqOWpziZQ==}
+    peerDependencies:
+      vue: ^3.0.0
+
+  wujie@1.0.29:
+    resolution: {integrity: sha512-u7PmBT4l5ov7ciwmZNG8DLIRKrYrnXDa0LnAFgRQikJ/ZrVZYzzSNz6duzEJoj8/o46dnMy/g9Hh/PBYGbgFUw==}
 
   xml-name-validator@4.0.0:
     resolution: {integrity: sha512-ICP2e+jsHvAj2E2lIHxa5tjXRlKDJo4IdvPvCXbXQGdzSfmSpNVyIKMvoZHjDY9DP0zV17iI85o90vRFXNccRw==}
@@ -7278,6 +7308,15 @@ snapshots:
       ansi-styles: 6.2.3
       string-width: 7.2.0
       strip-ansi: 7.1.2
+
+  wujie-vue3@1.0.29(vue@3.5.25(typescript@5.9.3)):
+    dependencies:
+      vue: 3.5.25(typescript@5.9.3)
+      wujie: 1.0.29
+
+  wujie@1.0.29:
+    dependencies:
+      '@babel/runtime': 7.28.4
 
   xml-name-validator@4.0.0: {}
 

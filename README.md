@@ -45,6 +45,8 @@ pnpm build
 
 ## update version
 
+before publish, you should run the following command
+
 ```shell
 pnpm changeset
 ```

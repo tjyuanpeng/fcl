@@ -3,19 +3,19 @@ packages:
   - play
 
 catalog:
-  '@antfu/eslint-config': 6.4.1
+  '@antfu/eslint-config': ^6.4.1
   '@changesets/cli': ^2.29.8
   '@commitlint/cli': ^20.2.0
   '@commitlint/config-conventional': ^20.2.0
   '@element-plus/icons-vue': ^2.3.2
-  '@falconix/fep': 0.0.4
-  '@types/node': 24.10.1
+  '@falconix/fep': ^0.0.4
+  '@types/node': ^24.10.1
   '@vitejs/plugin-vue': ^6.0.2
   '@vitejs/plugin-vue-jsx': ^5.1.2
   '@vue/tsconfig': ^0.8.1
   axios: ^1.13.2
-  eslint: 9.39.1
-  eslint-plugin-format: 1.1.0
+  eslint: ^9.39.1
+  eslint-plugin-format: ^1.1.0
   husky: ^9.1.7
   lint-staged: ^16.2.7
   local-pkg: ^1.1.2
@@ -31,6 +31,7 @@ catalog:
   vue: ^3.5.25
   vue-router: ^4.6.3
   vue-tsc: ^3.1.8
+  wujie-vue3: ^1.0.29
 
 catalogMode: strict
 

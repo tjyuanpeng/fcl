@@ -1,8 +1,8 @@
 {
-  "name": "@falconix/use-ajax",
+  "name": "@falconix/wujie-rpc",
   "type": "module",
   "version": "0.0.1",
-  "description": "falconix http request handler",
+  "description": "falconix wujie remote Procedure call",
   "exports": {
     ".": "./dist/index.mjs",
     "./package.json": "./package.json"
@@ -19,8 +19,9 @@
     "typecheck": "tsc --noEmit",
     "lint": "eslint ."
   },
-  "dependencies": {
-    "axios": "catalog:"
+  "peerDependencies": {
+    "vue": "3",
+    "wujie-vue3": "catalog:"
   },
   "devDependencies": {
     "@falconix/configs": "workspace:^",

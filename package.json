@@ -29,7 +29,7 @@
   },
   "lint-staged": {
     "*.{js,ts,jsx,tsx,vue,json,md,html,css,scss}": [
-      "eslint --fix"
+      "eslint --flag v10_config_lookup_from_file --fix"
     ]
   }
 }
