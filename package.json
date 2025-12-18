@@ -2,6 +2,7 @@
   "type": "module",
   "private": true,
   "packageManager": "pnpm@10.23.0",
+  "description": "falconix component library",
   "engines": {
     "node": ">=20",
     "pnpm": ">=10"
@@ -11,6 +12,8 @@
     "build": "turbo build",
     "lint": "turbo lint",
     "typecheck": "turbo typecheck",
+    "docs:dev": "turbo --filter=docs docs:dev",
+    "docs:build": "turbo --filter=docs docs:build",
     "clean": "rm -rf ./**/node_modules; rm -rf ./**/dist ; rm -rf ./**/.turbo",
     "preinstall": "npx only-allow pnpm",
     "prepare": "husky"

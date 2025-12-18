@@ -19,6 +19,15 @@
       "dependsOn": ["@falconix/fep-resolver#build"],
       "cache": false,
       "persistent": true
+    },
+    "docs#docs:dev": {
+      "dependsOn": ["@falconix/fep-resolver#build"],
+      "cache": false,
+      "persistent": true
+    },
+    "docs#docs:build": {
+      "dependsOn": ["^build"],
+      "outputs": [".vitepress/dist/**"]
     }
   }
 }

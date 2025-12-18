@@ -1,4 +1,4 @@
-import { getCurrentInstance, onActivated, onDeactivated, onMounted, onUnmounted } from 'vue'
+import { getCurrentInstance, nextTick, onActivated, onDeactivated, onMounted, onUnmounted } from 'vue'
 import WujieVue from 'wujie-vue3'
 
 const { bus } = WujieVue
@@ -9,11 +9,7 @@ export interface RpcEvent<T> {
   payload: T
 }
 
-export interface RpcCallConfig {
-  signal?: AbortSignal
-}
-
-export interface RpcHookConfig {
+export interface RpcOptions {
   signal?: AbortSignal
   hookOnLifecycles?: boolean
 }
@@ -23,10 +19,10 @@ export interface GlobalConfig {
   namespace?: string
 }
 
-let globalConfig = {
+let globalConfig: GlobalConfig = {
   debug: false,
   namespace: undefined,
-} as GlobalConfig
+}
 
 export function setRpcGlobalConfig(config: GlobalConfig): void {
   globalConfig = {
@@ -44,22 +40,17 @@ function log(...args: any[]): void {
 const callEventName = (type: string): string => `@rpc.call:${type}`
 const callbackEventName = (type: string, eventId: string): string => `@rpc.callback:${type}-${eventId}}`
 
-export function rpcCall<T = any, R = any>(
-  type: string,
-  payload: T,
-  config?: RpcCallConfig,
-): Promise<R> {
+export function rpcCall<T = any, R = any>(type: string, payload: T, options?: RpcOptions): Promise<R> {
   return new Promise<R>((resolve) => {
     let completed = false
     let attached = false
 
     const eventId = Math.random().toString(36).slice(2)
-    log('rpc.call', 'send', type, eventId, payload)
-    bus.$emit(callEventName(type), {
-      type,
-      eventId,
-      payload,
-    } as RpcEvent<T>)
+    nextTick(() => {
+      log('rpc.call', 'send', type, eventId, payload)
+      bus.$emit(callEventName(type), { type, eventId, payload } as RpcEvent<T>)
+    })
+
     function routing(e: RpcEvent<R>): void {
       log('rpc.call', 'callback.received', e.type, e.eventId, e.payload)
       completed = true
@@ -83,11 +74,10 @@ export function rpcCall<T = any, R = any>(
       off()
     }
 
-    if (!getCurrentInstance()) {
-      log('rpc.call', 'direct.on', type, eventId)
-      on()
-    }
-    else {
+    log('rpc.call', 'direct.on', type, eventId)
+    on()
+
+    if (getCurrentInstance() && (options?.hookOnLifecycles ?? true)) {
       onMounted(() => {
         log('rpc.call', 'onMounted.on', type, eventId)
         on()
@@ -105,18 +95,14 @@ export function rpcCall<T = any, R = any>(
         off()
       })
     }
-    config?.signal?.addEventListener('abort', () => {
+    options?.signal?.addEventListener('abort', () => {
       log('rpc.call', 'signal.abort', type, eventId)
       stop()
     })
   })
 }
 
-export function rpcHook<T = any, R = any>(
-  type: string,
-  callback: (payload: T) => R | Promise<R>,
-  config: RpcHookConfig = { hookOnLifecycles: true },
-): () => void {
+export function rpcHook<T = any, R = any>(type: string, callback: (payload: T) => R | Promise<R>, options?: RpcOptions): () => void {
   let completed = false
   let attached = false
 
@@ -124,12 +110,11 @@ export function rpcHook<T = any, R = any>(
     const { type, eventId, payload } = e
     log('rpc.hook', 'received', type, eventId, payload)
     const result = await callback(payload)
-    log('rpc.hook', 'callback.send', type, eventId, result)
-    bus.$emit(callbackEventName(type, eventId), {
-      type,
-      eventId,
-      payload: result,
-    } as RpcEvent<R>)
+
+    nextTick(() => {
+      log('rpc.hook', 'callback.send', type, eventId, result)
+      bus.$emit(callbackEventName(type, eventId), { type, eventId, payload: result } as RpcEvent<R>)
+    })
   }
   function on(): void {
     if (!attached && !completed) {
@@ -148,11 +133,10 @@ export function rpcHook<T = any, R = any>(
     off()
   }
 
-  if (!getCurrentInstance()) {
-    log('rpc.hook', 'direct.on', type)
-    on()
-  }
-  else if (config.hookOnLifecycles) {
+  log('rpc.hook', 'direct.on', type)
+  on()
+
+  if (getCurrentInstance() && (options?.hookOnLifecycles ?? true)) {
     onMounted(() => {
       log('rpc.hook', 'onMounted.on', type)
       on()
@@ -170,7 +154,7 @@ export function rpcHook<T = any, R = any>(
       off()
     })
   }
-  config.signal?.addEventListener('abort', () => {
+  options?.signal?.addEventListener('abort', () => {
     log('rpc.hook', 'signal.abort', type)
     stop()
   })

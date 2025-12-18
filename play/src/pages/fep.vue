@@ -376,13 +376,19 @@ const close = () => ElMessage.closeAll()
   margin: 40px auto;
   padding: 20px;
   border: 1px solid #ddd;
-  border-radius: 4px;
+  border-radius: 20px;
+  background-color: #fff;
+  color: var(--el-text-color-primary);
 }
 
 h3 {
   margin-top: 40px;
   padding-bottom: 8px;
   border-bottom: 1px solid #eee;
+  margin-bottom: 1em;
+  font-weight: bold;
+  font-size: 1.17em;
+  color: #333;
 
   &:first-child {
     margin-top: initial;

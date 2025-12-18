@@ -3,11 +3,24 @@
   "type": "module",
   "private": true,
   "scripts": {
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview"
   },
   "dependencies": {
-
+    "@element-plus/icons-vue": "catalog:",
+    "@falconix/fep": "catalog:",
+    "vue": "catalog:"
   },
   "devDependencies": {
-
+    "@falconix/configs": "workspace:^",
+    "@falconix/fep-resolver": "workspace:^",
+    "@types/fs-extra": "catalog:",
+    "fs-extra": "catalog:",
+    "globby": "catalog:",
+    "unplugin-auto-import": "catalog:",
+    "unplugin-vue-components": "catalog:",
+    "vite": "catalog:",
+    "vitepress": "catalog:"
   }
 }

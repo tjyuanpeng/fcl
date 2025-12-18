@@ -105,9 +105,7 @@ let globalConfig: AxiosRequestConfig = {
   checkBizError: response => response.data.code !== 200,
   noErrorThrown: false,
   getMessage: response => response.data.message ?? response.data.msg ?? '网络异常，请稍后再试',
-  showMessageTip: (msg) => {
-    console.error(msg)
-  },
+  showMessageTip: msg => console.error(msg),
   checkAuthError: error => error?.response?.data?.code === 403,
   gotoLogin: () => {
     localStorage.removeItem('token')

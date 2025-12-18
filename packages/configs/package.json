@@ -2,7 +2,7 @@
   "name": "@falconix/configs",
   "type": "module",
   "version": "0.0.1",
-  "description": "@falconix common configs",
+  "description": "@falconix common configs set",
   "exports": {
     ".": "./eslint.config.app.js",
     "./*": "./*"
