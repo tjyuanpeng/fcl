@@ -101,10 +101,10 @@ docs:
   stage: docs
   rules:
     - if: $CI_COMMIT_BRANCH == "main"
-      when: always
+      when: on_success
     - when: never
   dependencies:
-    - publish
+    - build
   script:
     - set -e
     - pnpm docs:build
