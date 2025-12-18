@@ -67,5 +67,5 @@ onMounted(async () => {
   }
   ```
 
-  - debug: 是否开启debug log
+  - debug: 是否开启 debug log
   - namespace: log 的命名空间
