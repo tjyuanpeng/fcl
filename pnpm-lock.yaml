@@ -243,6 +243,22 @@ importers:
         specifier: 'catalog:'
         version: 5.9.3
 
+  packages/upload-center:
+    dependencies:
+      '@falconix/use-ajax':
+        specifier: workspace:^
+        version: link:../use-ajax
+    devDependencies:
+      '@falconix/configs':
+        specifier: workspace:^
+        version: link:../configs
+      tsdown:
+        specifier: 'catalog:'
+        version: 0.16.8(synckit@0.11.11)(typescript@5.9.3)(vue-tsc@3.1.8(typescript@5.9.3))
+      typescript:
+        specifier: 'catalog:'
+        version: 5.9.3
+
   packages/use-ajax:
     dependencies:
       axios:

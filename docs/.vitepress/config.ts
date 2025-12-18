@@ -19,6 +19,10 @@ export default ({ mode }: ConfigEnv) => {
       onlyDirectories: true,
       ignore: ['node_modules'],
     }).map((p) => {
+      const isExists = fs.existsSync(path.resolve(p, 'README.md'))
+      if (!isExists) {
+        return undefined
+      }
       const pkgName = path.basename(p)
       if (isProd) {
         fs.copySync(path.resolve(p, 'README.md'), path.resolve('src', 'packages', `${pkgName}/README.md`))
@@ -29,7 +33,7 @@ export default ({ mode }: ConfigEnv) => {
         link: `/packages/${pkgName}/README`,
       }
     })
-    return items
+    return items.filter(i => i) as { text: any, link: string }[]
   }
   const items = getSidebarItems()
 
@@ -45,6 +49,7 @@ export default ({ mode }: ConfigEnv) => {
         { text: '主页', link: '/' },
         { text: '组件文档', link: items[0].link, activeMatch: '/packages/' },
         { text: 'FEP', link: '/fep/README', activeMatch: '/fep/' },
+        { text: '贡献代码', link: '/contribution/guide', activeMatch: '/contribution/' },
       ],
       socialLinks: [
         { icon: 'gitlab', link: 'http://10.168.2.105:8888/soft_group/yingmai/fe_group/fcl' },
@@ -56,6 +61,9 @@ export default ({ mode }: ConfigEnv) => {
         '/fep/': [
           { text: '@falconix/fep', link: '/fep/README' },
           { text: 'FEP gallery', link: '/fep/gallery' },
+        ],
+        '/contribution/': [
+          { text: '贡献代码', link: '/contribution/guide' },
         ],
       },
       outline: {
