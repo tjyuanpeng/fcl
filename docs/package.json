@@ -5,7 +5,9 @@
   "scripts": {
     "docs:dev": "vitepress dev",
     "docs:build": "vitepress build",
-    "docs:preview": "vitepress preview"
+    "docs:preview": "vitepress preview",
+    "typecheck": "tsc -b --noEmit",
+    "lint": "eslint ."
   },
   "dependencies": {
     "@element-plus/icons-vue": "catalog:",
@@ -18,6 +20,7 @@
     "@types/fs-extra": "catalog:",
     "fs-extra": "catalog:",
     "globby": "catalog:",
+    "typescript": "catalog:",
     "unplugin-auto-import": "catalog:",
     "unplugin-vue-components": "catalog:",
     "vite": "catalog:",
