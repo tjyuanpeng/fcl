@@ -98,6 +98,16 @@ pnpm --filter @falconix/upload-center lint
 pnpm -C packages/uplodaer-center typcheck
 ```
 
+## 代码规范
+
+git commit message 参考 [约定式提交规范](https://www.conventionalcommits.org/zh-hans/v1.0.0/)
+
+eslint和代码格式化 参考 [@antfu/eslint-config](https://github.com/antfu/eslint-config)，[详情](https://eslint-config.antfu.me/configs)，[详情](https://gitnation.com/contents/eslint-one-for-all-made-easy)
+
+tsconfig 参考 [@vue/tsconfig](https://github.com/vuejs/tsconfig#readme)
+
+版本控制 参考 [语义化版本](https://semver.org/lang/zh-CN/)
+
 ## 构建
 
 在`FCL根目录`运行`build`命令，进行构建
