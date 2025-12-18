@@ -8,8 +8,8 @@ default:
 
 stages:
   - install
-  - check
   - build
+  - check
   - publish
   - docs
 
@@ -27,18 +27,6 @@ install:
   script:
     - pnpm install --frozen-lockfile
 
-check:
-  stage: check
-  rules:
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_COMMIT_BRANCH == "main"
-      when: on_success
-    - when: never
-  dependencies:
-    - install
-  script:
-    - pnpm lint
-    - pnpm typecheck
-
 build:
   stage: build
   rules:
@@ -46,7 +34,7 @@ build:
       when: on_success
     - when: never
   dependencies:
-    - check
+    - install
   script:
     - pnpm build
   after_script:
@@ -57,6 +45,18 @@ build:
     expire_in: 1 day
     when: on_success
 
+check:
+  stage: check
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_COMMIT_BRANCH == "main"
+      when: on_success
+    - when: never
+  dependencies:
+    - build
+  script:
+    - pnpm lint
+    - pnpm typecheck
+
 publish:
   stage: publish
   rules:
@@ -64,7 +64,7 @@ publish:
       when: on_success
     - when: never
   dependencies:
-    - build
+    - check
   script:
     - set -e
     - git tag | xargs git tag -d
@@ -104,7 +104,7 @@ docs:
       when: on_success
     - when: never
   dependencies:
-    - build
+    - check
   script:
     - set -e
     - pnpm docs:build
