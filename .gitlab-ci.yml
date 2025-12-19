@@ -75,7 +75,8 @@ pkgs-publish:
     - when: never
   dependencies:
     - pkgs-build
-  allow_failure: true
+  allow_failure:
+    exit_codes: [9]
   script:
     - set -e
     - git tag | xargs git tag -d
@@ -83,7 +84,7 @@ pkgs-publish:
     - |
       if git diff --exit-code --quiet; then
         echo "No changes found after versioning. Exiting."
-        exit 1
+        exit 9
       fi
     - ssh-keyscan ${CI_SERVER_HOST} >> ~/.ssh/known_hosts 2>/dev/null || true
     - git config user.name "$GIT_OP_USER_NAME"
@@ -105,7 +106,7 @@ pkgs-publish:
         git push origin main --follow-tags
       else
         echo "No tags found after publishing. Exiting."
-        exit 1
+        exit 9
       fi
 
 docs-deploy:
