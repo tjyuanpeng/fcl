@@ -10,8 +10,7 @@ stages:
   - install
   - check
   - build
-  - publish
-  - docs
+  - deploy
 
 install:
   stage: install
@@ -20,12 +19,11 @@ install:
       when: on_success
     - when: never
   dependencies: []
-  before_script:
+  script:
     - node -v
     - pnpm -v
     - pnpm config set cache ~/.cache/npm
     - echo $CI_COMMIT_SHORT_SHA
-  script:
     - pnpm install --frozen-lockfile
 
 check:
@@ -39,7 +37,7 @@ check:
     - pnpm lint
     - pnpm typecheck
 
-build:
+pkgs-build:
   stage: build
   rules:
     - if: $CI_COMMIT_BRANCH == "main"
@@ -54,15 +52,29 @@ build:
     expire_in: 1 day
     when: on_success
 
-publish:
-  stage: publish
+docs-build:
+  stage: build
   rules:
     - if: $CI_COMMIT_BRANCH == "main"
       when: on_success
     - when: never
-  allow_failure: true
+  dependencies: []
+  script:
+    - pnpm docs:build
+  artifacts:
+    paths:
+      - docs/.vitepress/dist
+    expire_in: 1 day
+    when: on_success
+
+pkgs-publish:
+  stage: deploy
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+      when: on_success
+    - when: never
   dependencies:
-    - build
+    - pkgs-build
   script:
     - set -e
     - git tag | xargs git tag -d
@@ -72,7 +84,7 @@ publish:
         echo "No changes found after versioning. Exiting."
         exit 1
       fi
-    - ssh-keyscan -H ${CI_SERVER_HOST} > ~/.ssh/known_hosts
+    - ssh-keyscan ${CI_SERVER_HOST} >> ~/.ssh/known_hosts 2>/dev/null || true
     - git config user.name "$GIT_OP_USER_NAME"
     - git config user.email "$GIT_OP_EMAIL"
     - git remote set-url origin git@${CI_SERVER_HOST}:${CI_PROJECT_PATH}.git
@@ -95,17 +107,16 @@ publish:
         exit 1
       fi
 
-docs:
-  stage: docs
+docs-deploy:
+  stage: deploy
   rules:
     - if: $CI_COMMIT_BRANCH == "main"
       when: on_success
     - when: never
   dependencies:
-    - build
+    - docs-build
   script:
     - set -e
-    - pnpm docs:build
-    - ssh-keyscan -H ${DOC_SERVER_HOST} > ~/.ssh/known_hosts
+    - ssh-keyscan ${DOC_SERVER_HOST} >> ~/.ssh/known_hosts 2>/dev/null || true
     - ssh -t root@${DOC_SERVER_HOST} -p 22 "rm -rf /data/fcl_docs/*"
     - scp -P 22 -r -O docs/.vitepress/dist/* root@${DOC_SERVER_HOST}:/data/fcl_docs/

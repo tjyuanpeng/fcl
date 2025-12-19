@@ -132,10 +132,11 @@ pnpm changeset
 
 <ul style="color:red">
   <li>请在git提交当中包含此代码文件，否则构建会失败</li>
-  <li>请遵守 <a href="https://semver.org/lang/zh-CN/">语义化版本</a> 的规范升级项目版本</li>
-  <li>不要手动修改版本号</li>
-  <li>尽量避免不兼容升级，和不符合语义的升级</li>
+  <li>只能通过changeset升级版本号，而不要手动修改版本号</li>
   <li>升级必须升级版本号，而不能同名覆盖</li>
+  <li>请遵守 <a href="https://semver.org/lang/zh-CN/">语义化版本</a> 的规范升级项目版本</li>
+  <li>禁止不符合语义的升级</li>
+  <li>尽量避免不兼容升级</li>
 </ul>
 
 ### merge request
@@ -144,7 +145,7 @@ pnpm changeset
 
 选择需要合并到`main`的开发分支
 
-`merge request` 创建成功后，流水线开启`lint`、`typecheck` 任务对代码进行检查
+`merge request` 创建成功后，流水线开启 `lint`、`typecheck` 等任务对代码进行检查
 
 通知其他贡献人review代码，通过然后点击 `Merge`
 
