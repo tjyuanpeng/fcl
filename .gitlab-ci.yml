@@ -19,6 +19,7 @@ install:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_COMMIT_BRANCH == "main"
       when: on_success
     - when: never
+  dependencies: []
   before_script:
     - node -v
     - pnpm -v
@@ -33,8 +34,7 @@ check:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_COMMIT_BRANCH == "main"
       when: on_success
     - when: never
-  dependencies:
-    - install
+  dependencies: []
   script:
     - pnpm lint
     - pnpm typecheck
@@ -45,12 +45,9 @@ build:
     - if: $CI_COMMIT_BRANCH == "main"
       when: on_success
     - when: never
-  dependencies:
-    - check
+  dependencies: []
   script:
     - pnpm build
-  after_script:
-    - rm -rf fep
   artifacts:
     paths:
       - packages/*/dist
@@ -63,6 +60,7 @@ publish:
     - if: $CI_COMMIT_BRANCH == "main"
       when: on_success
     - when: never
+  allow_failure: true
   dependencies:
     - build
   script:
@@ -108,7 +106,6 @@ docs:
   script:
     - set -e
     - pnpm docs:build
-    - cat ~/.ssh/id_ed25519.pub
     - ssh-keyscan -H ${DOC_SERVER_HOST} > ~/.ssh/known_hosts
     - ssh -t root@${DOC_SERVER_HOST} -p 22 "rm -rf /data/fcl_docs/*"
     - scp -P 22 -r -O docs/.vitepress/dist/* root@${DOC_SERVER_HOST}:/data/fcl_docs/
