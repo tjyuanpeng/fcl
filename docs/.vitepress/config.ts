@@ -61,6 +61,8 @@ export default ({ mode }: ConfigEnv) => {
         '/fep/': [
           { text: '@falconix/fep', link: '/fep/README' },
           { text: 'FEP gallery', link: '/fep/gallery' },
+          { text: '扩展点', link: '/fep/extends' },
+          { text: 'FAQ', link: '/fep/FAQ' },
         ],
         '/contribution/': [
           { text: '贡献代码', link: '/contribution/guide' },

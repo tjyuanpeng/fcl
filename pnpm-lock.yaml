@@ -7,103 +7,103 @@ settings:
 catalogs:
   default:
     '@antfu/eslint-config':
-      specifier: ^6.4.1
+      specifier: 6.4.1
       version: 6.4.1
     '@changesets/cli':
-      specifier: ^2.29.8
+      specifier: 2.29.8
       version: 2.29.8
     '@commitlint/cli':
-      specifier: ^20.2.0
+      specifier: 20.2.0
       version: 20.2.0
     '@commitlint/config-conventional':
-      specifier: ^20.2.0
+      specifier: 20.2.0
       version: 20.2.0
     '@element-plus/icons-vue':
       specifier: 2.3.2
       version: 2.3.2
     '@falconix/fep':
-      specifier: ^0.0.7
+      specifier: 0.0.7
       version: 0.0.7
     '@types/fs-extra':
-      specifier: ^11.0.4
+      specifier: 11.0.4
       version: 11.0.4
     '@types/node':
-      specifier: ^24.10.1
+      specifier: 24.10.1
       version: 24.10.1
     '@vitejs/plugin-vue':
-      specifier: ^6.0.2
+      specifier: 6.0.2
       version: 6.0.2
     '@vitejs/plugin-vue-jsx':
-      specifier: ^5.1.2
+      specifier: 5.1.2
       version: 5.1.2
     '@vue/tsconfig':
-      specifier: ^0.8.1
+      specifier: 0.8.1
       version: 0.8.1
     axios:
-      specifier: ^1.13.2
+      specifier: 1.13.2
       version: 1.13.2
     eslint:
-      specifier: ^9.39.1
+      specifier: 9.39.1
       version: 9.39.1
     eslint-plugin-format:
-      specifier: ^1.1.0
+      specifier: 1.1.0
       version: 1.1.0
     fs-extra:
-      specifier: ^11.3.2
+      specifier: 11.3.2
       version: 11.3.2
     globby:
-      specifier: ^16.0.0
+      specifier: 16.0.0
       version: 16.0.0
     husky:
-      specifier: ^9.1.7
+      specifier: 9.1.7
       version: 9.1.7
     lint-staged:
-      specifier: ^16.2.7
+      specifier: 16.2.7
       version: 16.2.7
     local-pkg:
-      specifier: ^1.1.2
+      specifier: 1.1.2
       version: 1.1.2
     promise-portal:
-      specifier: ^1.2.1
+      specifier: 1.2.1
       version: 1.2.1
     sass-embedded:
-      specifier: ^1.93.3
+      specifier: 1.93.3
       version: 1.93.3
     tsdown:
-      specifier: ^0.16.8
+      specifier: 0.16.8
       version: 0.16.8
     turbo:
-      specifier: ^2.6.3
+      specifier: 2.6.3
       version: 2.6.3
     typescript:
       specifier: 5.9.3
       version: 5.9.3
     unplugin-auto-import:
-      specifier: ^20.3.0
+      specifier: 20.3.0
       version: 20.3.0
     unplugin-vue-components:
-      specifier: ^30.0.0
+      specifier: 30.0.0
       version: 30.0.0
     vite:
       specifier: 7.2.6
       version: 7.2.6
     vite-plugin-pages:
-      specifier: ^0.33.2
+      specifier: 0.33.2
       version: 0.33.2
     vitepress:
-      specifier: ^2.0.0-alpha.15
+      specifier: 2.0.0-alpha.15
       version: 2.0.0-alpha.15
     vue:
       specifier: 3.5.25
       version: 3.5.25
     vue-router:
-      specifier: ^4.6.3
+      specifier: 4.6.3
       version: 4.6.3
     vue-tsc:
-      specifier: ^3.1.8
+      specifier: 3.1.8
       version: 3.1.8
     wujie-vue3:
-      specifier: ^1.0.29
+      specifier: 1.0.29
       version: 1.0.29
 
 importers:
