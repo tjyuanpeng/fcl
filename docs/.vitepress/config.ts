@@ -48,8 +48,8 @@ export default ({ mode }: ConfigEnv) => {
       nav: [
         { text: '主页', link: '/' },
         { text: '组件文档', link: items[0].link, activeMatch: '/packages/' },
-        { text: 'FEP', link: '/fep/README', activeMatch: '/fep/' },
-        { text: '贡献代码', link: '/contribution/guide', activeMatch: '/contribution/' },
+        { text: 'FEP', link: '/fep/getting-started', activeMatch: '/fep/' },
+        { text: '贡献代码', link: '/contribution', activeMatch: '/contribution/' },
       ],
       socialLinks: [
         { icon: 'gitlab', link: 'http://10.168.2.105:8888/soft_group/yingmai/fe_group/fcl' },
@@ -59,13 +59,15 @@ export default ({ mode }: ConfigEnv) => {
           { text: '组件列表', items },
         ],
         '/fep/': [
-          { text: '@falconix/fep', link: '/fep/README' },
+          { text: '@falconix/fep', items: [
+            { text: '快速开始', link: '/fep/getting-started' },
+            { text: '扩展点', link: '/fep/extends' },
+            { text: 'FAQ', link: '/fep/FAQ' },
+          ] },
           { text: 'FEP gallery', link: '/fep/gallery' },
-          { text: '扩展点', link: '/fep/extends' },
-          { text: 'FAQ', link: '/fep/FAQ' },
         ],
         '/contribution/': [
-          { text: '贡献代码', link: '/contribution/guide' },
+          { text: '贡献代码', link: '/contribution/' },
         ],
       },
       outline: {
@@ -81,8 +83,10 @@ export default ({ mode }: ConfigEnv) => {
       search: {
         provider: 'local',
       },
+      logo: '/logo.png',
     },
     vite: {
+      publicDir: isProd ? '../public' : 'docs/public',
       ssr: {
         noExternal: ['@falconix/fep'],
       },

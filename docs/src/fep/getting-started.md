@@ -1,8 +1,8 @@
-# @falconix/fep
+# 快速开始
 
-falconix 基础组件库
+[@falconix/fep](http://10.168.2.105:8888/soft_group/yingmai/fe_group/fep) 基础组件库
 
-repo: [@falconix/fep](http://10.168.2.105:8888/soft_group/yingmai/fe_group/fep)
+<img src="/fep.png" width="50" />
 
 ## 安装
 
@@ -32,8 +32,6 @@ export default defineConfig(() => {
   }
 })
 ```
-
-## 注意事项
 
 使用`@falconix/fep-resolver`之后，`@falconix/fep`会按需导入，所以不需要再完整导入fep
 
