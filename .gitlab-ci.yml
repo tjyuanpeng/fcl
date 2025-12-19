@@ -75,6 +75,7 @@ pkgs-publish:
     - when: never
   dependencies:
     - pkgs-build
+  allow_failure: true
   script:
     - set -e
     - git tag | xargs git tag -d
