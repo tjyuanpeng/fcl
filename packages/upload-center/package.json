@@ -2,6 +2,7 @@
   "name": "@falconix/upload-center",
   "type": "module",
   "version": "0.0.1",
+  "private": true,
   "description": "falconix upload-center",
   "exports": {
     ".": "./dist/index.mjs",
