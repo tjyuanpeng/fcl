@@ -48,8 +48,9 @@ export default ({ mode }: ConfigEnv) => {
       nav: [
         { text: '主页', link: '/' },
         { text: '组件文档', link: items[0].link, activeMatch: '/packages/' },
-        { text: 'FEP', link: '/fep/getting-started', activeMatch: '/fep/' },
         { text: '贡献代码', link: '/contribution', activeMatch: '/contribution/' },
+        { text: 'FEP', link: '/fep/getting-started', activeMatch: '/fep/' },
+        { text: 'FFD', link: '/ffd', activeMatch: '/ffd/' },
       ],
       socialLinks: [
         { icon: 'gitlab', link: 'http://10.168.2.105:8888/soft_group/yingmai/fe_group/fcl' },
@@ -68,6 +69,9 @@ export default ({ mode }: ConfigEnv) => {
         ],
         '/contribution/': [
           { text: '贡献代码', link: '/contribution/' },
+        ],
+        '/ffd/': [
+          { text: 'FFD', link: '/ffd/' },
         ],
       },
       outline: {
