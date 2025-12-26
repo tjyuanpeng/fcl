@@ -4,7 +4,7 @@ falconix component library
 
 ## package manager
 
-use `pnpm` to manage packages
+only use `pnpm` to manage packages
 
 ## install dependencies
 
@@ -60,3 +60,15 @@ after running the command, changeset will create a markdown file to determine ho
 create a merge request merging into main branch in the gitlab
 
 then gitlab pipeline will publish repos to the private npm registry
+
+# document development
+
+```shell
+pnpm docs:dev
+```
+
+# document build
+
+```shell
+pnpm docs:build
+```

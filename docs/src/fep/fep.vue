@@ -1,11 +1,307 @@
 <script setup lang="ts">
-import { ArrowRight } from '@element-plus/icons-vue'
+import { ArrowDown, ArrowRight } from '@element-plus/icons-vue'
 import { zhCn } from '@falconix/fep/es/locale/index'
 import { reactive, ref } from 'vue'
 
 const input = ref('')
-const value1 = ref()
-const value2 = ref()
+const datePickerValue = ref(Date.now() - 172800000)
+const rangePickerValue = ref([Date.now() - 1209600000, Date.now() - 172800000])
+const select = ref()
+const multiSelect = ref([])
+const options = [
+  {
+    value: 'Option1',
+    label: 'Option1',
+  },
+  {
+    value: 'Option2',
+    label: 'Option2',
+  },
+  {
+    value: 'Option3',
+    label: 'Option3',
+  },
+  {
+    value: 'Option4',
+    label: 'Option4',
+    disabled: true,
+  },
+  {
+    value: 'Option5',
+    label: 'Option5',
+  },
+]
+
+const ccValue = ref([])
+const ccOptions = [
+  {
+    value: 'guide',
+    label: 'Guide',
+    children: [
+      {
+        value: 'disciplines',
+        label: 'Disciplines',
+        children: [
+          {
+            value: 'consistency',
+            label: 'Consistency',
+            disabled: true,
+          },
+          {
+            value: 'feedback',
+            label: 'Feedback',
+          },
+          {
+            value: 'efficiency',
+            label: 'Efficiency',
+          },
+          {
+            value: 'controllability',
+            label: 'Controllability',
+          },
+        ],
+      },
+      {
+        value: 'navigation',
+        label: 'Navigation',
+        children: [
+          {
+            value: 'side nav',
+            label: 'Side Navigation',
+          },
+          {
+            value: 'top nav',
+            label: 'Top Navigation',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    value: 'component',
+    label: 'Component',
+    children: [
+      {
+        value: 'basic',
+        label: 'Basic',
+        children: [
+          {
+            value: 'layout',
+            label: 'Layout',
+          },
+          {
+            value: 'color',
+            label: 'Color',
+          },
+          {
+            value: 'typography',
+            label: 'Typography',
+          },
+          {
+            value: 'icon',
+            label: 'Icon',
+          },
+          {
+            value: 'button',
+            label: 'Button',
+          },
+        ],
+      },
+      {
+        value: 'form',
+        label: 'Form',
+        children: [
+          {
+            value: 'radio',
+            label: 'Radio',
+          },
+          {
+            value: 'checkbox',
+            label: 'Checkbox',
+          },
+          {
+            value: 'input',
+            label: 'Input',
+          },
+          {
+            value: 'input-number',
+            label: 'InputNumber',
+          },
+          {
+            value: 'select',
+            label: 'Select',
+          },
+          {
+            value: 'cascader',
+            label: 'Cascader',
+          },
+          {
+            value: 'switch',
+            label: 'Switch',
+          },
+          {
+            value: 'slider',
+            label: 'Slider',
+          },
+          {
+            value: 'time-picker',
+            label: 'TimePicker',
+          },
+          {
+            value: 'date-picker',
+            label: 'DatePicker',
+          },
+          {
+            value: 'datetime-picker',
+            label: 'DateTimePicker',
+          },
+          {
+            value: 'upload',
+            label: 'Upload',
+          },
+          {
+            value: 'rate',
+            label: 'Rate',
+          },
+          {
+            value: 'form',
+            label: 'Form',
+          },
+        ],
+      },
+      {
+        value: 'data',
+        label: 'Data',
+        children: [
+          {
+            value: 'table',
+            label: 'Table',
+          },
+          {
+            value: 'tag',
+            label: 'Tag',
+          },
+          {
+            value: 'progress',
+            label: 'Progress',
+          },
+          {
+            value: 'tree',
+            label: 'Tree',
+          },
+          {
+            value: 'pagination',
+            label: 'Pagination',
+          },
+          {
+            value: 'badge',
+            label: 'Badge',
+          },
+        ],
+      },
+      {
+        value: 'notice',
+        label: 'Notice',
+        children: [
+          {
+            value: 'alert',
+            label: 'Alert',
+          },
+          {
+            value: 'loading',
+            label: 'Loading',
+          },
+          {
+            value: 'message',
+            label: 'Message',
+          },
+          {
+            value: 'message-box',
+            label: 'MessageBox',
+          },
+          {
+            value: 'notification',
+            label: 'Notification',
+          },
+        ],
+      },
+      {
+        value: 'navigation',
+        label: 'Navigation',
+        children: [
+          {
+            value: 'menu',
+            label: 'Menu',
+          },
+          {
+            value: 'tabs',
+            label: 'Tabs',
+          },
+          {
+            value: 'breadcrumb',
+            label: 'Breadcrumb',
+          },
+          {
+            value: 'dropdown',
+            label: 'Dropdown',
+          },
+          {
+            value: 'steps',
+            label: 'Steps',
+          },
+        ],
+      },
+      {
+        value: 'others',
+        label: 'Others',
+        children: [
+          {
+            value: 'dialog',
+            label: 'Dialog',
+          },
+          {
+            value: 'tooltip',
+            label: 'Tooltip',
+          },
+          {
+            value: 'popover',
+            label: 'Popover',
+          },
+          {
+            value: 'card',
+            label: 'Card',
+          },
+          {
+            value: 'carousel',
+            label: 'Carousel',
+          },
+          {
+            value: 'collapse',
+            label: 'Collapse',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    value: 'resource',
+    label: 'Resource',
+    children: [
+      {
+        value: 'axure',
+        label: 'Axure Components',
+      },
+      {
+        value: 'sketch',
+        label: 'Sketch Templates',
+      },
+      {
+        value: 'docs',
+        label: 'Design Documentation',
+      },
+    ],
+  },
+]
 
 const hasType = ref(true)
 const isFep = ref(true)
@@ -62,7 +358,6 @@ function showMessage(type: string) {
     duration: 0,
   })
 }
-const close = () => ElMessage.closeAll()
 </script>
 
 <template>
@@ -112,7 +407,7 @@ const close = () => ElMessage.closeAll()
       </div>
       <div class="box">
         <el-button plain>
-          Plain
+          &nbsp;&nbsp;Plain&nbsp;&nbsp;
         </el-button>
         <el-button type="primary" plain>
           Primary
@@ -129,7 +424,7 @@ const close = () => ElMessage.closeAll()
       </div>
       <div class="box">
         <el-button disabled plain>
-          Plain
+          &nbsp;&nbsp;Plain&nbsp;&nbsp;
         </el-button>
         <el-button disabled type="primary" plain>
           Primary
@@ -149,35 +444,99 @@ const close = () => ElMessage.closeAll()
       <div class="box">
         <el-input
           v-model="input"
-          style="width: 240px"
           size="small"
-          placeholder="small input"
+          placeholder="input"
+          style="width: 240px"
         />
+        <el-input v-model="input" placeholder="input" style="width: 240px" />
         <el-input
           v-model="input"
-          style="width: 240px"
-          placeholder="normal input"
-        />
-        <el-input
-          v-model="input"
-          style="width: 240px"
           size="large"
-          placeholder="large Input"
+          placeholder="Input"
+          style="width: 240px"
         />
       </div>
 
-      <h3>time-picker</h3>
+      <h3>select</h3>
       <div class="box">
-        <el-date-picker
-          v-model="value1"
+        <el-select
+          v-model="select"
+          size="small"
+          :options="options"
+          placeholder="Select"
+          style="width: 240px"
+        />
+        <el-select
+          v-model="select"
+          :options="options"
+          placeholder="Select"
+          style="width: 240px"
+        />
+        <el-select
+          v-model="multiSelect"
+          size="large"
+          :options="options"
+          placeholder="Select"
+          style="width: 240px"
+          multiple
+        />
+      </div>
+
+      <h3>cascader</h3>
+      <div class="box">
+        <el-cascader
+          v-model="ccValue"
+          :options="ccOptions"
+          :props="{ expandTrigger: 'hover', multiple: true }"
+          size="small"
+          style="width: 240px"
+        />
+        <el-cascader
+          v-model="ccValue"
+          :options="ccOptions"
+          :props="{ expandTrigger: 'hover', multiple: true }"
+          style="width: 240px"
+        />
+        <el-cascader
+          v-model="ccValue"
+          :options="ccOptions"
+          :props="{ expandTrigger: 'hover', multiple: true }"
+          size="large"
+          style="width: 240px"
+        />
+      </div>
+
+      <h3>date-time-picker</h3>
+      <div class="box">
+        <el-date-picker-panel
+          v-model="datePickerValue"
           type="datetime"
           placeholder="选择日期时间"
           format="YYYY-MM-DD HH:mm:ss"
           date-format="YYYY-MM-DD"
           time-format="HH:mm"
         />
-        <el-date-picker
-          v-model="value2"
+        <div class="box" style="flex-direction: column">
+          <el-date-picker
+            v-model="datePickerValue"
+            type="date"
+            placeholder="选择日期"
+          />
+          <el-date-picker
+            v-model="datePickerValue"
+            type="datetime"
+            placeholder="选择日期时间"
+            format="YYYY-MM-DD HH:mm:ss"
+            date-format="YYYY-MM-DD"
+            time-format="HH:mm"
+            style="width: 240px"
+          />
+        </div>
+      </div>
+      <div class="box" style="flex-direction: column">
+        <el-date-picker-panel
+          v-model="rangePickerValue"
+          style="width: 648px"
           type="datetimerange"
           start-placeholder="开始时间日期"
           end-placeholder="结束时间日期"
@@ -185,6 +544,133 @@ const close = () => ElMessage.closeAll()
           date-format="YYYY-MM-DD"
           time-format="HH:mm:ss"
         />
+        <el-date-picker
+          v-model="rangePickerValue"
+          type="datetimerange"
+          start-placeholder="开始时间日期"
+          end-placeholder="结束时间日期"
+          format="YYYY-MM-DD HH:mm:ss"
+          date-format="YYYY-MM-DD"
+          time-format="HH:mm:ss"
+        />
+      </div>
+
+      <h3>dropdown</h3>
+      <div class="box">
+        <el-dropdown size="small">
+          <el-button>
+            Dropdown List
+            <el-icon class="el-icon--right">
+              <ArrowDown />
+            </el-icon>
+          </el-button>
+          <template #dropdown>
+            <el-dropdown-menu>
+              <el-dropdown-item>Action 1</el-dropdown-item>
+              <el-dropdown-item>Action 2</el-dropdown-item>
+              <el-dropdown-item>Action 3</el-dropdown-item>
+              <el-dropdown-item disabled>
+                Action 4
+              </el-dropdown-item>
+              <el-dropdown-item divided>
+                Action 5
+              </el-dropdown-item>
+            </el-dropdown-menu>
+          </template>
+        </el-dropdown>
+        <el-dropdown>
+          <el-button>
+            Dropdown List
+            <el-icon class="el-icon--right">
+              <ArrowDown />
+            </el-icon>
+          </el-button>
+          <template #dropdown>
+            <el-dropdown-menu>
+              <el-dropdown-item>Action 1</el-dropdown-item>
+              <el-dropdown-item>Action 2</el-dropdown-item>
+              <el-dropdown-item>Action 3</el-dropdown-item>
+              <el-dropdown-item disabled>
+                Action 4
+              </el-dropdown-item>
+              <el-dropdown-item divided>
+                Action 5
+              </el-dropdown-item>
+            </el-dropdown-menu>
+          </template>
+        </el-dropdown>
+        <el-dropdown size="large">
+          <el-button>
+            Dropdown List
+            <el-icon class="el-icon--right">
+              <ArrowDown />
+            </el-icon>
+          </el-button>
+          <template #dropdown>
+            <el-dropdown-menu>
+              <el-dropdown-item>Action 1</el-dropdown-item>
+              <el-dropdown-item>Action 2</el-dropdown-item>
+              <el-dropdown-item>Action 3</el-dropdown-item>
+              <el-dropdown-item disabled>
+                Action 4
+              </el-dropdown-item>
+              <el-dropdown-item divided>
+                Action 5
+              </el-dropdown-item>
+            </el-dropdown-menu>
+          </template>
+        </el-dropdown>
+      </div>
+
+      <h3>popover</h3>
+      <div class="box">
+        <el-popover
+          placement="top-start"
+          title="Title"
+          :width="200"
+          trigger="hover"
+          content="this is content, this is content, this is content"
+        >
+          <template #reference>
+            <el-button class="m-2">
+              Hover to activate
+            </el-button>
+          </template>
+        </el-popover>
+      </div>
+
+      <h3>tooltip</h3>
+      <div class="box">
+        <el-tooltip content="Content" effect="light">
+          <el-button>light</el-button>
+        </el-tooltip>
+        <el-tooltip content="Content" effect="dark">
+          <el-button>dark</el-button>
+        </el-tooltip>
+      </div>
+
+      <h3>breadcrumb</h3>
+      <el-breadcrumb :separator-icon="ArrowRight">
+        <el-breadcrumb-item><a href="/">项目列表</a></el-breadcrumb-item>
+        <el-breadcrumb-item>中国中车轨道轨枕检测 </el-breadcrumb-item>
+        <el-breadcrumb-item>promotion list</el-breadcrumb-item>
+        <el-breadcrumb-item>promotion detail</el-breadcrumb-item>
+      </el-breadcrumb>
+
+      <h3>drawer</h3>
+      <div class="box">
+        <el-button @click="((drawer.open = true), (drawer.size = 'small'))">
+          small
+        </el-button>
+        <el-button @click="((drawer.open = true), (drawer.size = 'regular'))">
+          regular
+        </el-button>
+        <el-button @click="((drawer.open = true), (drawer.size = 'large'))">
+          large
+        </el-button>
+        <el-drawer v-model="drawer.open" title="标题" :size="drawer.size">
+          <span>Hi, there!</span>
+        </el-drawer>
       </div>
 
       <h3>message</h3>
@@ -204,7 +690,7 @@ const close = () => ElMessage.closeAll()
         <el-button @click="showMessage('info')">
           Info
         </el-button>
-        <el-button style="margin-left: auto" @click="close">
+        <el-button style="margin-left: auto" @click="ElMessage.closeAll()">
           clear all
         </el-button>
       </div>
@@ -219,145 +705,6 @@ const close = () => ElMessage.closeAll()
         </el-button>
         <el-switch v-model="hasType" active-text="has type" />
         <el-switch v-model="isFep" active-text="is fep" />
-      </div>
-      <div class="box" />
-
-      <h3>breadcrumb</h3>
-      <el-breadcrumb :separator-icon="ArrowRight">
-        <el-breadcrumb-item><a href="/">项目列表</a></el-breadcrumb-item>
-        <el-breadcrumb-item>中国中车轨道轨枕检测 </el-breadcrumb-item>
-        <el-breadcrumb-item>promotion list</el-breadcrumb-item>
-        <el-breadcrumb-item>promotion detail</el-breadcrumb-item>
-      </el-breadcrumb>
-
-      <!-- <h3>tooltip</h3>
-      <div class="tooltip-base-box">
-        <div class="row center">
-          <el-tooltip
-            class="box-item"
-            effect="dark"
-            content="Top Left prompts info"
-            placement="top-start"
-          >
-            <el-button>top-start</el-button>
-          </el-tooltip>
-          <el-tooltip
-            class="box-item"
-            effect="dark"
-            content="Top Center prompts info"
-            placement="top"
-            visible
-          >
-            <el-button>top</el-button>
-          </el-tooltip>
-          <el-tooltip
-            class="box-item"
-            effect="dark"
-            content="Top Right prompts info"
-            placement="top-end"
-          >
-            <el-button>top-end</el-button>
-          </el-tooltip>
-        </div>
-        <div class="row">
-          <el-tooltip
-            class="box-item"
-            effect="dark"
-            content="Left Top prompts info"
-            placement="left-start"
-          >
-            <el-button>left-start</el-button>
-          </el-tooltip>
-          <el-tooltip
-            class="box-item"
-            effect="dark"
-            content="Right Top prompts info"
-            placement="right-start"
-          >
-            <el-button>right-start</el-button>
-          </el-tooltip>
-        </div>
-        <div class="row">
-          <el-tooltip
-            class="box-item"
-            effect="dark"
-            content="Left Center prompts info"
-            placement="left"
-            visible
-          >
-            <el-button class="mt-3 mb-3">left</el-button>
-          </el-tooltip>
-          <el-tooltip
-            class="box-item"
-            effect="dark"
-            content="Right Center prompts info"
-            placement="right"
-            visible
-          >
-            <el-button>right</el-button>
-          </el-tooltip>
-        </div>
-        <div class="row">
-          <el-tooltip
-            class="box-item"
-            effect="dark"
-            content="Left Bottom prompts info"
-            placement="left-end"
-          >
-            <el-button>left-end</el-button>
-          </el-tooltip>
-          <el-tooltip
-            class="box-item"
-            effect="dark"
-            content="Right Bottom prompts info"
-            placement="right-end"
-          >
-            <el-button>right-end</el-button>
-          </el-tooltip>
-        </div>
-        <div class="row center">
-          <el-tooltip
-            class="box-item"
-            effect="dark"
-            content="Bottom Left prompts info"
-            placement="bottom-start"
-          >
-            <el-button>bottom-start</el-button>
-          </el-tooltip>
-          <el-tooltip
-            class="box-item"
-            effect="dark"
-            content="Bottom Center prompts info"
-            placement="bottom"
-            visible
-          >
-            <el-button>bottom</el-button>
-          </el-tooltip>
-          <el-tooltip
-            class="box-item"
-            effect="dark"
-            content="Bottom Right prompts info"
-            placement="bottom-end"
-          >
-            <el-button>bottom-end</el-button>
-          </el-tooltip>
-        </div>
-      </div> -->
-
-      <h3>drawer</h3>
-      <div class="box">
-        <el-button @click="((drawer.open = true), (drawer.size = 'small'))">
-          small
-        </el-button>
-        <el-button @click="((drawer.open = true), (drawer.size = 'regular'))">
-          regular
-        </el-button>
-        <el-button @click="((drawer.open = true), (drawer.size = 'large'))">
-          large
-        </el-button>
-        <el-drawer v-model="drawer.open" title="标题" :size="drawer.size">
-          <span>Hi, there!</span>
-        </el-drawer>
       </div>
 
       <h3>table</h3>
@@ -375,25 +722,26 @@ const close = () => ElMessage.closeAll()
   width: 800px;
   margin: 40px auto;
   padding: 20px;
+  border-radius: 12px;
   border: 1px solid #ddd;
-  border-radius: 20px;
   background-color: #fff;
   color: var(--el-text-color-primary);
-}
 
-h3 {
-  margin-top: 40px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid #eee;
-  margin-bottom: 1em;
-  font-weight: bold;
-  font-size: 1.17em;
-  color: #333;
+  h3 {
+    margin-top: 40px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 1em;
+    font-weight: bold;
+    font-size: 1.17em;
+    color: #333;
 
-  &:first-child {
-    margin-top: initial;
+    &:first-child {
+      margin-top: initial;
+    }
   }
 }
+
 .box {
   display: flex;
   gap: 20px;
@@ -403,25 +751,9 @@ h3 {
   &.align-middle {
     align-items: center;
   }
+
   .el-button + .el-button {
     margin-left: 0;
   }
-}
-
-.tooltip-base-box {
-  width: 600px;
-  margin: auto;
-}
-.tooltip-base-box .row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.tooltip-base-box .center {
-  justify-content: center;
-}
-.tooltip-base-box .box-item {
-  width: 110px;
-  margin-top: 10px;
 }
 </style>
