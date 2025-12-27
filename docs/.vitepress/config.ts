@@ -12,30 +12,26 @@ export default ({ mode }: ConfigEnv) => {
   if (!isProd) {
     fs.removeSync(path.resolve('src', 'packages'))
   }
-  const getSidebarItems = () => {
-    const items = globbySync(['*'], {
-      cwd: '../packages',
-      absolute: true,
-      onlyDirectories: true,
-      ignore: ['node_modules'],
-    }).map((p) => {
-      const isExists = fs.existsSync(path.resolve(p, 'README.md'))
-      if (!isExists) {
-        return undefined
-      }
-      const pkgName = path.basename(p)
-      if (isProd) {
-        fs.copySync(path.resolve(p, 'README.md'), path.resolve('src', 'packages', `${pkgName}/README.md`))
-      }
-      const pkgInfo = fs.readJSONSync(path.resolve(p, './package.json'))
-      return {
-        text: pkgInfo.name,
-        link: `/packages/${pkgName}/README`,
-      }
-    })
-    return items.filter(i => i) as { text: any, link: string }[]
-  }
-  const items = getSidebarItems()
+  const getPkgsItems = () => globbySync(['*'], {
+    cwd: '../packages',
+    absolute: true,
+    onlyDirectories: true,
+    ignore: ['node_modules'],
+  }).map((p) => {
+    if (!fs.existsSync(path.resolve(p, 'README.md'))) {
+      return undefined
+    }
+    const pkgName = path.basename(p)
+    if (isProd) {
+      fs.copySync(path.resolve(p, 'README.md'), path.resolve('src', 'packages', `${pkgName}/README.md`))
+    }
+    const pkgInfo = fs.readJSONSync(path.resolve(p, './package.json'))
+    return {
+      text: pkgInfo.name,
+      link: `/packages/${pkgName}/README`,
+    }
+  }).filter(i => i) as { text: any, link: string }[]
+  const pkgItems = getPkgsItems()
 
   return defineConfig({
     srcDir: isProd ? 'src' : '../',
@@ -47,7 +43,7 @@ export default ({ mode }: ConfigEnv) => {
       // https://vitepress.dev/reference/default-theme-config
       nav: [
         { text: '主页', link: '/' },
-        { text: '组件文档', link: items[0].link, activeMatch: '/packages/' },
+        { text: '组件文档', link: pkgItems[0].link, activeMatch: '/packages/' },
         { text: '贡献代码', link: '/contribution', activeMatch: '/contribution/' },
         { text: 'FEP', link: '/fep/getting-started', activeMatch: '/fep/' },
         { text: 'FFD', link: '/ffd', activeMatch: '/ffd/' },
@@ -57,7 +53,7 @@ export default ({ mode }: ConfigEnv) => {
       ],
       sidebar: {
         '/packages/': [
-          { text: '组件列表', items },
+          { text: '组件列表', items: pkgItems },
         ],
         '/fep/': [
           { text: '@falconix/fep', items: [

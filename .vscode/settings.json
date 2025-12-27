@@ -51,5 +51,11 @@
     "scss",
     "pcss",
     "postcss"
-  ]
+  ],
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
+  "explorer.fileNesting.patterns": {
+    "package.json": "pnpm-lock.yaml, pnpm-workspace.yaml, turbo.json, .npmrc, .nvmrc, .gitlab-ci.yml",
+    "eslint.config.js": ".editorconfig, .gitignore, commitlint.config.js"
+  }
 }
