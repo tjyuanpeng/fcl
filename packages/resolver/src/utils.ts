@@ -6,12 +6,10 @@ export async function getPkgVersion(pkgName: string, defaultVersion: string): Pr
     if (isExist) {
       const pkg = await getPackageInfo(pkgName)
       return pkg?.version ?? defaultVersion
-    }
-    else {
+    } else {
       return defaultVersion
     }
-  }
-  catch (err) {
+  } catch (err) {
     console.error(err)
     return defaultVersion
   }

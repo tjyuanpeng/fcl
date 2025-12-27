@@ -97,8 +97,7 @@ function getSideEffects(dirName: string, options: ElementPlusResolverOptionsReso
     return ssr
       ? [`${themeFolder}/src/base.scss`, `${themeFolder}/src/${dirName}.scss`]
       : [`${esComponentsFolder}/base/style/index`, `${esComponentsFolder}/${dirName}/style/index`]
-  }
-  else if (importStyle === true || importStyle === 'css') {
+  } else if (importStyle === true || importStyle === 'css') {
     return ssr
       ? [`${themeFolder}/base.css`, `${themeFolder}/el-${dirName}.css`]
       : [`${esComponentsFolder}/base/style/css`, `${esComponentsFolder}/${dirName}/style/css`]
@@ -106,11 +105,13 @@ function getSideEffects(dirName: string, options: ElementPlusResolverOptionsReso
 }
 
 function resolveComponent(name: string, options: ElementPlusResolverOptionsResolved): ComponentInfo | undefined {
-  if (options.exclude && name.match(options.exclude))
+  if (options.exclude && name.match(options.exclude)) {
     return
+  }
 
-  if (!name.match(/^El[A-Z]/))
+  if (!name.match(/^El[A-Z]/)) {
     return
+  }
 
   if (name.match(/^ElIcon.+/)) {
     return {
@@ -153,8 +154,9 @@ function resolveComponent(name: string, options: ElementPlusResolverOptionsResol
 }
 
 function resolveDirective(name: string, options: ElementPlusResolverOptionsResolved): ComponentInfo | undefined {
-  if (!options.directives)
+  if (!options.directives) {
     return
+  }
 
   const directives: Record<string, { importName: string, styleName: string }> = {
     Loading: { importName: 'ElLoadingDirective', styleName: 'loading' },
@@ -163,8 +165,9 @@ function resolveDirective(name: string, options: ElementPlusResolverOptionsResol
   }
 
   const directive = directives[name]
-  if (!directive)
+  if (!directive) {
     return
+  }
 
   // @fep
   // const { version, ssr, nightly } = options
@@ -200,8 +203,9 @@ export function ElementPlusResolver(
   let optionsResolved: ElementPlusResolverOptionsResolved
 
   async function resolveOptions(): Promise<ElementPlusResolverOptionsResolved> {
-    if (optionsResolved)
+    if (optionsResolved) {
       return optionsResolved
+    }
     optionsResolved = {
       ssr: false,
       // @fep
@@ -223,9 +227,9 @@ export function ElementPlusResolver(
       resolve: async (name: string) => {
         const options = await resolveOptions()
 
-        if ([...options.noStylesComponents, ...noStylesComponents].includes(name))
+        if ([...options.noStylesComponents, ...noStylesComponents].includes(name)) {
           return resolveComponent(name, { ...options, importStyle: false })
-        else return resolveComponent(name, options)
+        } else { return resolveComponent(name, options) }
       },
     },
     {

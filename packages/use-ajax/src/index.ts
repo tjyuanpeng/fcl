@@ -81,8 +81,7 @@ instance.interceptors.response.use(
     let msg = '网络异常，请稍后再试'
     if (error.response && error.response.status !== 200) {
       msg = error.response.statusText
-    }
-    else if (error.response?.data && error.response.data.code !== 200) {
+    } else if (error.response?.data && error.response.data.code !== 200) {
       msg = error.config?.getMessage!(error.response) ?? '网络异常，请稍后再试'
     }
     // eslint-disable-next-line prefer-promise-reject-errors
