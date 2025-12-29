@@ -358,6 +358,9 @@ function showMessage(type: string) {
     duration: 0,
   })
 }
+function close() {
+  ElMessage.closeAll()
+}
 </script>
 
 <template>
@@ -690,7 +693,7 @@ function showMessage(type: string) {
         <el-button @click="showMessage('info')">
           Info
         </el-button>
-        <el-button style="margin-left: auto" @click="ElMessage.closeAll()">
+        <el-button style="margin-left: auto" @click="close">
           clear all
         </el-button>
       </div>
