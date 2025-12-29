@@ -1,7 +1,7 @@
 {
   "name": "@falconix/fep-resolver",
   "type": "module",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "@falconix/fep resolver for unplugin-vue-components",
   "exports": {
     ".": "./dist/index.mjs",
