@@ -18,6 +18,7 @@ declare module 'vue' {
     ElConfigProvider: typeof import('@falconix/fep/es')['ElConfigProvider']
     ElDatePicker: typeof import('@falconix/fep/es')['ElDatePicker']
     ElDatePickerPanel: typeof import('@falconix/fep/es')['ElDatePickerPanel']
+    ElDialog: typeof import('@falconix/fep/es')['ElDialog']
     ElDrawer: typeof import('@falconix/fep/es')['ElDrawer']
     ElDropdown: typeof import('@falconix/fep/es')['ElDropdown']
     ElDropdownItem: typeof import('@falconix/fep/es')['ElDropdownItem']
@@ -29,6 +30,8 @@ declare module 'vue' {
     ElSwitch: typeof import('@falconix/fep/es')['ElSwitch']
     ElTable: typeof import('@falconix/fep/es')['ElTable']
     ElTableColumn: typeof import('@falconix/fep/es')['ElTableColumn']
+    ElTabPane: typeof import('@falconix/fep/es')['ElTabPane']
+    ElTabs: typeof import('@falconix/fep/es')['ElTabs']
     ElTooltip: typeof import('@falconix/fep/es')['ElTooltip']
   }
 }

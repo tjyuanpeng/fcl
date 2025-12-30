@@ -303,9 +303,10 @@ const ccOptions = [
   },
 ]
 
+const activeName = ref('1')
 const hasType = ref(true)
 const isFep = ref(true)
-function alert() {
+const alert = () => {
   ElMessageBox.alert(
     '本次申请需消耗30000鹰眼币，请确认线索相关评估内容已填写完整。',
     '确定提交',
@@ -315,7 +316,7 @@ function alert() {
     },
   )
 }
-function confirm() {
+const confirm = () => {
   ElMessageBox.confirm(
     '本次申请需消耗30000鹰眼币，请确认线索相关评估内容已填写完整。',
     '确定提交',
@@ -336,28 +337,32 @@ const tableData = [
     address: 'No. 189, Grove St, Los Angeles',
   },
   {
-    date: '2016-05-02',
+    date: '2017-05-02',
     name: 'Tom',
     address: 'No. 189, Grove St, Los Angeles',
   },
   {
-    date: '2016-05-04',
+    date: '2018-05-04',
     name: 'Tom',
     address: 'No. 189, Grove St, Los Angeles',
   },
   {
-    date: '2016-05-01',
+    date: '2019-05-01',
     name: 'Tom',
     address: 'No. 189, Grove St, Los Angeles',
   },
 ]
-function showMessage(type: string) {
+const showMessage = (type: string) => {
   ElMessage({
     message: 'Congrats, this is a message.',
     type: type as any,
     duration: 0,
   })
 }
+function close() {
+  ElMessage.closeAll()
+}
+const dialogVisible = ref(false)
 </script>
 
 <template>
@@ -657,6 +662,28 @@ function showMessage(type: string) {
         <el-breadcrumb-item>promotion detail</el-breadcrumb-item>
       </el-breadcrumb>
 
+      <h3>tabs</h3>
+      <div class="box">
+        <el-tabs v-model="activeName">
+          <el-tab-pane label="待处理" name="1" />
+          <el-tab-pane label="评审队列" name="2" />
+          <el-tab-pane label="评估队列" name="3" />
+          <el-tab-pane label="免审列表" name="4" />
+          <el-tab-pane label="授权列表" name="5" />
+          <el-tab-pane label="处理记录" name="6" />
+        </el-tabs>
+      </div>
+      <div class="box">
+        <el-tabs v-model="activeName" tab-position="left">
+          <el-tab-pane label="待处理" name="1" />
+          <el-tab-pane label="评审队列" name="2" />
+          <el-tab-pane label="评估队列" name="3" />
+          <el-tab-pane label="免审列表" name="4" />
+          <el-tab-pane label="授权列表" name="5" />
+          <el-tab-pane label="处理记录" name="6" />
+        </el-tabs>
+      </div>
+
       <h3>drawer</h3>
       <div class="box">
         <el-button @click="((drawer.open = true), (drawer.size = 'small'))">
@@ -671,6 +698,26 @@ function showMessage(type: string) {
         <el-drawer v-model="drawer.open" title="标题" :size="drawer.size">
           <span>Hi, there!</span>
         </el-drawer>
+      </div>
+
+      <h3>dialog</h3>
+      <div class="box">
+        <el-button plain @click="dialogVisible = true">
+          Click to open the Dialog
+        </el-button>
+        <el-dialog v-model="dialogVisible" title="Tips" width="500">
+          <span>This is a message</span>
+          <template #footer>
+            <div class="dialog-footer">
+              <el-button @click="dialogVisible = false">
+                Cancel
+              </el-button>
+              <el-button type="primary" @click="dialogVisible = false">
+                Confirm
+              </el-button>
+            </div>
+          </template>
+        </el-dialog>
       </div>
 
       <h3>message</h3>
@@ -690,7 +737,7 @@ function showMessage(type: string) {
         <el-button @click="showMessage('info')">
           Info
         </el-button>
-        <el-button style="margin-left: auto" @click="ElMessage.closeAll()">
+        <el-button style="margin-left: auto" @click="close">
           clear all
         </el-button>
       </div>
@@ -708,11 +755,39 @@ function showMessage(type: string) {
       </div>
 
       <h3>table</h3>
-      <el-table :data="tableData" style="width: 100%">
-        <el-table-column prop="date" label="Date" width="180" />
-        <el-table-column prop="name" label="Name" width="180" />
-        <el-table-column prop="address" label="Address" />
-      </el-table>
+      <div class="box">
+        <el-table :data="tableData" style="width: 100%">
+          <el-table-column type="selection" />
+          <el-table-column prop="date" label="Date" width="180" sortable />
+          <el-table-column prop="name" label="Name" width="180" />
+          <el-table-column prop="address" label="Address" />
+        </el-table>
+      </div>
+      <div class="box">
+        <el-table
+          :data="tableData"
+          :border="true"
+          show-summary
+          style="width: 100%"
+        >
+          <el-table-column type="selection" width="60" align="center" />
+          <el-table-column
+            prop="date"
+            label="Date"
+            width="180"
+            sortable
+            :filters="[
+              { text: '2016', value: '2016' },
+              { text: '2017', value: '2017' },
+              { text: '2018', value: '2018' },
+              { text: '2019', value: '2019' },
+            ]"
+            :filter-method="(value, row) => row.date.startsWith(value)"
+          />
+          <el-table-column prop="name" label="Name" width="180" />
+          <el-table-column prop="address" label="Address" />
+        </el-table>
+      </div>
     </div>
   </el-config-provider>
 </template>
@@ -752,7 +827,7 @@ function showMessage(type: string) {
     align-items: center;
   }
 
-  .el-button + .el-button {
+  > .el-button + .el-button {
     margin-left: 0;
   }
 }
