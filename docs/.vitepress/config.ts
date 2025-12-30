@@ -45,7 +45,10 @@ export default ({ mode }: ConfigEnv) => {
         { text: '主页', link: '/' },
         { text: '组件文档', link: pkgItems[0].link, activeMatch: '/packages/' },
         { text: '贡献代码', link: '/contribution', activeMatch: '/contribution/' },
-        { text: 'FEP', link: '/fep/getting-started', activeMatch: '/fep/' },
+        { text: 'FEP', activeMatch: '/fep', items: [
+          { text: '文档', link: '/fep/getting-started', activeMatch: '/fep/' },
+          { text: 'FEP gallery', link: '/fep-gallery', activeMatch: '/fep-gallery/' },
+        ] },
         { text: 'FFD', link: '/ffd', activeMatch: '/ffd/' },
       ],
       socialLinks: [

@@ -12,9 +12,6 @@ hero:
     - theme: big alt
       text: 贡献代码
       link: /contribution
-    - theme: big alt
-      text: FEP gallery
-      link: /fep/gallery
 
 features:
   - title: 设计
