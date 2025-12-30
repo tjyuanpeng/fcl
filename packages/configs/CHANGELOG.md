@@ -1,5 +1,11 @@
 # @falconix/configs
 
+## 0.0.4
+
+### Patch Changes
+
+- 9c1b6cc: deps range fix
+
 ## 0.0.3
 
 ### Patch Changes
