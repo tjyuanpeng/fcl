@@ -1,4 +1,0 @@
-{
-  "extends": "@falconix/configs/tsconfig.lib.json",
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"]
-}

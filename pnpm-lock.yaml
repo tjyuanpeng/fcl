@@ -22,8 +22,8 @@ catalogs:
       specifier: 2.3.2
       version: 2.3.2
     '@falconix/fep':
-      specifier: 0.0.8
-      version: 0.0.8
+      specifier: 0.0.9
+      version: 0.0.9
     '@types/fs-extra':
       specifier: 11.0.4
       version: 11.0.4
@@ -148,7 +148,7 @@ importers:
         version: 2.3.2(vue@3.5.25(typescript@5.9.3))
       '@falconix/fep':
         specifier: 'catalog:'
-        version: 0.0.8(vue@3.5.25(typescript@5.9.3))
+        version: 0.0.9(vue@3.5.25(typescript@5.9.3))
       vue:
         specifier: 'catalog:'
         version: 3.5.25(typescript@5.9.3)
@@ -282,7 +282,7 @@ importers:
         version: 2.3.2(vue@3.5.25(typescript@5.9.3))
       '@falconix/fep':
         specifier: 'catalog:'
-        version: 0.0.8(vue@3.5.25(typescript@5.9.3))
+        version: 0.0.9(vue@3.5.25(typescript@5.9.3))
       '@falconix/use-ajax':
         specifier: workspace:^
         version: link:../packages/use-ajax
@@ -905,8 +905,8 @@ packages:
     resolution: {integrity: sha512-43/qtrDUokr7LJqoF2c3+RInu/t4zfrpYdoSDfYyhg52rwLV6TnOvdG4fXm7IkSB3wErkcmJS9iEhjVtOSEjjA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@falconix/fep@0.0.8':
-    resolution: {integrity: sha512-L9JVy1uNYSpeaeLcooc4Y0Qsywt5EyuO2B6WYkyKbIMVAECOtnJl0ljSCLSSqz1RZbROGXqgo2ugAYffAmnXUg==}
+  '@falconix/fep@0.0.9':
+    resolution: {integrity: sha512-ecGo7f9NcZpnXmhLLkNNTRJ9Xz8JsF6b4NNtcktGgtXSPThTtR9omfjv2yrHjP33C8THzFtcHx1gjf9s1g+Dgw==}
     peerDependencies:
       vue: ^3.3.0
 
@@ -4765,7 +4765,7 @@ snapshots:
       '@eslint/core': 0.17.0
       levn: 0.4.1
 
-  '@falconix/fep@0.0.8(vue@3.5.25(typescript@5.9.3))':
+  '@falconix/fep@0.0.9(vue@3.5.25(typescript@5.9.3))':
     dependencies:
       '@ctrl/tinycolor': 3.6.1
       '@element-plus/icons-vue': 2.3.2(vue@3.5.25(typescript@5.9.3))

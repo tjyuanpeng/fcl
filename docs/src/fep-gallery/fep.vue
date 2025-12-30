@@ -4,6 +4,11 @@ import { zhCn } from '@falconix/fep/es/locale/index'
 import { reactive, ref } from 'vue'
 
 const input = ref('')
+const radio1 = ref('1')
+const checked1 = ref(true)
+const checked2 = ref(false)
+const timeValue = ref()
+const timeValue2 = ref()
 const datePickerValue = ref(Date.now() - 172800000)
 const rangePickerValue = ref([Date.now() - 1209600000, Date.now() - 172800000])
 const select = ref()
@@ -32,7 +37,8 @@ const options = [
   },
 ]
 
-const ccValue = ref([])
+const ccValue1 = ref()
+const ccValue2 = ref([])
 const ccOptions = [
   {
     value: 'guide',
@@ -490,23 +496,21 @@ const dialogVisible = ref(false)
       <h3>cascader</h3>
       <div class="box">
         <el-cascader
-          v-model="ccValue"
+          v-model="ccValue1"
           :options="ccOptions"
-          :props="{ expandTrigger: 'hover', multiple: true }"
           size="small"
           style="width: 240px"
         />
         <el-cascader
-          v-model="ccValue"
+          v-model="ccValue1"
           :options="ccOptions"
-          :props="{ expandTrigger: 'hover', multiple: true }"
           style="width: 240px"
         />
         <el-cascader
-          v-model="ccValue"
+          v-model="ccValue2"
           :options="ccOptions"
-          :props="{ expandTrigger: 'hover', multiple: true }"
           size="large"
+          :props="{ expandTrigger: 'hover', multiple: true }"
           style="width: 240px"
         />
       </div>
@@ -558,6 +562,34 @@ const dialogVisible = ref(false)
           date-format="YYYY-MM-DD"
           time-format="HH:mm:ss"
         />
+      </div>
+      <div class="box">
+        <el-time-picker v-model="timeValue" placeholder="选择时间" />
+        <el-time-picker
+          v-model="timeValue2"
+          is-range
+          start-placeholder="开始时间"
+          end-placeholder="结束时间"
+        />
+      </div>
+
+      <h3>radio</h3>
+      <div class="box">
+        <el-radio-group v-model="radio1">
+          <el-radio value="1">
+            Option 1
+          </el-radio>
+          <el-radio value="2">
+            Option 2
+          </el-radio>
+        </el-radio-group>
+      </div>
+
+      <h3>checkbox</h3>
+      <div class="box">
+        <el-checkbox v-model="checked1" label="Option 1" />
+        <el-checkbox v-model="checked2" label="Option 2" />
+        <el-checkbox indeterminate label="Option 3" />
       </div>
 
       <h3>dropdown</h3>
@@ -785,7 +817,13 @@ const dialogVisible = ref(false)
             :filter-method="(value, row) => row.date.startsWith(value)"
           />
           <el-table-column prop="name" label="Name" width="180" />
-          <el-table-column prop="address" label="Address" />
+          <el-table-column prop="address" label="Address" width="300" />
+          <el-table-column
+            prop="address"
+            label="Address2"
+            width="300"
+            fixed="right"
+          />
         </el-table>
       </div>
     </div>
