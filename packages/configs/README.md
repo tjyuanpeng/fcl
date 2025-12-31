@@ -10,13 +10,15 @@ pnpm i @falconix/configs
 
 ## tsconfig
 
+基于 [@vue/tsconfig](https://github.com/vuejs/tsconfig)
+
 提供三种tsconfig
 
 - `app`，提供给一般web应用使用
 
   ```json
   {
-    "extends": "@falconix/configs/tsconfig.app.json",
+    "extends": "@falconix/configs/tsconfig/app.json",
     "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"]
   }
   ```
@@ -25,7 +27,7 @@ pnpm i @falconix/configs
 
   ```json
   {
-    "extends": "@falconix/configs/tsconfig.lib.json",
+    "extends": "@falconix/configs/tsconfig/lib.json",
     "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"]
   }
   ```
@@ -34,87 +36,90 @@ pnpm i @falconix/configs
 
   ```json
   {
-    "extends": "@falconix/configs/tsconfig.node.json"
+    "extends": "@falconix/configs/tsconfig/node.json",
+    "include": ["lib"]
   }
   ```
 
 ## eslint config
+
+基于 [@antfu/eslint-config](https://github.com/antfu/eslint-config) 和 [ESLint v9](https://eslint.org/docs/latest/use/migrate-to-9.0.0)
 
 提供两种配置
 
 - `app`，提供给一般web应用使用
 
   ```ts
-  import config from '@falconix/configs/eslint.config.app.js'
+  import config from '@falconix/configs/eslint/app.js'
 
-  export default config
+  export default config()
   ```
 
 - `lib`，提供给需要打包发布组件、库使用
 
   ```ts
-  import config from '@falconix/configs/eslint.config.lib.js'
+  import config from '@falconix/configs/eslint/lib.js'
 
-  export default config
+  export default config()
   ```
 
-基于[@antfu/eslint-config](https://github.com/antfu/eslint-config)
+### 注意事项
 
-使用前，请安装eslint vscode插件 [VS Code ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+- 使用前，请安装 [VS Code ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) 插件
 
-同时需要配合设置`.vscode/settings.json`
+- 代码格式化基于`eslint`，请禁止`prettier`相关的插件及功能
 
-```json
-{
-  // Disable the default formatter, use eslint instead
-  "prettier.enable": false,
-  "editor.formatOnSave": false,
+- 需要配合 `Vs Code` 设置 `.vscode/settings.json`，添加如下配置
 
-  // Auto fix
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit",
-    "source.organizeImports": "never"
-  },
+  ```json
+  {
+    // Disable the default formatter, use eslint instead
+    "prettier.enable": false,
+    "editor.formatOnSave": false,
 
-  // Silent the stylistic rules in your IDE, but still auto fix them
-  "eslint.rules.customizations": [
-    { "rule": "style/*", "severity": "off", "fixable": true },
-    { "rule": "format/*", "severity": "off", "fixable": true },
-    { "rule": "*-indent", "severity": "off", "fixable": true },
-    { "rule": "*-spacing", "severity": "off", "fixable": true },
-    { "rule": "*-spaces", "severity": "off", "fixable": true },
-    { "rule": "*-order", "severity": "off", "fixable": true },
-    { "rule": "*-dangle", "severity": "off", "fixable": true },
-    { "rule": "*-newline", "severity": "off", "fixable": true },
-    { "rule": "*quotes", "severity": "off", "fixable": true },
-    { "rule": "*semi", "severity": "off", "fixable": true }
-  ],
+    // Auto fix
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit",
+      "source.organizeImports": "never"
+    },
 
-  // Enable eslint for all supported languages
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "vue",
-    "html",
-    "markdown",
-    "json",
-    "jsonc",
-    "yaml",
-    "toml",
-    "xml",
-    "gql",
-    "graphql",
-    "astro",
-    "svelte",
-    "css",
-    "less",
-    "scss",
-    "pcss",
-    "postcss"
-  ]
-}
-```
+    // Silent the stylistic rules in your IDE, but still auto fix them
+    "eslint.rules.customizations": [
+      { "rule": "style/*", "severity": "off", "fixable": true },
+      { "rule": "format/*", "severity": "off", "fixable": true },
+      { "rule": "*-indent", "severity": "off", "fixable": true },
+      { "rule": "*-spacing", "severity": "off", "fixable": true },
+      { "rule": "*-spaces", "severity": "off", "fixable": true },
+      { "rule": "*-order", "severity": "off", "fixable": true },
+      { "rule": "*-dangle", "severity": "off", "fixable": true },
+      { "rule": "*-newline", "severity": "off", "fixable": true },
+      { "rule": "*quotes", "severity": "off", "fixable": true },
+      { "rule": "*semi", "severity": "off", "fixable": true }
+    ],
 
-代码格式化基于`eslint`，请禁止`prettier`相关的插件及功能
+    // Enable eslint for all supported languages
+    "eslint.validate": [
+      "javascript",
+      "javascriptreact",
+      "typescript",
+      "typescriptreact",
+      "vue",
+      "html",
+      "markdown",
+      "json",
+      "jsonc",
+      "yaml",
+      "toml",
+      "xml",
+      "gql",
+      "graphql",
+      "astro",
+      "svelte",
+      "css",
+      "less",
+      "scss",
+      "pcss",
+      "postcss"
+    ]
+  }
+  ```

@@ -1,5 +1,5 @@
 {
-  "extends": "@falconix/configs/tsconfig.app.json",
+  "extends": "@falconix/configs/tsconfig/app.json",
   "compilerOptions": {
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo"
   },

@@ -1,3 +1,4 @@
 {
-  "extends": "@falconix/configs/tsconfig.node.json"
+  "extends": "@falconix/configs/tsconfig/node.json",
+  "include": ["src"]
 }

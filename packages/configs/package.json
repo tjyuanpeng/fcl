@@ -4,8 +4,17 @@
   "version": "0.0.4",
   "description": "@falconix common configs set",
   "exports": {
-    ".": "./eslint.config.app.js",
-    "./*": "./*"
+    "./eslint/app.js": {
+      "types": "./eslint/types.d.ts",
+      "import": "./eslint/app.js",
+      "require": "./eslint/app.js"
+    },
+    "./eslint/lib.js": {
+      "types": "./eslint/types.d.ts",
+      "import": "./eslint/lib.js",
+      "require": "./eslint/lib.js"
+    },
+    "./tsconfig/*": "./tsconfig/*"
   },
   "peerDependencies": {
     "@antfu/eslint-config": "catalog:",

@@ -30,7 +30,7 @@ pnpm create vite@latest
 pnpm dev
 ```
 
-## lint & typescheck
+## check code
 
 ```shell
 pnpm lint
@@ -45,13 +45,13 @@ pnpm build
 
 ## update version
 
-before publish, you should run the following command
+before publishing, you should run the following command to add changesets
 
 ```shell
 pnpm changeset
 ```
 
-after running the command, changeset will create a markdown file to determine how to update versions
+after running the command, changeset will create a `.changeset/{UNIQUE_ID}.md` markdown file to determine how to update versions
 
 ## publish
 
@@ -59,9 +59,9 @@ after running the command, changeset will create a markdown file to determine ho
 
 create a merge request merging into main branch in the gitlab
 
-then gitlab pipeline will publish repos to the private npm registry
+then gitlab pipeline will publish repos to the private npm registry and push tags of published
 
-# document development
+# document develop
 
 ```shell
 pnpm docs:dev

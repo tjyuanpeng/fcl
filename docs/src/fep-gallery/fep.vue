@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ArrowDown, ArrowRight } from '@element-plus/icons-vue'
+import { ArrowRight } from '@element-plus/icons-vue'
 import { zhCn } from '@falconix/fep/es/locale/index'
 import { reactive, ref } from 'vue'
 
@@ -7,10 +7,9 @@ const input = ref('')
 const radio1 = ref('1')
 const checked1 = ref(true)
 const checked2 = ref(false)
-const timeValue = ref()
-const timeValue2 = ref()
-const datePickerValue = ref(Date.now() - 172800000)
-const rangePickerValue = ref([Date.now() - 1209600000, Date.now() - 172800000])
+const datePickerValue = ref()
+const rangePickerValue = ref()
+// const timeValue = ref()
 const select = ref()
 const multiSelect = ref([])
 const options = [
@@ -36,7 +35,6 @@ const options = [
     label: 'Option5',
   },
 ]
-
 const ccValue1 = ref()
 const ccValue2 = ref([])
 const ccOptions = [
@@ -308,7 +306,6 @@ const ccOptions = [
     ],
   },
 ]
-
 const activeName = ref('1')
 const hasType = ref(true)
 const isFep = ref(true)
@@ -376,15 +373,6 @@ const dialogVisible = ref(false)
     <div class="wrapper">
       <h3>button</h3>
       <div class="box">
-        <el-button size="small">
-          Small
-        </el-button>
-        <el-button>按钮</el-button>
-        <el-button size="large">
-          Large
-        </el-button>
-      </div>
-      <div class="box">
         <el-button>Default</el-button>
         <el-button type="primary">
           Primary
@@ -450,15 +438,14 @@ const dialogVisible = ref(false)
           Danger
         </el-button>
       </div>
+      <div class="box">
+        <el-button size="large">
+          Large
+        </el-button>
+      </div>
 
       <h3>input</h3>
       <div class="box">
-        <el-input
-          v-model="input"
-          size="small"
-          placeholder="input"
-          style="width: 240px"
-        />
         <el-input v-model="input" placeholder="input" style="width: 240px" />
         <el-input
           v-model="input"
@@ -470,13 +457,6 @@ const dialogVisible = ref(false)
 
       <h3>select</h3>
       <div class="box">
-        <el-select
-          v-model="select"
-          size="small"
-          :options="options"
-          placeholder="Select"
-          style="width: 240px"
-        />
         <el-select
           v-model="select"
           :options="options"
@@ -498,12 +478,6 @@ const dialogVisible = ref(false)
         <el-cascader
           v-model="ccValue1"
           :options="ccOptions"
-          size="small"
-          style="width: 240px"
-        />
-        <el-cascader
-          v-model="ccValue1"
-          :options="ccOptions"
           style="width: 240px"
         />
         <el-cascader
@@ -515,62 +489,58 @@ const dialogVisible = ref(false)
         />
       </div>
 
-      <h3>date-time-picker</h3>
-      <div class="box">
-        <el-date-picker-panel
+      <h3>date time picker</h3>
+      <div class="box" style="flex-direction: column">
+        <el-date-picker
+          v-model="datePickerValue"
+          type="date"
+          placeholder="选择日期"
+          style="width: 240px"
+        />
+        <el-date-picker
           v-model="datePickerValue"
           type="datetime"
           placeholder="选择日期时间"
           format="YYYY-MM-DD HH:mm:ss"
           date-format="YYYY-MM-DD"
           time-format="HH:mm"
-        />
-        <div class="box" style="flex-direction: column">
-          <el-date-picker
-            v-model="datePickerValue"
-            type="date"
-            placeholder="选择日期"
-          />
-          <el-date-picker
-            v-model="datePickerValue"
-            type="datetime"
-            placeholder="选择日期时间"
-            format="YYYY-MM-DD HH:mm:ss"
-            date-format="YYYY-MM-DD"
-            time-format="HH:mm"
-            style="width: 240px"
-          />
-        </div>
-      </div>
-      <div class="box" style="flex-direction: column">
-        <el-date-picker-panel
-          v-model="rangePickerValue"
-          style="width: 648px"
-          type="datetimerange"
-          start-placeholder="开始时间日期"
-          end-placeholder="结束时间日期"
-          format="YYYY-MM-DD HH:mm:ss"
-          date-format="YYYY-MM-DD"
-          time-format="HH:mm:ss"
+          style="width: 240px"
         />
         <el-date-picker
           v-model="rangePickerValue"
           type="datetimerange"
-          start-placeholder="开始时间日期"
-          end-placeholder="结束时间日期"
+          start-placeholder="开始日期时间"
+          end-placeholder="结束日期时间"
           format="YYYY-MM-DD HH:mm:ss"
           date-format="YYYY-MM-DD"
           time-format="HH:mm:ss"
+          style="width: 360px"
         />
-      </div>
-      <div class="box">
-        <el-time-picker v-model="timeValue" placeholder="选择时间" />
-        <el-time-picker
+        <!-- <el-date-picker-panel
+          v-model="datePickerValue"
+          type="datetime"
+          placeholder="选择日期时间"
+          format="YYYY-MM-DD HH:mm:ss"
+          date-format="YYYY-MM-DD"
+          time-format="HH:mm"
+        /> -->
+        <!-- <el-date-picker-panel
+          style="width: 648px"
+          v-model="rangePickerValue"
+          type="datetimerange"
+          start-placeholder="开始日期时间"
+          end-placeholder="结束日期时间"
+          format="YYYY-MM-DD HH:mm:ss"
+          date-format="YYYY-MM-DD"
+          time-format="HH:mm:ss"
+        /> -->
+        <!-- <el-time-picker v-model="timeValue" placeholder="选择时间" /> -->
+        <!-- <el-time-picker
           v-model="timeValue2"
           is-range
           start-placeholder="开始时间"
           end-placeholder="结束时间"
-        />
+        /> -->
       </div>
 
       <h3>radio</h3>
@@ -594,55 +564,8 @@ const dialogVisible = ref(false)
 
       <h3>dropdown</h3>
       <div class="box">
-        <el-dropdown size="small">
-          <el-button>
-            Dropdown List
-            <el-icon class="el-icon--right">
-              <ArrowDown />
-            </el-icon>
-          </el-button>
-          <template #dropdown>
-            <el-dropdown-menu>
-              <el-dropdown-item>Action 1</el-dropdown-item>
-              <el-dropdown-item>Action 2</el-dropdown-item>
-              <el-dropdown-item>Action 3</el-dropdown-item>
-              <el-dropdown-item disabled>
-                Action 4
-              </el-dropdown-item>
-              <el-dropdown-item divided>
-                Action 5
-              </el-dropdown-item>
-            </el-dropdown-menu>
-          </template>
-        </el-dropdown>
         <el-dropdown>
-          <el-button>
-            Dropdown List
-            <el-icon class="el-icon--right">
-              <ArrowDown />
-            </el-icon>
-          </el-button>
-          <template #dropdown>
-            <el-dropdown-menu>
-              <el-dropdown-item>Action 1</el-dropdown-item>
-              <el-dropdown-item>Action 2</el-dropdown-item>
-              <el-dropdown-item>Action 3</el-dropdown-item>
-              <el-dropdown-item disabled>
-                Action 4
-              </el-dropdown-item>
-              <el-dropdown-item divided>
-                Action 5
-              </el-dropdown-item>
-            </el-dropdown-menu>
-          </template>
-        </el-dropdown>
-        <el-dropdown size="large">
-          <el-button>
-            Dropdown List
-            <el-icon class="el-icon--right">
-              <ArrowDown />
-            </el-icon>
-          </el-button>
+          <el-button> Dropdown List </el-button>
           <template #dropdown>
             <el-dropdown-menu>
               <el-dropdown-item>Action 1</el-dropdown-item>
@@ -678,21 +601,20 @@ const dialogVisible = ref(false)
 
       <h3>tooltip</h3>
       <div class="box">
-        <el-tooltip content="Content" effect="light">
-          <el-button>light</el-button>
-        </el-tooltip>
-        <el-tooltip content="Content" effect="dark">
-          <el-button>dark</el-button>
+        <el-tooltip content="Content">
+          <el-button>tooltip</el-button>
         </el-tooltip>
       </div>
 
       <h3>breadcrumb</h3>
-      <el-breadcrumb :separator-icon="ArrowRight">
-        <el-breadcrumb-item><a href="/">项目列表</a></el-breadcrumb-item>
-        <el-breadcrumb-item>中国中车轨道轨枕检测 </el-breadcrumb-item>
-        <el-breadcrumb-item>promotion list</el-breadcrumb-item>
-        <el-breadcrumb-item>promotion detail</el-breadcrumb-item>
-      </el-breadcrumb>
+      <div class="box">
+        <el-breadcrumb :separator-icon="ArrowRight">
+          <el-breadcrumb-item><a href="/">项目列表</a></el-breadcrumb-item>
+          <el-breadcrumb-item>中国中车轨道轨枕检测 </el-breadcrumb-item>
+          <el-breadcrumb-item>promotion list</el-breadcrumb-item>
+          <el-breadcrumb-item>promotion detail</el-breadcrumb-item>
+        </el-breadcrumb>
+      </div>
 
       <h3>tabs</h3>
       <div class="box">
@@ -706,13 +628,25 @@ const dialogVisible = ref(false)
         </el-tabs>
       </div>
       <div class="box">
-        <el-tabs v-model="activeName" tab-position="left">
-          <el-tab-pane label="待处理" name="1" />
-          <el-tab-pane label="评审队列" name="2" />
-          <el-tab-pane label="评估队列" name="3" />
-          <el-tab-pane label="免审列表" name="4" />
-          <el-tab-pane label="授权列表" name="5" />
-          <el-tab-pane label="处理记录" name="6" />
+        <el-tabs v-model="activeName" tab-position="left" class="left-tabs">
+          <el-tab-pane label="待处理" name="1">
+            11
+          </el-tab-pane>
+          <el-tab-pane label="评审队列" name="2">
+            <div style="width: 100px; height: 500px; background: red" />
+          </el-tab-pane>
+          <el-tab-pane label="评估队列" name="3">
+            33
+          </el-tab-pane>
+          <el-tab-pane label="免审列表" name="4">
+            44
+          </el-tab-pane>
+          <el-tab-pane label="授权列表" name="5">
+            55
+          </el-tab-pane>
+          <el-tab-pane label="处理记录" name="6">
+            66
+          </el-tab-pane>
         </el-tabs>
       </div>
 
@@ -754,9 +688,6 @@ const dialogVisible = ref(false)
 
       <h3>message</h3>
       <div class="box">
-        <el-button @click="showMessage('primary')">
-          Primary
-        </el-button>
         <el-button @click="showMessage('success')">
           Success
         </el-button>
@@ -765,9 +696,6 @@ const dialogVisible = ref(false)
         </el-button>
         <el-button @click="showMessage('error')">
           Error
-        </el-button>
-        <el-button @click="showMessage('info')">
-          Info
         </el-button>
         <el-button style="margin-left: auto" @click="close">
           clear all
@@ -782,26 +710,20 @@ const dialogVisible = ref(false)
         <el-button @click="confirm">
           confirm
         </el-button>
-        <el-switch v-model="hasType" active-text="has type" />
-        <el-switch v-model="isFep" active-text="is fep" />
+        <!-- <el-switch v-model="hasType" active-text="has type" />
+        <el-switch v-model="isFep" active-text="is fep" /> -->
       </div>
 
       <h3>table</h3>
       <div class="box">
-        <el-table :data="tableData" style="width: 100%">
-          <el-table-column type="selection" />
+        <el-table :data="tableData">
           <el-table-column prop="date" label="Date" width="180" sortable />
           <el-table-column prop="name" label="Name" width="180" />
           <el-table-column prop="address" label="Address" />
         </el-table>
       </div>
       <div class="box">
-        <el-table
-          :data="tableData"
-          :border="true"
-          show-summary
-          style="width: 100%"
-        >
+        <el-table :data="tableData" :border="true" show-summary>
           <el-table-column type="selection" width="60" align="center" />
           <el-table-column
             prop="date"
@@ -867,6 +789,17 @@ const dialogVisible = ref(false)
 
   > .el-button + .el-button {
     margin-left: 0;
+  }
+}
+
+.left-tabs {
+  width: 100%;
+
+  :deep(.el-tabs__header) {
+    height: inherit;
+  }
+  :deep(.el-tabs__item) {
+    min-width: 120px;
   }
 }
 </style>

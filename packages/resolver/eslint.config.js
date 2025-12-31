@@ -1,3 +1,3 @@
-import config from '@falconix/configs/eslint.config.lib.js'
+import config from '@falconix/configs/eslint/lib.js'
 
-export default config
+export default config()
