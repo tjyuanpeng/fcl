@@ -1,5 +1,11 @@
 # @falconix/fep-resolver
 
+## 0.0.5
+
+### Patch Changes
+
+- 4bc1e07: upd @falconix/configs
+
 ## 0.0.4
 
 ### Patch Changes
