@@ -1,0 +1,35 @@
+{
+  "name": "@falconix/split-panel",
+  "type": "module",
+  "version": "0.0.0",
+  "description": "falconix split panel",
+  "exports": {
+    ".": "./dist/index.js",
+    "./index.css": "./dist/index.css",
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "tsdown --watch",
+    "build": "tsdown",
+    "typecheck": "vue-tsc --noEmit",
+    "lint": "eslint ."
+  },
+  "peerDependencies": {
+    "@falconix/fep": "catalog:",
+    "@falconix/icons-vue": "workspace:^",
+    "vue": "3"
+  },
+  "devDependencies": {
+    "@falconix/configs": "workspace:^",
+    "tsdown": "catalog:",
+    "typescript": "catalog:",
+    "unplugin-vue": "catalog:",
+    "vue-tsc": "catalog:"
+  }
+}

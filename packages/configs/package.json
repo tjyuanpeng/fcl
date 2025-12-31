@@ -2,7 +2,7 @@
   "name": "@falconix/configs",
   "type": "module",
   "version": "0.0.5",
-  "description": "@falconix common configs set",
+  "description": "falconix配置文件集合",
   "exports": {
     "./eslint/app.js": {
       "types": "./eslint/types.d.ts",

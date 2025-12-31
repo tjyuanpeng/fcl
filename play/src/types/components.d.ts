@@ -13,7 +13,6 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     ElButton: typeof import('@falconix/fep/es')['ElButton']
-    ElConfigProvider: typeof import('@falconix/fep/es')['ElConfigProvider']
     ElForm: typeof import('@falconix/fep/es')['ElForm']
     ElFormItem: typeof import('@falconix/fep/es')['ElFormItem']
     ElInput: typeof import('@falconix/fep/es')['ElInput']
@@ -25,7 +24,6 @@ declare module 'vue' {
 // For TSX support
 declare global {
   const ElButton: typeof import('@falconix/fep/es')['ElButton']
-  const ElConfigProvider: typeof import('@falconix/fep/es')['ElConfigProvider']
   const ElForm: typeof import('@falconix/fep/es')['ElForm']
   const ElFormItem: typeof import('@falconix/fep/es')['ElFormItem']
   const ElInput: typeof import('@falconix/fep/es')['ElInput']

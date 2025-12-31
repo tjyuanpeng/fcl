@@ -2,7 +2,7 @@
 import routes from '~pages'
 
 const router = useRouter()
-const list = routes.filter(i => i.path !== '/')
+const list = routes.filter(i => i.path !== '/').reverse()
 </script>
 
 <template>

@@ -10,6 +10,9 @@ hero:
       text: 组件文档
       link: /packages/configs/README
     - theme: big alt
+      text: 版本看板
+      link: /versions
+    - theme: big alt
       text: 贡献代码
       link: /contribution
 
@@ -24,7 +27,7 @@ features:
 
 <style>
 @media (min-width: 960px) {
-  .heading .text[data-v-be718615] {
+  .VPHome .main .heading .text {
     max-width: fit-content;
   }
 }

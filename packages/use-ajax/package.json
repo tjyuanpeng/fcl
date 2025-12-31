@@ -19,6 +19,10 @@
     "typecheck": "tsc --noEmit",
     "lint": "eslint ."
   },
+  "peerDependencies": {
+    "@falconix/fep": "catalog:",
+    "vue": "3"
+  },
   "dependencies": {
     "axios": "catalog:"
   },

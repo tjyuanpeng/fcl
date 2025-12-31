@@ -1,0 +1,37 @@
+{
+  "name": "@falconix/icons-vue",
+  "type": "module",
+  "version": "0.0.0",
+  "description": "falconix icons svg",
+  "exports": {
+    ".": "./dist/index.js",
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "node ./scripts/build.ts && tsdown --watch",
+    "build": "node ./scripts/build.ts && tsdown",
+    "typecheck": "vue-tsc --noEmit",
+    "lint": "eslint ."
+  },
+  "peerDependencies": {
+    "vue": "3"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "catalog:"
+  },
+  "devDependencies": {
+    "@falconix/configs": "workspace:^",
+    "@types/fs-extra": "catalog:",
+    "fs-extra": "catalog:",
+    "tsdown": "catalog:",
+    "typescript": "catalog:",
+    "unplugin-vue": "catalog:",
+    "vue-tsc": "catalog:"
+  }
+}

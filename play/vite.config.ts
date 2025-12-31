@@ -28,6 +28,7 @@ export default defineConfig(() => {
       vueJsx(),
     ],
     server: {
+      port: 5174,
       proxy: {
         '/api': {
           target: env.PROXY_TARGET,

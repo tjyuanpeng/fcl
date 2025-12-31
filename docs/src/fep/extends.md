@@ -15,6 +15,10 @@
 }
 ```
 
+## icon
+
+请使用 `@falconix/icons-vue`。提供了 `@element-plus/icons-vue` 原有图标和其他扩展图标
+
 ## drawer
 
 size: string 设定drawer的大小
@@ -30,6 +34,33 @@ size: string 设定drawer的大小
   <el-drawer size="small">
     <span>Hi, there!</span>
   </el-drawer>
+</template>
+```
+
+## table
+
+min-width: string | number `min-width` 除了原有属性的作用外，当列被拖动时，尊重 `min-width` 的设置，列宽最小不能小于 `min-width` 的设定值
+
+#filtrPanel: slot 提供了在`el-table-column`重写`filter-panel`的实现。scope:
+
+- column 列对象
+- filteredValue: WritableComputedRef<string[]> 已选择过滤值
+- handleConfirm: () => void 确认回调
+- handleReset: () => void 重置回调
+
+```vue
+<template>
+  <el-table-column>
+    <template #filter-panel="{ column, filteredValue, handleConfirm, handleReset }">
+      {{ column }} {{ filteredValue }}
+      <el-button @click="handleReset">
+        reset
+      </el-button>
+      <el-button @click="handleConfirm">
+        confirm
+      </el-button>
+    </template>
+  </el-table-column>
 </template>
 ```
 

@@ -10,20 +10,27 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@element-plus/icons-vue": "catalog:",
     "@falconix/fep": "catalog:",
+    "@falconix/icons-vue": "workspace:^",
+    "@falconix/split-panel": "workspace:^",
+    "@falconix/steps2": "workspace:^",
+    "@falconix/use-ajax": "workspace:^",
+    "axios": "catalog:",
+    "semver": "catalog:",
     "vue": "catalog:"
   },
   "devDependencies": {
     "@falconix/configs": "workspace:^",
     "@falconix/fep-resolver": "workspace:^",
     "@types/fs-extra": "catalog:",
+    "@types/semver": "catalog:",
     "fs-extra": "catalog:",
     "globby": "catalog:",
     "typescript": "catalog:",
     "unplugin-auto-import": "catalog:",
     "unplugin-vue-components": "catalog:",
     "vite": "catalog:",
-    "vitepress": "catalog:"
+    "vitepress": "catalog:",
+    "vitepress-demo-plugin": "catalog:"
   }
 }
