@@ -4,9 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "vitepress dev",
-    "build": "vitepress build",
+    "build": "vue-tsc -b && vitepress build",
     "preview": "vitepress preview",
-    "typecheck": "tsc --noEmit",
     "lint": "eslint ."
   },
   "dependencies": {
@@ -31,6 +30,7 @@
     "unplugin-vue-components": "catalog:",
     "vite": "catalog:",
     "vitepress": "catalog:",
-    "vitepress-demo-plugin": "catalog:"
+    "vitepress-demo-plugin": "catalog:",
+    "vue-tsc": "catalog:"
   }
 }

@@ -14,7 +14,7 @@
     "typecheck": "turbo typecheck",
     "play": "turbo --filter=play play:dev",
     "play:build": "turbo --filter=play play:build",
-    "clean": "rm -rf ./**/node_modules; rm -rf ./**/dist ; rm -rf ./**/.turbo",
+    "clean": "rm -rf ./**/node_modules; rm -rf ./**/dist; rm -rf ./**/.turbo; rm -rf ./docs/.vitepress/cache; rm -rf ./docs/.vitepress/dist",
     "preinstall": "npx only-allow pnpm",
     "prepare": "husky"
   },

@@ -26,7 +26,7 @@ install:
     - echo $CI_COMMIT_SHORT_SHA
     - pnpm install --frozen-lockfile
 
-check:
+pkgs-check:
   stage: check
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_COMMIT_BRANCH == "main"
@@ -49,6 +49,7 @@ pkgs-build:
   artifacts:
     paths:
       - packages/*/dist
+      - docs/.vitepress/dist
     expire_in: 1 day
     when: on_success
 
@@ -61,11 +62,6 @@ play-build:
   dependencies: []
   script:
     - pnpm play:build
-  artifacts:
-    paths:
-      - docs/.vitepress/dist
-    expire_in: 1 day
-    when: on_success
 
 pkgs-publish:
   stage: deploy
@@ -83,7 +79,7 @@ pkgs-publish:
     - pnpm changeset version
     - |
       if git diff --exit-code --quiet; then
-        echo "No changes found after versioning. Exiting."
+        echo -e "\033[33m⚠️ No changes found after versioning. Exiting with code 9.\033[0m"
         exit 9
       fi
     - ssh-keyscan ${CI_SERVER_HOST} >> ~/.ssh/known_hosts 2>/dev/null || true
@@ -105,7 +101,7 @@ pkgs-publish:
       if git tag | grep -q "^@falconix/"; then
         git push origin main --follow-tags
       else
-        echo "No tags found after publishing. Exiting."
+        echo -e "\033[33m⚠️ No tags found after publishing. Exiting with code 9.\033[0m"
         exit 9
       fi
 
