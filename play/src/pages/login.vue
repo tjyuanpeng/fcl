@@ -2,8 +2,8 @@
 import { setUseAjaxGlobalConfig, useAjax } from '@falconix/use-ajax'
 
 setUseAjaxGlobalConfig({
-  baseURL: '/api',
-  showMessageTip: msg => ElMessage({ message: msg, type: 'error' }),
+  baseURL: `https://dev.yingmai.net:9001/api/`,
+  withCredentials: false,
 })
 
 const form = reactive({

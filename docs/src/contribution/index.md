@@ -106,9 +106,9 @@ pnpm -C packages/uplodaer-center typcheck
 
 ### docs
 
-打开 `docs` 文档站，一般为：[http://localhost:5173/](http://localhost:5173/)
+打开 `docs` 文档站
 
-找到组件的文档地址进行编写，例：[http://localhost:5173/packages/upload-center/README](http://localhost:5173/packages/upload-center/README)
+找到组件的文档地址进行编写
 
 在 `docs/src/demos` 内添加组件demo，开发 & 调试组件
 
