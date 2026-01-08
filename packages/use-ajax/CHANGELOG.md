@@ -1,5 +1,13 @@
 # @falconix/use-ajax
 
+## 0.0.6
+
+### Patch Changes
+
+- f71fdc5: - 新增组件 steps2 & split-panel
+  - bugfix
+  - 更新文档
+
 ## 0.0.5
 
 ### Patch Changes

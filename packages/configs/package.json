@@ -1,7 +1,7 @@
 {
   "name": "@falconix/configs",
   "type": "module",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "falconix配置文件集合",
   "exports": {
     "./eslint/app.js": {
