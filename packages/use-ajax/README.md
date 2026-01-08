@@ -29,9 +29,11 @@ async function test() {
 test()
 ```
 
+<demo vue="use-ajax.vue" />
+
 ## 配置项
 
-`use-ajax`扩展了`axios`的默认配置类型
+`use-ajax` 扩展了 `axios` 配置项
 
 ```ts
 declare module 'axios' {
@@ -41,7 +43,7 @@ declare module 'axios' {
     getMessage?: (response: AxiosResponse) => string
     showMessageTip?: ((msg: string) => void) | false
     checkAuthError?: ((error: any) => boolean) | false
-    gotoLogin?: () => void
+    gotoLogin?: () => void | false
   }
   interface AxiosResponse<T> {
     error?: AxiosError
@@ -49,23 +51,13 @@ declare module 'axios' {
     msg: string
   }
 }
-```
 
-- checkBizError: 检测业务错误。如果传递`false`，则禁止检测业务错误；可以传入函数覆盖默认逻辑
-- noErrorThrown: 禁止抛出异常。如果传递`true`，遇到错误会在返回值增加`error`属性，表明是否有错误发生，而不再抛出异常
-- getMessage: 设置如何解析消息
-- showMessageTip: 如何显示消息提示
-- checkAuthError: 是否检测认证错误消息
-- gotoLogin: 定义 检测到认证错误消息后，如何跳转到登录页面
-
-配置项的默认值：
-
-```ts
+// default values:
 const globalConfig: AxiosRequestConfig = {
   checkBizError: response => response.data.code !== 200,
   noErrorThrown: false,
   getMessage: response => response.data.message ?? response.data.msg ?? '网络异常，请稍后再试',
-  showMessageTip: msg => console.error(msg),
+  showMessageTip: msg => ElMessage({ message: msg, type: 'error' }),
   checkAuthError: error => error?.response?.data?.code === 403,
   gotoLogin: () => {
     localStorage.removeItem('token')
@@ -73,6 +65,28 @@ const globalConfig: AxiosRequestConfig = {
   },
 }
 ```
+
+- checkBizError: 检测业务错误
+
+  如果传递`false`，则禁止检测业务错误；可以传入函数覆盖默认逻辑
+
+- noErrorThrown: 禁止抛出异常
+
+  如果传递`true`，遇到错误后不再抛出异常，而是在返回值增加`error`属性，表明是否有错误发生
+
+- getMessage: 设置如何解析消息
+
+- showMessageTip: 如何显示消息提示
+
+  如果传递`false`，则禁止显示消息提示；可以传入函数覆盖默认逻辑
+
+- checkAuthError: 是否检测认证错误消息
+
+  如果传递`false`，则禁止检测认证错误；可以传入函数覆盖默认逻辑
+
+- gotoLogin: 检测到认证错误消息后的行为
+
+  如果传递`false`，则禁止默认逻辑；可以传入函数覆盖默认逻辑
 
 ## 方法
 

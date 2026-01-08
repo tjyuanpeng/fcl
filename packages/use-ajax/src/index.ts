@@ -1,5 +1,7 @@
 import type { AxiosRequestConfig, AxiosResponse } from 'axios'
+import { ElMessage } from '@falconix/fep'
 import axios, { AxiosError } from 'axios'
+import '@falconix/fep/es/components/message/style/index'
 
 declare module 'axios' {
 
@@ -20,13 +22,11 @@ declare module 'axios' {
     getMessage?: (response: AxiosResponse) => string
     showMessageTip?: ((msg: string) => void) | false
     checkAuthError?: ((error: any) => boolean) | false
-    gotoLogin?: () => void
+    gotoLogin?: () => void | false
   }
 }
 
-const instance = axios.create({
-  withCredentials: true,
-})
+const instance = axios.create()
 
 instance.interceptors.request.use((config) => {
   config.headers.Authorization = localStorage.getItem('token')
@@ -104,7 +104,7 @@ let globalConfig: AxiosRequestConfig = {
   checkBizError: response => response.data.code !== 200,
   noErrorThrown: false,
   getMessage: response => response.data.message ?? response.data.msg ?? '网络异常，请稍后再试',
-  showMessageTip: msg => console.error(msg),
+  showMessageTip: msg => ElMessage({ message: msg, type: 'error' }),
   checkAuthError: error => error?.response?.data?.code === 403,
   gotoLogin: () => {
     localStorage.removeItem('token')

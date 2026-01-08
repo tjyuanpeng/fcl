@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { ArrowRight } from '@element-plus/icons-vue'
 import { zhCn } from '@falconix/fep/es/locale/index'
+import { ArrowRight } from '@falconix/icons-vue'
 import { reactive, ref } from 'vue'
 
 const input = ref('')
+const textarea = ref('')
 const radio1 = ref('1')
 const checked1 = ref(true)
 const checked2 = ref(false)
@@ -453,6 +454,14 @@ const dialogVisible = ref(false)
           placeholder="Input"
           style="width: 240px"
         />
+        <el-input
+          v-model="textarea"
+          maxlength="30"
+          style="width: 240px"
+          placeholder="Please input"
+          show-word-limit
+          type="textarea"
+        />
       </div>
 
       <h3>select</h3>
@@ -533,6 +542,7 @@ const dialogVisible = ref(false)
           format="YYYY-MM-DD HH:mm:ss"
           date-format="YYYY-MM-DD"
           time-format="HH:mm:ss"
+          unlinkPanels
         /> -->
         <!-- <el-time-picker v-model="timeValue" placeholder="选择时间" /> -->
         <!-- <el-time-picker
@@ -559,7 +569,7 @@ const dialogVisible = ref(false)
       <div class="box">
         <el-checkbox v-model="checked1" label="Option 1" />
         <el-checkbox v-model="checked2" label="Option 2" />
-        <el-checkbox indeterminate label="Option 3" />
+        <el-checkbox v-model="checked2" indeterminate label="Option 3" />
       </div>
 
       <h3>dropdown</h3>
@@ -717,7 +727,7 @@ const dialogVisible = ref(false)
       <h3>table</h3>
       <div class="box">
         <el-table :data="tableData">
-          <el-table-column prop="date" label="Date" width="180" sortable />
+          <el-table-column prop="date" label="Date" width="180" />
           <el-table-column prop="name" label="Name" width="180" />
           <el-table-column prop="address" label="Address" />
         </el-table>
@@ -729,6 +739,7 @@ const dialogVisible = ref(false)
             prop="date"
             label="Date"
             width="180"
+            min-width="160"
             sortable
             :filters="[
               { text: '2016', value: '2016' },

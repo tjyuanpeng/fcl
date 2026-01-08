@@ -1,6 +1,5 @@
 ---
 layout: page
-sidebar: false
 title: FEP-gallery
 ---
 

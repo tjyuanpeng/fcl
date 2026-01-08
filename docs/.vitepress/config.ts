@@ -5,7 +5,8 @@ import fs from 'fs-extra'
 import { globbySync } from 'globby'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
-import { defineConfig } from 'vitepress'
+import { defineConfig, postcssIsolateStyles } from 'vitepress'
+import { vitepressDemoPlugin } from 'vitepress-demo-plugin'
 
 export default ({ mode }: ConfigEnv) => {
   const isProd = mode === 'production'
@@ -21,14 +22,14 @@ export default ({ mode }: ConfigEnv) => {
     if (!fs.existsSync(path.resolve(p, 'README.md'))) {
       return undefined
     }
-    const pkgName = path.basename(p)
+    const projectName = path.basename(p)
     if (isProd) {
-      fs.copySync(path.resolve(p, 'README.md'), path.resolve('src', 'packages', `${pkgName}/README.md`))
+      fs.copySync(path.resolve(p, 'README.md'), path.resolve('src/packages', `${projectName}/README.md`))
     }
     const pkgInfo = fs.readJSONSync(path.resolve(p, './package.json'))
     return {
       text: pkgInfo.name,
-      link: `/packages/${pkgName}/README`,
+      link: `/packages/${projectName}/README`,
     }
   }).filter(i => i) as { text: any, link: string }[]
   const pkgItems = getPkgsItems()
@@ -39,16 +40,21 @@ export default ({ mode }: ConfigEnv) => {
     cleanUrls: true,
     title: 'FCL',
     description: 'falconix component library',
+    markdown: {
+      config(md) {
+        md.use(vitepressDemoPlugin, {
+          demoDir: path.resolve(__dirname, '../src/demos'),
+        })
+      },
+    },
     themeConfig: {
-      // https://vitepress.dev/reference/default-theme-config
       nav: [
         { text: '主页', link: '/' },
         { text: '组件文档', link: pkgItems[0].link, activeMatch: '/packages/' },
+        { text: '版本看板', link: '/versions', activeMatch: '/versions/' },
         { text: '贡献代码', link: '/contribution', activeMatch: '/contribution/' },
-        { text: 'FEP', activeMatch: '/fep', items: [
-          { text: '文档', link: '/fep/getting-started', activeMatch: '/fep/' },
-          { text: 'FEP gallery', link: '/fep-gallery', activeMatch: '/fep-gallery/' },
-        ] },
+        { text: 'FEP', link: '/fep/getting-started', activeMatch: '/fep/' },
+        { text: 'FEP gallery', link: '/fep-gallery', activeMatch: '/fep-gallery/' },
         { text: 'FFD', link: '/ffd', activeMatch: '/ffd/' },
       ],
       socialLinks: [
@@ -64,7 +70,7 @@ export default ({ mode }: ConfigEnv) => {
             { text: '扩展点', link: '/fep/extends' },
             { text: 'FAQ', link: '/fep/FAQ' },
           ] },
-          { text: 'FEP gallery', link: '/fep/gallery' },
+          { text: 'FEP gallery', link: '/fep-gallery' },
         ],
         '/contribution/': [
           { text: '贡献代码', link: '/contribution/' },
@@ -90,11 +96,29 @@ export default ({ mode }: ConfigEnv) => {
     },
     vite: {
       publicDir: isProd ? '../public' : 'docs/public',
+      resolve: {
+        alias: [
+          {
+            find: 'vitepress-demo-plugin',
+            replacement: path.resolve(__dirname, '../node_modules/vitepress-demo-plugin'),
+          },
+        ],
+      },
       ssr: {
         noExternal: ['@falconix/fep'],
       },
+      css: {
+        postcss: {
+          plugins: [
+            postcssIsolateStyles({
+              includeFiles: [/vp-doc\.css/],
+            }),
+          ],
+        },
+      },
       plugins: [
         AutoImport({
+          imports: ['vue'],
           dts: `${isProd ? '' : './docs/src/'}types/auto-imports.d.ts`,
           resolvers: [FepResolver()],
           include: [/\.(vue|md)($|\?)/],

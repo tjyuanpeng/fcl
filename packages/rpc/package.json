@@ -2,7 +2,7 @@
   "name": "@falconix/wujie-rpc",
   "type": "module",
   "version": "0.0.5",
-  "description": "falconix wujie remote Procedure call",
+  "description": "falconix wujie rpc",
   "exports": {
     ".": "./dist/index.mjs",
     "./package.json": "./package.json"

@@ -2,7 +2,7 @@
   "name": "@falconix/fep-resolver",
   "type": "module",
   "version": "0.0.5",
-  "description": "@falconix/fep resolver for unplugin-vue-components",
+  "description": "@falconix/fep 自动导入插件",
   "exports": {
     ".": "./dist/index.mjs",
     "./package.json": "./package.json"

@@ -12,8 +12,8 @@
     "build": "turbo build",
     "lint": "turbo lint",
     "typecheck": "turbo typecheck",
-    "docs:dev": "turbo --filter=docs docs:dev",
-    "docs:build": "turbo --filter=docs docs:build",
+    "play": "turbo --filter=play play:dev",
+    "play:build": "turbo --filter=play play:build",
     "clean": "rm -rf ./**/node_modules; rm -rf ./**/dist ; rm -rf ./**/.turbo",
     "preinstall": "npx only-allow pnpm",
     "prepare": "husky"

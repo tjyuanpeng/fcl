@@ -2,6 +2,7 @@
   "$schema": "https://turborepo.com/schema.json",
   "tasks": {
     "dev": {
+      "dependsOn": ["@falconix/fep-resolver#build", "@falconix/icons-vue#build"],
       "cache": false,
       "persistent": true
     },
@@ -13,21 +14,20 @@
       "dependsOn": ["^lint"]
     },
     "typecheck": {
-      "dependsOn": ["^typecheck"]
+      "dependsOn": ["@falconix/icons-vue#build", "^typecheck"]
     },
-    "play#dev": {
-      "dependsOn": ["@falconix/fep-resolver#build"],
-      "cache": false,
-      "persistent": true
-    },
-    "docs#docs:dev": {
-      "dependsOn": ["@falconix/fep-resolver#build"],
-      "cache": false,
-      "persistent": true
-    },
-    "docs#docs:build": {
+    "docs#build": {
       "dependsOn": ["^build"],
       "outputs": [".vitepress/dist/**"]
+    },
+    "play#play:dev": {
+      "dependsOn": ["@falconix/fep-resolver#build", "@falconix/icons-vue#build"],
+      "cache": false,
+      "persistent": true
+    },
+    "play#play:build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"]
     }
   }
 }
