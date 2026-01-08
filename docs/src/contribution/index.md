@@ -46,7 +46,7 @@ pnpm i
 {
   "name": "@falconix/upload-center",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "falconix upload-center"
 }
 ```
@@ -82,6 +82,12 @@ pnpm --filter @falconix/upload-center i @falconix/configs@workspace:^ -D
 
 对于项目外的依赖，`FCL项目` 使用`catalog:`管理项目整体依赖版本，请不要手动指定
 
+在 `docs` 项目内添加新建组件的依赖，用于书写文档的demo
+
+```shell
+pnpm --filter docs i @falconix/upload-center@workspace:^ -D
+```
+
 ## 开发
 
 在`FCL根目录`运行`dev`命令，开始开发
@@ -98,6 +104,34 @@ pnpm --filter @falconix/upload-center lint
 pnpm -C packages/uplodaer-center typcheck
 ```
 
+### docs
+
+打开 `docs` 文档站，一般为：[http://localhost:5173/](http://localhost:5173/)
+
+找到组件的文档地址进行编写，例：[http://localhost:5173/packages/upload-center/README](http://localhost:5173/packages/upload-center/README)
+
+在 `docs/src/demos` 内添加组件demo，开发 & 调试组件
+
+例：新建文件 `docs/src/demos/uploader-center.vue`
+
+在项目的 `README.md` 内引用 demo 组件：
+
+```markdown
+<demo vue="uploader-center.vue" />
+```
+
+### play
+
+如果需要完全纯粹的调试环境，请使用 `play` 项目
+
+在 `play/src/pages` 内新建vue文件用于调试组件
+
+```shell
+pnpm play
+// and
+pnpm --filter @falconix/upload-center dev
+```
+
 ## 代码规范
 
 git commit message 参考 [约定式提交规范](https://www.conventionalcommits.org/zh-hans/v1.0.0/)
@@ -107,6 +141,14 @@ eslint和代码格式化 参考 [@antfu/eslint-config](https://github.com/antfu/
 tsconfig 参考 [@vue/tsconfig](https://github.com/vuejs/tsconfig#readme)
 
 版本控制 参考 [语义化版本](https://semver.org/lang/zh-CN/)
+
+## Check
+
+在`FCL根目录`运行 `lint` & `typecheck` 命令，进行代码检查
+
+```shell
+pnpm lint && pnpm typecheck
+```
 
 ## 构建
 

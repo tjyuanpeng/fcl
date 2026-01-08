@@ -52,7 +52,7 @@ pkgs-build:
     expire_in: 1 day
     when: on_success
 
-docs-build:
+play-build:
   stage: build
   rules:
     - if: $CI_COMMIT_BRANCH == "main"
@@ -60,7 +60,7 @@ docs-build:
     - when: never
   dependencies: []
   script:
-    - pnpm docs:build
+    - pnpm play:build
   artifacts:
     paths:
       - docs/.vitepress/dist
@@ -116,7 +116,7 @@ docs-deploy:
       when: on_success
     - when: never
   dependencies:
-    - docs-build
+    - pkgs-build
   script:
     - set -e
     - ssh-keyscan ${DOC_SERVER_HOST} >> ~/.ssh/known_hosts 2>/dev/null || true

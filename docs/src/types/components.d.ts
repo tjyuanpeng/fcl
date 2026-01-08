@@ -22,7 +22,6 @@ declare module 'vue' {
     ElDescriptions: typeof import('@falconix/fep/es')['ElDescriptions']
     ElDescriptionsItem: typeof import('@falconix/fep/es')['ElDescriptionsItem']
     ElDialog: typeof import('@falconix/fep/es')['ElDialog']
-    ElDivider: typeof import('@falconix/fep/es')['ElDivider']
     ElDrawer: typeof import('@falconix/fep/es')['ElDrawer']
     ElDropdown: typeof import('@falconix/fep/es')['ElDropdown']
     ElDropdownItem: typeof import('@falconix/fep/es')['ElDropdownItem']
@@ -46,7 +45,6 @@ declare module 'vue' {
     ElTimeline: typeof import('@falconix/fep/es')['ElTimeline']
     ElTimelineItem: typeof import('@falconix/fep/es')['ElTimelineItem']
     ElTooltip: typeof import('@falconix/fep/es')['ElTooltip']
-    FF: typeof import('@falconix/f')['FF']
     FSplitPanel: typeof import('@falconix/split-panel')['FSplitPanel']
     FSteps2: typeof import('@falconix/steps2')['FSteps2']
   }

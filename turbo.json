@@ -15,17 +15,21 @@
     "typecheck": {
       "dependsOn": ["^typecheck"]
     },
-    "play#dev": {
+    "docs#dev": {
       "dependsOn": ["@falconix/fep-resolver#build"],
       "cache": false,
       "persistent": true
     },
-    "docs#docs:dev": {
+    "docs#build": {
+      "dependsOn": ["^build"],
+      "outputs": [".vitepress/dist/**"]
+    },
+    "play#play:dev": {
       "dependsOn": ["@falconix/fep-resolver#build"],
       "cache": false,
       "persistent": true
     },
-    "docs#docs:build": {
+    "play#play:build": {
       "dependsOn": ["^build"],
       "outputs": [".vitepress/dist/**"]
     }
