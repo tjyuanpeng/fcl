@@ -2,6 +2,8 @@
 
 如何向FCL贡献代码
 
+<img src="/fcl.png" width="50" />
+
 ## 克隆代码
 
 从 [gitlab repo](http://10.168.2.105:8888/soft_group/yingmai/fe_group/fcl) 获取源代码

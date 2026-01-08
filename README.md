@@ -61,14 +61,16 @@ create a merge request merging into main branch in the gitlab
 
 then gitlab pipeline will publish repos to the private npm registry and push tags of published
 
-# document develop
+# play develop
+
+use a plain develop environment to debug your component
 
 ```shell
-pnpm docs:dev
+pnpm play
 ```
 
 # document build
 
 ```shell
-pnpm docs:build
+pnpm play:build
 ```

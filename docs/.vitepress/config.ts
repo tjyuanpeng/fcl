@@ -92,7 +92,7 @@ export default ({ mode }: ConfigEnv) => {
       search: {
         provider: 'local',
       },
-      logo: '/logo.png',
+      logo: '/fcl.png',
     },
     vite: {
       publicDir: isProd ? '../public' : 'docs/public',
