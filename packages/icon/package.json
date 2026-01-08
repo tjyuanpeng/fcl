@@ -1,0 +1,37 @@
+{
+  "name": "@falconix/icon",
+  "type": "module",
+  "version": "1.0.21",
+  "description": "A Vue3 + TypeScript component for using iconfont icons",
+  "author": "",
+  "license": "MIT",
+  "keywords": [
+    "vue3",
+    "typescript",
+    "iconfont",
+    "component"
+  ],
+  "main": "dist/vue3-iconfont-component.umd.js",
+  "module": "dist/vue3-iconfont-component.es.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "dist/assets"
+  ],
+  "scripts": {
+    "build": "vite build && vue-tsc --emitDeclarationOnly && cpx \"src/assets/**/*\" dist/assets",
+    "typecheck": "vue-tsc --noEmit",
+    "lint": "eslint ."
+  },
+  "peerDependencies": {
+    "vue": "3"
+  },
+  "devDependencies": {
+    "@falconix/configs": "workspace:^",
+    "@vitejs/plugin-vue": "catalog:",
+    "cpx": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vue-tsc": "catalog:"
+  }
+}

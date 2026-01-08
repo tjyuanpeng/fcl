@@ -1,0 +1,15 @@
+{
+  "mode": "pre",
+  "tag": "beta",
+  "initialVersions": {
+    "@falconix/configs": "0.0.6",
+    "@falconix/icon": "1.0.21",
+    "@falconix/icons-vue": "0.0.1",
+    "@falconix/fep-resolver": "0.0.6",
+    "@falconix/wujie-rpc": "0.0.6",
+    "@falconix/split-panel": "0.0.1",
+    "@falconix/steps2": "0.0.1",
+    "@falconix/use-ajax": "0.0.6"
+  },
+  "changesets": []
+}
