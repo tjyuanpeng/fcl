@@ -19,7 +19,7 @@
     "dist/assets"
   ],
   "scripts": {
-    "build": "vite build && vue-tsc --emitDeclarationOnly && cpx \"src/assets/**/*\" dist/assets",
+    "build": "vite build && vue-tsc --emitDeclarationOnly",
     "typecheck": "vue-tsc --noEmit",
     "lint": "eslint ."
   },
@@ -28,8 +28,9 @@
   },
   "devDependencies": {
     "@falconix/configs": "workspace:^",
+    "@types/fs-extra": "catalog:",
     "@vitejs/plugin-vue": "catalog:",
-    "cpx": "catalog:",
+    "fs-extra": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",
     "vue-tsc": "catalog:"

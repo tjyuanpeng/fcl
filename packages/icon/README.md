@@ -4,38 +4,22 @@
 
 ## 安装
 
-使用 npm 或 yarn 安装：
-
-```
-# npm
-
-npm install @falconix/icon --save
-
-# pnpm
-
-pnpm install @falconix/icon --save
-
-# yarn
-
-yarn add @falconix/icon
+```shell
+pnpm install @falconix/icon
 ```
 
 ## 引入
 
 在 main.ts 中全局注册组件， 并引入样式文件：
 
-```
-import { createApp } from 'vue'
-
-import App from './App.vue'
-
+```ts
 import Icon from '@falconix/icon'
+import { createApp } from 'vue'
+import App from './App.vue'
 import '@falconix/icon/dist/assets/iconfont/iconfont.css'
 
 const app = createApp(App)
-
 app.use(Icon)
-
 app.mount('#app')
 ```
 
@@ -43,71 +27,51 @@ app.mount('#app')
 
 ### 基础用法
 
-```
+```vue
 <template>
-
   <Icon name="icon-user" />
-
 </template>
 ```
 
 ### 自定义大小和颜色
 
-```
+```vue
 <template>
-
   <Icon
-
     name="icon-settings"
-
     size="24"
-
     color="#409EFF"
-
   />
-
   <!-- 也支持数字类型的大小 -->
-
   <Icon
-
     name="icon-search"
-
     size="24"
-
     color="red"
-
   />
-
 </template>
 ```
 
 ### 自定义类名和标题
 
-```
+```vue
 <template>
-
   <Icon
-
     name="icon-home"
-
-    customClass="mr-2"
-
+    custom-class="mr-2"
     title="首页"
-
   />
-
 </template>
 ```
 
 ## 属性
 
-| 属性名      | 类型   | 说明                                         | 默认值                                                    |
-| ----------- | ------ | -------------------------------------------- | --------------------------------------------------------- | --- |
-| name        | string | 图标名称（必填，对应 Iconfont 中的图标类名） | -                                                         |
-| size        | number | string                                       | 图标大小，支持数字（单位 px）或字符串（如 '24px'、'2em'） | -   |
-| color       | string | 图标颜色，支持颜色值（如 '#fff'、'red'）     | -                                                         |
-| title       | string | 图标标题，鼠标悬停时显示                     | -                                                         |
-| customClass | string | 自定义类名，用于添加额外样式                 | -                                                         |
+| 属性名      | 类型             | 说明                                                      | 默认值 |
+| ----------- | ---------------- | --------------------------------------------------------- | ------ |
+| name        | string           | 图标名称（必填，对应 Iconfont 中的图标类名）              | -      |
+| size        | number \| string | 图标大小，支持数字（单位 px）或字符串（如 '24px'、'2em'） | -      |
+| color       | string           | 图标颜色，支持颜色值（如 '#fff'、'red'）                  | -      |
+| title       | string           | 图标标题，鼠标悬停时显示                                  | -      |
+| customClass | string           | 自定义类名，用于添加额外样式                              | -      |
 
 ## 注意事项
 
@@ -117,62 +81,33 @@ app.mount('#app')
 
 ## 示例
 
-```
+```vue
 <template>
-
   <div class="icon-example">
-
     <Icon
-
       name="icon-user"
-
       size="20"
-
       color="#333"
-
       title="用户"
-
-      customClass="icon-margin"
-
+      custom-class="icon-margin"
     />
-
     <Icon
-
       name="icon-setting"
-
       size="24"
-
       color="#409EFF"
-
-      customClass="icon-margin"
-
+      custom-class="icon-margin"
     />
-
     <Icon
-
       name="icon-home"
-
       size="28"
-
       color="green"
-
     />
-
   </div>
-
 </template>
 
 <style>
-
 .icon-margin {
-
   margin-right: 10px;
-
 }
-
 </style>
 ```
-
-## 许可证
-
-MIT
