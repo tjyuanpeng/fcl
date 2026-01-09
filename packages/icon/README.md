@@ -81,33 +81,4 @@ app.mount('#app')
 
 ## 示例
 
-```vue
-<template>
-  <div class="icon-example">
-    <Icon
-      name="icon-user"
-      size="20"
-      color="#333"
-      title="用户"
-      custom-class="icon-margin"
-    />
-    <Icon
-      name="icon-setting"
-      size="24"
-      color="#409EFF"
-      custom-class="icon-margin"
-    />
-    <Icon
-      name="icon-home"
-      size="28"
-      color="green"
-    />
-  </div>
-</template>
-
-<style>
-.icon-margin {
-  margin-right: 10px;
-}
-</style>
-```
+<demo vue="icon.vue" />

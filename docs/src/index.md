@@ -14,7 +14,7 @@ hero:
       link: /versions
     - theme: big alt
       text: 贡献代码
-      link: /contribution
+      link: /contribution/getting-started
 
 features:
   - title: 设计
