@@ -14,9 +14,8 @@
     "dist"
   ],
   "scripts": {
-    "dev": "node ./scripts/build.ts && tsdown --watch",
-    "build": "pnpm build:script && node ./scripts/build.cjs && tsdown",
-    "build:script": "tsdown ./scripts/build.ts --out-dir ./scripts/ --external fs-extra --no-clean --no-config --format cjs --dts false",
+    "dev": "tsdown --watch",
+    "build": "tsdown",
     "typecheck": "vue-tsc --noEmit",
     "lint": "eslint ."
   },

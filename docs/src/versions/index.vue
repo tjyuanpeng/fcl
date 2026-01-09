@@ -52,11 +52,11 @@ const rowClick = (row: any) => {
               {{ formatDate(row.time.created) }}
             </el-descriptions-item>
             <el-descriptions-item label="标签" :span="2">
-              <template v-for="[key, value] in Object.entries(row['dist-tags'])" :key="key">
-                <el-tag effect="plain">
+              <span class="tags">
+                <el-tag v-for="[key, value] in Object.entries(row['dist-tags'])" :key="key" effect="plain">
                   {{ key }}:{{ value }}
                 </el-tag>
-              </template>
+              </span>
             </el-descriptions-item>
           </el-descriptions>
           <el-timeline style="margin: 10px 0 0 60px;">
@@ -117,6 +117,12 @@ const rowClick = (row: any) => {
   :deep(.el-table__row) {
     cursor: pointer;
   }
+}
+
+.tags {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 2px;
 }
 
 .timeline-item {

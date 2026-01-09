@@ -10,12 +10,15 @@ stages:
   - install
   - check
   - build
+  - pre
   - deploy
 
 install:
   stage: install
   rules:
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_COMMIT_BRANCH == "main"
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' && $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main"
+      when: on_success
+    - if: $CI_COMMIT_BRANCH == "main"
       when: on_success
     - when: never
   dependencies: []
@@ -29,7 +32,9 @@ install:
 pkgs-check:
   stage: check
   rules:
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' || $CI_COMMIT_BRANCH == "main"
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' && $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main"
+      when: on_success
+    - if: $CI_COMMIT_BRANCH == "main"
       when: on_success
     - when: never
   dependencies: []
@@ -40,6 +45,13 @@ pkgs-check:
 pkgs-build:
   stage: build
   rules:
+    - if: >
+        $CI_PIPELINE_SOURCE == 'merge_request_event' &&
+        $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" &&
+        $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME =~ /^pre\//
+      exists:
+        - .changeset/pre.json
+      when: on_success
     - if: $CI_COMMIT_BRANCH == "main"
       when: on_success
     - when: never
@@ -53,15 +65,65 @@ pkgs-build:
     expire_in: 1 day
     when: on_success
 
-play-build:
-  stage: build
+pre-pkgs-publish:
+  stage: pre
   rules:
-    - if: $CI_COMMIT_BRANCH == "main"
+    - if: >
+        $CI_PIPELINE_SOURCE == 'merge_request_event' &&
+        $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" &&
+        $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME =~ /^pre\//
+      exists:
+        - .changeset/pre.json
+      when: manual
+    - when: never
+  dependencies:
+    - pkgs-build
+  allow_failure:
+    exit_codes: [9]
+  script:
+    - set -e
+    - git tag | xargs git tag -d
+    - pnpm changeset version
+    - |
+      if git diff --exit-code --quiet; then
+        echo -e "\033[33m⚠️ No changes found after versioning. Exiting with code 9.\033[0m"
+        exit 9
+      fi
+    - ssh-keyscan ${CI_SERVER_HOST} >> ~/.ssh/known_hosts 2>/dev/null || true
+    - git config user.name "$GIT_OP_USER_NAME"
+    - git config user.email "$GIT_OP_EMAIL"
+    - git remote set-url origin git@${CI_SERVER_HOST}:${CI_PROJECT_PATH}.git
+    - git fetch origin $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME && git checkout -B $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME origin/$CI_MERGE_REQUEST_SOURCE_BRANCH_NAME
+    - git add . -- ':!.npmrc'
+    - |
+      git commit -m "chore(release): update versions [skip ci]"
+    - |
+      curl --silent --show-error --fail -L \
+      --header "PRIVATE-TOKEN: $SNIPPET_TOKEN" \
+      --url "http://10.168.2.105:8888/api/v4/snippets/2/raw" | \
+      sed "s|{{NPM_AUTH_TOKEN}}|$NPM_AUTH_TOKEN|g" \
+      > .npmrc
+    - npm_config_registry=http://10.168.2.110:31001/repository/ym-hosted/ pnpm changeset publish
+    - |
+      if git tag | grep -q "^@falconix/"; then
+        git push origin $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME --follow-tags
+      else
+        echo -e "\033[33m⚠️ No tags found after publishing. Exiting with code 9.\033[0m"
+        exit 9
+      fi
+
+pre-deny-check:
+  stage: pre
+  rules:
+    - exists:
+        - .changeset/pre.json
       when: on_success
     - when: never
   dependencies: []
   script:
-    - pnpm play:build
+    - set -e
+    - echo -e "\033[31m❌ changeset 处于 prerelease 通道，终止执行！需要退出 prerelease 通道才能继续执行 merge request相关操作！\033[0m"
+    - exit 1
 
 pkgs-publish:
   stage: deploy
@@ -118,3 +180,13 @@ docs-deploy:
     - ssh-keyscan ${DOC_SERVER_HOST} >> ~/.ssh/known_hosts 2>/dev/null || true
     - ssh -t root@${DOC_SERVER_HOST} -p 22 "rm -rf /data/fcl_docs/*"
     - scp -P 22 -r -O docs/.vitepress/dist/* root@${DOC_SERVER_HOST}:/data/fcl_docs/
+
+# play-build:
+#   stage: build
+#   rules:
+#     - if: $CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH =~ /^pre\//
+#       when: on_success
+#     - when: never
+#   dependencies: []
+#   script:
+#     - pnpm play:build

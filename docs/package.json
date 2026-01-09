@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@falconix/fep": "catalog:",
+    "@falconix/icon": "workspace:^",
     "@falconix/icons-vue": "workspace:^",
     "@falconix/split-panel": "workspace:^",
     "@falconix/steps2": "workspace:^",

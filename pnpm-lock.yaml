@@ -25,7 +25,7 @@ catalogs:
       specifier: ^0.0.12
       version: 0.0.12
     '@types/fs-extra':
-      specifier: ^11.0.4
+      specifier: 11.0.4
       version: 11.0.4
     '@types/node':
       specifier: ^24.10.1
@@ -158,6 +158,9 @@ importers:
       '@falconix/fep':
         specifier: 'catalog:'
         version: 0.0.12(vue@3.5.25(typescript@5.9.3))
+      '@falconix/icon':
+        specifier: workspace:^
+        version: link:../packages/icon
       '@falconix/icons-vue':
         specifier: workspace:^
         version: link:../packages/icons-vue
@@ -237,6 +240,34 @@ importers:
       eslint-plugin-format:
         specifier: 'catalog:'
         version: 1.1.0(eslint@9.39.1(jiti@2.6.1))
+
+  packages/icon:
+    dependencies:
+      vue:
+        specifier: '3'
+        version: 3.5.25(typescript@5.9.3)
+    devDependencies:
+      '@falconix/configs':
+        specifier: workspace:^
+        version: link:../configs
+      '@types/fs-extra':
+        specifier: 'catalog:'
+        version: 11.0.4
+      '@vitejs/plugin-vue':
+        specifier: 'catalog:'
+        version: 6.0.2(vite@7.2.6(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(sass-embedded@1.93.3)(sass@1.93.3)(yaml@2.8.2))(vue@3.5.25(typescript@5.9.3))
+      fs-extra:
+        specifier: 'catalog:'
+        version: 11.3.2
+      typescript:
+        specifier: 'catalog:'
+        version: 5.9.3
+      vite:
+        specifier: 'catalog:'
+        version: 7.2.6(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(sass-embedded@1.93.3)(sass@1.93.3)(yaml@2.8.2)
+      vue-tsc:
+        specifier: 'catalog:'
+        version: 3.1.8(typescript@5.9.3)
 
   packages/icons-vue:
     dependencies:
