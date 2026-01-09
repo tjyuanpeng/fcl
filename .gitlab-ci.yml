@@ -10,6 +10,7 @@ stages:
   - install
   - check
   - build
+  - pre
   - deploy
 
 install:
@@ -44,7 +45,10 @@ pkgs-check:
 pkgs-build:
   stage: build
   rules:
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' && $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" && $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME =~ /^pre\//
+    - if: >
+        $CI_PIPELINE_SOURCE == 'merge_request_event' &&
+        $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" &&
+        $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME =~ /^pre\//
       when: on_success
     - if: $CI_COMMIT_BRANCH == "main"
       when: on_success
@@ -60,9 +64,12 @@ pkgs-build:
     when: on_success
 
 pre-pkgs-publish:
-  stage: deploy
+  stage: pre
   rules:
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' && $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" && $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME =~ /^pre\//
+    - if: >
+        $CI_PIPELINE_SOURCE == 'merge_request_event' &&
+        $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" &&
+        $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME =~ /^pre\//
       when: manual
     - when: never
   dependencies:
@@ -100,6 +107,19 @@ pre-pkgs-publish:
         echo -e "\033[33m⚠️ No tags found after publishing. Exiting with code 9.\033[0m"
         exit 9
       fi
+
+pre-deny-check:
+  stage: pre
+  rules:
+    - exists:
+        - .changeset/pre.json
+      when: on_success
+    - when: never
+  dependencies: []
+  script:
+    - set -e
+    - echo -e "\033[31m❌ changeset 处于 prerelease 通道，终止执行！需要退出 prerelease 通道才能继续执行 merge request相关操作！\033[0m"
+    - exit 1
 
 pkgs-publish:
   stage: deploy
