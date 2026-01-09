@@ -63,10 +63,4 @@ pnpm changeset
 pnpm changeset pre exit
 ```
 
-运行 `changeset` 命令确定正式发布版本
-
-```shell
-pnpm changeset
-```
-
 提交代码到git，在原来的 `merge request` 等待所有的 `pipeline` 全部执行成功，就可以继续进行后续操作

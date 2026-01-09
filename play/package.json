@@ -28,6 +28,5 @@
     "vite-plugin-pages": "catalog:",
     "vue-router": "catalog:",
     "vue-tsc": "catalog:"
-  },
-  "version": null
+  }
 }

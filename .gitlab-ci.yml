@@ -49,6 +49,8 @@ pkgs-build:
         $CI_PIPELINE_SOURCE == 'merge_request_event' &&
         $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" &&
         $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME =~ /^pre\//
+      exists:
+        - .changeset/pre.json
       when: on_success
     - if: $CI_COMMIT_BRANCH == "main"
       when: on_success
@@ -70,6 +72,8 @@ pre-pkgs-publish:
         $CI_PIPELINE_SOURCE == 'merge_request_event' &&
         $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" &&
         $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME =~ /^pre\//
+      exists:
+        - .changeset/pre.json
       when: manual
     - when: never
   dependencies:
