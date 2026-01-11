@@ -79,6 +79,8 @@ app.mount('#app')
 
 2.  如果需要修改图标的默认样式，可以通过自定义类名 `customClass` 或全局样式来实现。
 
+3.  请在entry的最顶部引用iconfont.css，否则在wujie环境下会导致图标显示异常。
+
 ## 示例
 
 <demo vue="icon.vue" />
