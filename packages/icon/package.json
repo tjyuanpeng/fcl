@@ -1,7 +1,7 @@
 {
   "name": "@falconix/icon",
   "type": "module",
-  "version": "1.0.22",
+  "version": "1.1.0",
   "description": "A Vue3 + TypeScript component for using iconfont icons",
   "author": "",
   "license": "MIT",

@@ -1,5 +1,11 @@
 # @falconix/icon
 
+## 1.1.0
+
+### Minor Changes
+
+- eeac06e: wujie load bugfix
+
 ## 1.0.22
 
 ### Patch Changes
