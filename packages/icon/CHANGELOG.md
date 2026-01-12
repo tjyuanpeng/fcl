@@ -5,7 +5,6 @@
 ### Patch Changes
 
 - eb4f5f2: repo migration
-- eea337c: repo migration
 
 ## 1.0.22-beta.0
 
