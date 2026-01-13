@@ -13,9 +13,16 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     ElButton: typeof import('@falconix/fep/es')['ElButton']
+    ElCol: typeof import('@falconix/fep/es')['ElCol']
     ElForm: typeof import('@falconix/fep/es')['ElForm']
     ElFormItem: typeof import('@falconix/fep/es')['ElFormItem']
+    ElIcon: typeof import('@falconix/fep/es')['ElIcon']
     ElInput: typeof import('@falconix/fep/es')['ElInput']
+    ElMenu: typeof import('@falconix/fep/es')['ElMenu']
+    ElMenuItem: typeof import('@falconix/fep/es')['ElMenuItem']
+    ElMenuItemGroup: typeof import('@falconix/fep/es')['ElMenuItemGroup']
+    ElRow: typeof import('@falconix/fep/es')['ElRow']
+    ElSubMenu: typeof import('@falconix/fep/es')['ElSubMenu']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
@@ -24,9 +31,16 @@ declare module 'vue' {
 // For TSX support
 declare global {
   const ElButton: typeof import('@falconix/fep/es')['ElButton']
+  const ElCol: typeof import('@falconix/fep/es')['ElCol']
   const ElForm: typeof import('@falconix/fep/es')['ElForm']
   const ElFormItem: typeof import('@falconix/fep/es')['ElFormItem']
+  const ElIcon: typeof import('@falconix/fep/es')['ElIcon']
   const ElInput: typeof import('@falconix/fep/es')['ElInput']
+  const ElMenu: typeof import('@falconix/fep/es')['ElMenu']
+  const ElMenuItem: typeof import('@falconix/fep/es')['ElMenuItem']
+  const ElMenuItemGroup: typeof import('@falconix/fep/es')['ElMenuItemGroup']
+  const ElRow: typeof import('@falconix/fep/es')['ElRow']
+  const ElSubMenu: typeof import('@falconix/fep/es')['ElSubMenu']
   const RouterLink: typeof import('vue-router')['RouterLink']
   const RouterView: typeof import('vue-router')['RouterView']
 }

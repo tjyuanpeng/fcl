@@ -67,6 +67,7 @@ export default ({ mode }: ConfigEnv) => {
         '/fep/': [
           { text: '@falconix/fep', items: [
             { text: '快速开始', link: '/fep/getting-started' },
+            { text: 'FEP 迁移工具', link: '/fep/migrator' },
             { text: '扩展点', link: '/fep/extends' },
             { text: 'FAQ', link: '/fep/FAQ' },
           ] },
