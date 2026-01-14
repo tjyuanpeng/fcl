@@ -24,10 +24,12 @@ fep-migrator src "!**/public"
 
 ## 注意事项
 
+使用前请备份好文件，确保文件已经提交到git仓库
+
 `fep-migrator` 会迁移两个包的内容：
 
 - element-plus => @falconix/fep
 
 - @element-plus/icons-vue => @falconix/icons-vue
 
-使用前请备份好文件，确保文件已经提交到git仓库
+`fep-migrator` 会检测文件中是否含有 `font-family:` 如果有，会提示用户修改
