@@ -4,7 +4,7 @@
 
 ## changesets 文档
 
-请先参考 `changesets` 对于发布版本的说明文档
+请先参考 `changesets` 对于预发布版本的说明文档
 [https://github.com/changesets/changesets/blob/main/docs/prereleases.md](https://github.com/changesets/changesets/blob/main/docs/prereleases.md)
 
 ## 条件限制
