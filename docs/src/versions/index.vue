@@ -5,7 +5,7 @@ import { onMounted, ref } from 'vue'
 
 const ajax = axios.create({
   withCredentials: false,
-  baseURL: `http://10.168.2.182:3434/npm/`,
+  baseURL: `https://fcl.yingmai.net/npm/`,
 })
 const formatDate = (date: string) => new Date(date).toLocaleString('zh-CN', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })
 const getPackageList = async () => {
