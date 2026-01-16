@@ -22,8 +22,8 @@ catalogs:
       specifier: ^2.3.2
       version: 2.3.2
     '@falconix/fep':
-      specifier: ^0.0.12
-      version: 0.0.12
+      specifier: ^1.0.0
+      version: 1.0.0
     '@types/fs-extra':
       specifier: 11.0.4
       version: 11.0.4
@@ -160,7 +160,7 @@ importers:
     dependencies:
       '@falconix/fep':
         specifier: 'catalog:'
-        version: 0.0.12(vue@3.5.25(typescript@5.9.3))
+        version: 1.0.0(vue@3.5.25(typescript@5.9.3))
       '@falconix/icon':
         specifier: workspace:^
         version: link:../packages/icon
@@ -351,7 +351,7 @@ importers:
     dependencies:
       '@falconix/fep':
         specifier: 'catalog:'
-        version: 0.0.12(vue@3.5.25(typescript@5.9.3))
+        version: 1.0.0(vue@3.5.25(typescript@5.9.3))
       '@falconix/icons-vue':
         specifier: workspace:^
         version: link:../icons-vue
@@ -379,7 +379,7 @@ importers:
     dependencies:
       '@falconix/fep':
         specifier: 'catalog:'
-        version: 0.0.12(vue@3.5.25(typescript@5.9.3))
+        version: 1.0.0(vue@3.5.25(typescript@5.9.3))
       vue:
         specifier: '3'
         version: 3.5.25(typescript@5.9.3)
@@ -404,7 +404,7 @@ importers:
     dependencies:
       '@falconix/fep':
         specifier: 'catalog:'
-        version: 0.0.12(vue@3.5.25(typescript@5.9.3))
+        version: 1.0.0(vue@3.5.25(typescript@5.9.3))
       axios:
         specifier: 'catalog:'
         version: 1.13.2
@@ -426,7 +426,7 @@ importers:
     dependencies:
       '@falconix/fep':
         specifier: 'catalog:'
-        version: 0.0.12(vue@3.5.25(typescript@5.9.3))
+        version: 1.0.0(vue@3.5.25(typescript@5.9.3))
       '@falconix/icons-vue':
         specifier: workspace:^
         version: link:../packages/icons-vue
@@ -1049,8 +1049,8 @@ packages:
     resolution: {integrity: sha512-43/qtrDUokr7LJqoF2c3+RInu/t4zfrpYdoSDfYyhg52rwLV6TnOvdG4fXm7IkSB3wErkcmJS9iEhjVtOSEjjA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@falconix/fep@0.0.12':
-    resolution: {integrity: sha512-2+qIFnuv7912Ade1UkVqIiBLjDu2S0NsPCnEModv8dK6MYKho5APikv6BtdOmbfJc7agQvxvNKh2y3Vvo1Id0g==}
+  '@falconix/fep@1.0.0':
+    resolution: {integrity: sha512-5BoJIpNLdvPPOBGjqyIih9jIofR9B8vE4zk2+MRxnXs6WKenxp6L0ncAjc7a6wFZpudafsrft3BOY9twFyGnog==}
     peerDependencies:
       vue: ^3.3.0
 
@@ -5139,7 +5139,7 @@ snapshots:
       '@eslint/core': 0.17.0
       levn: 0.4.1
 
-  '@falconix/fep@0.0.12(vue@3.5.25(typescript@5.9.3))':
+  '@falconix/fep@1.0.0(vue@3.5.25(typescript@5.9.3))':
     dependencies:
       '@ctrl/tinycolor': 3.6.1
       '@element-plus/icons-vue': 2.3.2(vue@3.5.25(typescript@5.9.3))
