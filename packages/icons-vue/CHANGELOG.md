@@ -1,5 +1,11 @@
 # @falconix/icons-vue
 
+## 1.0.0
+
+### Major Changes
+
+- f6bd4cc: first major version
+
 ## 0.0.1
 
 ### Patch Changes

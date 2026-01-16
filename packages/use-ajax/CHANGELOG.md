@@ -1,5 +1,11 @@
 # @falconix/use-ajax
 
+## 1.0.0
+
+### Major Changes
+
+- f6bd4cc: first major version
+
 ## 0.0.6
 
 ### Patch Changes

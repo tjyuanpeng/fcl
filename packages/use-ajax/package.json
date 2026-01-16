@@ -1,7 +1,7 @@
 {
   "name": "@falconix/use-ajax",
   "type": "module",
-  "version": "0.0.6",
+  "version": "1.0.0",
   "description": "falconix http request handler",
   "exports": {
     ".": "./dist/index.mjs",

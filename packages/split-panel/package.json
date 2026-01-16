@@ -1,7 +1,7 @@
 {
   "name": "@falconix/split-panel",
   "type": "module",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "falconix split panel",
   "exports": {
     ".": "./dist/index.js",
