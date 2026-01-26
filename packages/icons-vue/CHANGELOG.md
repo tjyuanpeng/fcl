@@ -1,5 +1,11 @@
 # @falconix/icons-vue
 
+## 1.0.1
+
+### Patch Changes
+
+- ca80326: 添加自定义图标 circle-question
+
 ## 1.0.0
 
 ### Major Changes
