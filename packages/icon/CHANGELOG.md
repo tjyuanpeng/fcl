@@ -1,5 +1,11 @@
 # @falconix/icon
 
+## 1.1.1
+
+### Patch Changes
+
+- 27457e4: update iconfont
+
 ## 1.1.0
 
 ### Minor Changes
