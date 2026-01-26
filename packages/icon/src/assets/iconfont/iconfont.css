@@ -1,11 +1,11 @@
 @font-face {
   font-family: "iconfont"; /* Project id 4993060 */
-  src: url('iconfont.eot?t=1766487129415'); /* IE9 */
-  src: url('iconfont.eot?t=1766487129415#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('iconfont.woff2?t=1766487129415') format('woff2'),
-       url('iconfont.woff?t=1766487129415') format('woff'),
-       url('iconfont.ttf?t=1766487129415') format('truetype'),
-       url('iconfont.svg?t=1766487129415#iconfont') format('svg');
+  src: url('iconfont.eot?t=1769395426270'); /* IE9 */
+  src: url('iconfont.eot?t=1769395426270#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('iconfont.woff2?t=1769395426270') format('woff2'),
+       url('iconfont.woff?t=1769395426270') format('woff'),
+       url('iconfont.ttf?t=1769395426270') format('truetype'),
+       url('iconfont.svg?t=1769395426270#iconfont') format('svg');
 }
 
 .iconfont {
@@ -14,6 +14,30 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-zhishikushenpi:before {
+  content: "\e62d";
+}
+
+.icon-xiansuodaiban:before {
+  content: "\e62c";
+}
+
+.icon-a-jichu-fuzhifubenzhi1:before {
+  content: "\e629";
+}
+
+.icon-a-jichu-yidongwenjian1:before {
+  content: "\e62a";
+}
+
+.icon-wenjiangeshi-yunwendang:before {
+  content: "\e62b";
+}
+
+.icon-jichu-image:before {
+  content: "\e600";
 }
 
 .icon-jichu-biaotoushaixuan:before {

@@ -6,6 +6,48 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "46737266",
+      "name": "知识库审批",
+      "font_class": "zhishikushenpi",
+      "unicode": "e62d",
+      "unicode_decimal": 58925
+    },
+    {
+      "icon_id": "46683660",
+      "name": "线索待办",
+      "font_class": "xiansuodaiban",
+      "unicode": "e62c",
+      "unicode_decimal": 58924
+    },
+    {
+      "icon_id": "46651355",
+      "name": "基础-复制副本至 1",
+      "font_class": "a-jichu-fuzhifubenzhi1",
+      "unicode": "e629",
+      "unicode_decimal": 58921
+    },
+    {
+      "icon_id": "46651354",
+      "name": "基础-移动文件 1",
+      "font_class": "a-jichu-yidongwenjian1",
+      "unicode": "e62a",
+      "unicode_decimal": 58922
+    },
+    {
+      "icon_id": "46651353",
+      "name": "文件格式-云文档",
+      "font_class": "wenjiangeshi-yunwendang",
+      "unicode": "e62b",
+      "unicode_decimal": 58923
+    },
+    {
+      "icon_id": "46568159",
+      "name": "jichu-image",
+      "font_class": "jichu-image",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
       "icon_id": "46432555",
       "name": "基础-表头筛选",
       "font_class": "jichu-biaotoushaixuan",
