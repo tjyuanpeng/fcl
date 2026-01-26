@@ -7,6 +7,12 @@ const ajax = axios.create({
   withCredentials: false,
   baseURL: `https://fcl.yingmai.net/npm/`,
 })
+ajax.interceptors.request.use((config) => {
+  config.params = config.params || {}
+  config.params[Date.now()] = ''
+  return config
+})
+
 const formatDate = (date: string) => new Date(date).toLocaleString('zh-CN', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })
 const getPackageList = async () => {
   const { data } = await ajax<{ items: any[] }>({
@@ -16,14 +22,12 @@ const getPackageList = async () => {
   const set = data.items.reduce((acc: Set<string>, cur: any) => acc.add(cur.assets[0].npm.name), new Set<string>())
   return [...set]
 }
-
 const getPackage = async (name: string) => {
   const { data } = await ajax({
-    url: `/repository/ym-group/${name}`,
+    url: `/repository/ym-hosted/${name}`,
   })
   return data
 }
-
 const tableData = ref()
 onMounted(async () => {
   const pkglist = await getPackageList()
@@ -32,7 +36,6 @@ onMounted(async () => {
   tableData.value = pkgInfos
   console.log(pkgInfos)
 })
-
 const expandRowKeys = ref<string[]>([])
 const rowClick = (row: any) => {
   expandRowKeys.value = row.name === expandRowKeys.value?.[0] ? [] : [row.name]
