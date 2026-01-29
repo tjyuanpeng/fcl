@@ -80,6 +80,12 @@ FFD 采用 chrome 扩展 的形式
 
 ![](/ffd-img/ffd-11.png)
 
+### Token获取工具
+
+使用token获取工具，方便开发时获取token
+
+![](/ffd-img/ffd-13.png)
+
 ## FAQ
 
 > Q：为什么子应用加载报错
