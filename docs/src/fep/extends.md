@@ -2,9 +2,9 @@
 
 `@falconix/fep` 在 [element-plus](https://element-plus.org/zh-CN/component/overview) 之外额外提供的 功能/扩展
 
-## 默认样式指定
+## 默认样式
 
-`fep` 相比 `element-plus`，增加了对字体和文本颜色的默认指定
+增加了对字体和文本颜色的默认指定
 
 ```css
 :root {
@@ -81,23 +81,116 @@
 </template>
 ```
 
-## ElMessageBox
+## editable table
 
-- fep?: boolean
+在 table 的基础上扩展了单元格编辑功能
 
-  是否使用fep风格。为 `ElMessageBox` 相关函数提供一个可以手动关闭`fep`风格的选项
+### table
 
-  默认值: true
+- edit-trigger: 'dblclick' | 'click'
+
+  编辑触发方式
+
+  默认值: dblclick
+
+- before-enter-edit: (scope: EditScope\<T>) => boolean
+
+  进入编辑前触发，返回 `false` 可以阻止进入编辑
+
+- after-enter-edit: (scope: EditScope\<T>) => void
+
+  进入编辑后触发
+
+- before-exit-edit: (scope: EditScope\<T>) => boolean
+
+  退出编辑前触发，返回 `false` 可以阻止退出编辑
+
+- after-exit-edit: (scope: EditScope\<T>) => void
+
+  退出编辑后触发
+
+> EditScope
 
 ```ts
-function confirm() {
-  ElMessageBox.confirm(
-    'content',
-    'title',
-    {
-      type: 'warning',
-      fep: true,
-    },
-  )
+interface EditScope<T extends DefaultRow> {
+  cell: Element
+  row: T
+  column: TableColumnCtx<T>
+  rowIndex: number
+  columnIndex: number
 }
+```
+
+### table column
+
+- #edit="{ row: any, column: TableColumnCtx\<T>, $index: number }"`
+
+  单元格编辑模式插槽
+  - row: any
+
+    行数据对象
+
+  - column: TableColumnCtx\<T>
+
+    列对象
+
+  - $index: number
+
+    行索引
+
+```vue
+<template>
+  <el-table edit-trigger="dblclick">
+    <el-table-column prop="name" label="Name">
+      <template #edit="{ row }">
+        <el-input v-model="row.name" />
+      </template>
+    </el-table-column>
+  </el-table>
+</template>
+```
+
+## form item
+
+在 `form item` 的基础上扩展了直接获取响应式数据的能力，使其可以脱离 `form` 组件直接使用
+
+并且提供针对 `form item` 校验结果的 `@validate` 事件
+
+- field-value: Object | () => Object
+
+  响应式数据对象，或者返回响应式数据对象的函数
+
+  当传入响应式数据对象的方式无法获取数据，或者丢失响应式时
+
+  请尝试使用函数返回响应式数据对象的方式
+
+- @validate: (prop: string, isValid: boolean, message: string) => void
+
+  校验事件，在校验结果发生变化时触发
+  - prop: string
+
+    校验字段名
+
+  - isValid: boolean
+
+    校验结果
+
+  - message: string
+
+    校验消息
+
+```vue
+<script setup lang="ts">
+const ref = ref('')
+</script>
+
+<template>
+  <el-form-item
+    :field-value="name"
+    :rules="[{ required: true, message: 'required' }]"
+    @validate="(prop, isValid, message) => void 0"
+  >
+    <el-input v-model="name" />
+  </el-form-item>
+</template>
 ```

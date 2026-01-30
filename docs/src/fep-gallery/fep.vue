@@ -308,33 +308,25 @@ const ccOptions = [
   },
 ]
 const activeName = ref('1')
-const hasType = ref(true)
-const isFep = ref(true)
 const alert = () => {
   ElMessageBox.alert(
     '本次申请需消耗30000鹰眼币，请确认线索相关评估内容已填写完整。',
     '确定提交',
-    {
-      type: hasType.value ? 'warning' : undefined,
-      fep: isFep.value,
-    },
+    { type: 'warning' },
   )
 }
 const confirm = () => {
   ElMessageBox.confirm(
     '本次申请需消耗30000鹰眼币，请确认线索相关评估内容已填写完整。',
     '确定提交',
-    {
-      type: hasType.value ? 'warning' : undefined,
-      fep: isFep.value,
-    },
+    { type: 'warning' },
   )
 }
 const drawer = reactive({
   open: false,
   size: '',
 })
-const tableData = [
+const tableData = ref([
   {
     date: '2016-05-03',
     name: 'Tom',
@@ -355,7 +347,7 @@ const tableData = [
     name: 'Tom',
     address: 'No. 189, Grove St, Los Angeles',
   },
-]
+])
 const showMessage = (type: string) => {
   ElMessage({
     message: 'Congrats, this is a message.',
@@ -367,6 +359,79 @@ function close() {
   ElMessage.closeAll()
 }
 const dialogVisible = ref(false)
+const editTableHasError = ref(false)
+const editTrigger = ref(true)
+// const treeSelectValue = ref()
+// const treeData = [
+//   {
+//     value: '1',
+//     label: 'Level one 1',
+//     children: [
+//       {
+//         value: '1-1',
+//         label: 'Level two 1-1',
+//         children: [
+//           {
+//             value: '1-1-1',
+//             label: 'Level three 1-1-1',
+//           },
+//         ],
+//       },
+//     ],
+//   },
+//   {
+//     value: '2',
+//     label: 'Level one 2',
+//     children: [
+//       {
+//         value: '2-1',
+//         label: 'Level two 2-1',
+//         children: [
+//           {
+//             value: '2-1-1',
+//             label: 'Level three 2-1-1',
+//           },
+//         ],
+//       },
+//       {
+//         value: '2-2',
+//         label: 'Level two 2-2',
+//         children: [
+//           {
+//             value: '2-2-1',
+//             label: 'Level three 2-2-1',
+//           },
+//         ],
+//       },
+//     ],
+//   },
+//   {
+//     value: '3',
+//     label: 'Level one 3',
+//     children: [
+//       {
+//         value: '3-1',
+//         label: 'Level two 3-1',
+//         children: [
+//           {
+//             value: '3-1-1',
+//             label: 'Level three 3-1-1',
+//           },
+//         ],
+//       },
+//       {
+//         value: '3-2',
+//         label: 'Level two 3-2',
+//         children: [
+//           {
+//             value: '3-2-1',
+//             label: 'Level three 3-2-1',
+//           },
+//         ],
+//       },
+//     ],
+//   },
+// ]
 </script>
 
 <template>
@@ -482,11 +547,21 @@ const dialogVisible = ref(false)
         />
       </div>
 
+      <!-- <h3>tree-select</h3>
+      <div class="box">
+        <el-tree-select
+          v-model="treeSelectValue"
+          :data="treeData"
+          style="width: 240px"
+        />
+      </div> -->
+
       <h3>cascader</h3>
       <div class="box">
         <el-cascader
           v-model="ccValue1"
           :options="ccOptions"
+          placeholder="Cascader"
           style="width: 240px"
         />
         <el-cascader
@@ -494,6 +569,7 @@ const dialogVisible = ref(false)
           :options="ccOptions"
           size="large"
           :props="{ expandTrigger: 'hover', multiple: true }"
+          placeholder="Cascader"
           style="width: 240px"
         />
       </div>
@@ -598,7 +674,7 @@ const dialogVisible = ref(false)
           placement="top-start"
           title="Title"
           :width="200"
-          trigger="hover"
+          trigger="click"
           content="this is content, this is content, this is content"
         >
           <template #reference>
@@ -612,6 +688,9 @@ const dialogVisible = ref(false)
       <h3>tooltip</h3>
       <div class="box">
         <el-tooltip content="Content">
+          <el-button>tooltip</el-button>
+        </el-tooltip>
+        <el-tooltip content="Content" effect="light">
           <el-button>tooltip</el-button>
         </el-tooltip>
       </div>
@@ -720,8 +799,6 @@ const dialogVisible = ref(false)
         <el-button @click="confirm">
           confirm
         </el-button>
-        <!-- <el-switch v-model="hasType" active-text="has type" />
-        <el-switch v-model="isFep" active-text="is fep" /> -->
       </div>
 
       <h3>table</h3>
@@ -759,6 +836,81 @@ const dialogVisible = ref(false)
           />
         </el-table>
       </div>
+
+      <h3>editable table</h3>
+      <div class="box column" style="gap: 0">
+        <el-switch
+          v-model="editTrigger"
+          active-text="双击触发编辑"
+          inactive-text="单击触发编辑"
+        />
+        <el-table
+          class="edit-table"
+          :data="tableData"
+          :edit-trigger="editTrigger ? 'dblclick' : 'click'"
+          :before-enter-edit="() => !editTableHasError"
+          :before-exit-edit="() => !editTableHasError"
+        >
+          <el-table-column prop="date" label="Date" width="200">
+            <template #edit="{ row }">
+              <el-form-item
+                :field-value="() => row.date"
+                inline-message
+                style="margin: 0"
+                :rules="[
+                  {
+                    required: true,
+                    message: '请输入日期',
+                  },
+                ]"
+                @validate="
+                  (_prop, isValid) => {
+                    editTableHasError = !isValid
+                  }
+                "
+              >
+                <el-date-picker
+                  v-model="row.date"
+                  type="date"
+                  value-format="YYYY-MM-DD"
+                  style="width: 100%"
+                />
+              </el-form-item>
+            </template>
+          </el-table-column>
+          <el-table-column prop="name" label="Name" width="200">
+            <template #edit="{ row }">
+              <el-form-item
+                :field-value="row.name"
+                inline-message
+                style="margin: 0"
+                :rules="[
+                  {
+                    required: true,
+                    message: '请输入姓名',
+                  },
+                ]"
+                @validate="
+                  (_prop, isValid) => {
+                    editTableHasError = !isValid
+                  }
+                "
+              >
+                <el-input v-model="row.name" placeholder="请输入姓名" />
+              </el-form-item>
+            </template>
+          </el-table-column>
+          <el-table-column prop="address" label="Address">
+            <template #edit="{ row }">
+              <el-select
+                v-model="row.address"
+                placeholder="请选择优先级"
+                :options="options"
+              />
+            </template>
+          </el-table-column>
+        </el-table>
+      </div>
     </div>
   </el-config-provider>
 </template>
@@ -794,8 +946,8 @@ const dialogVisible = ref(false)
   margin-bottom: 20px;
   align-items: flex-start;
 
-  &.align-middle {
-    align-items: center;
+  &.column {
+    flex-direction: column;
   }
 
   > .el-button + .el-button {
@@ -811,6 +963,15 @@ const dialogVisible = ref(false)
   }
   :deep(.el-tabs__item) {
     min-width: 120px;
+  }
+}
+.edit-table {
+  :deep(.el-table__row) {
+    height: 50px;
+  }
+  :deep(.cell-editing) {
+    padding: 0;
+    margin: -8px 0;
   }
 }
 </style>
