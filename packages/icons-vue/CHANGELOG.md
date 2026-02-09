@@ -1,5 +1,11 @@
 # @falconix/icons-vue
 
+## 1.0.3
+
+### Patch Changes
+
+- 0cc759e: fix: set the custom icon "circle-question" background to transparent
+
 ## 1.0.2
 
 ### Patch Changes
