@@ -158,6 +158,9 @@ importers:
 
   docs:
     dependencies:
+      '@falconix/auto-save':
+        specifier: workspace:^
+        version: link:../packages/auto-save
       '@falconix/fep':
         specifier: 'catalog:'
         version: 1.1.0(vue@3.5.25(typescript@5.9.3))
@@ -222,6 +225,31 @@ importers:
       vitepress-demo-plugin:
         specifier: 'catalog:'
         version: 1.5.1(shiki@3.20.0)(vitepress@2.0.0-alpha.15(@types/node@24.10.1)(async-validator@4.2.5)(axios@1.13.2)(change-case@5.4.4)(jiti@2.6.1)(lightningcss@1.30.2)(postcss@8.5.6)(sass-embedded@1.93.3)(sass@1.93.3)(typescript@5.9.3)(yaml@2.8.2))(vue@3.5.25(typescript@5.9.3))
+      vue-tsc:
+        specifier: 'catalog:'
+        version: 3.1.8(typescript@5.9.3)
+
+  packages/auto-save:
+    dependencies:
+      '@falconix/fep':
+        specifier: 'catalog:'
+        version: 1.1.0(vue@3.5.25(typescript@5.9.3))
+      vue:
+        specifier: '3'
+        version: 3.5.25(typescript@5.9.3)
+    devDependencies:
+      '@falconix/configs':
+        specifier: workspace:^
+        version: link:../configs
+      tsdown:
+        specifier: 'catalog:'
+        version: 0.16.8(synckit@0.11.11)(typescript@5.9.3)(vue-tsc@3.1.8(typescript@5.9.3))
+      typescript:
+        specifier: 'catalog:'
+        version: 5.9.3
+      unplugin-vue:
+        specifier: 'catalog:'
+        version: 7.1.0(@types/node@24.10.1)(esbuild@0.25.12)(jiti@2.6.1)(sass-embedded@1.93.3)(sass@1.93.3)(vue@3.5.25(typescript@5.9.3))(yaml@2.8.2)
       vue-tsc:
         specifier: 'catalog:'
         version: 3.1.8(typescript@5.9.3)
@@ -424,6 +452,9 @@ importers:
 
   play:
     dependencies:
+      '@falconix/auto-save':
+        specifier: workspace:^
+        version: link:../packages/auto-save
       '@falconix/fep':
         specifier: 'catalog:'
         version: 1.1.0(vue@3.5.25(typescript@5.9.3))
