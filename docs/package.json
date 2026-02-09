@@ -9,6 +9,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@falconix/auto-save": "workspace:^",
     "@falconix/fep": "catalog:",
     "@falconix/icon": "workspace:^",
     "@falconix/icons-vue": "workspace:^",
