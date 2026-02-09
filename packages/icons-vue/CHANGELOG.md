@@ -1,5 +1,11 @@
 # @falconix/icons-vue
 
+## 1.0.2
+
+### Patch Changes
+
+- d8bae62: feat: add new icon "square-play" to icons-vue
+
 ## 1.0.1
 
 ### Patch Changes
