@@ -22,8 +22,8 @@ catalogs:
       specifier: ^2.3.2
       version: 2.3.2
     '@falconix/fep':
-      specifier: ^1.1.0
-      version: 1.1.0
+      specifier: ^1.1.1
+      version: 1.1.1
     '@types/fs-extra':
       specifier: 11.0.4
       version: 11.0.4
@@ -163,7 +163,7 @@ importers:
         version: link:../packages/auto-save
       '@falconix/fep':
         specifier: 'catalog:'
-        version: 1.1.0(vue@3.5.25(typescript@5.9.3))
+        version: 1.1.1(vue@3.5.25(typescript@5.9.3))
       '@falconix/icon':
         specifier: workspace:^
         version: link:../packages/icon
@@ -233,7 +233,7 @@ importers:
     dependencies:
       '@falconix/fep':
         specifier: 'catalog:'
-        version: 1.1.0(vue@3.5.25(typescript@5.9.3))
+        version: 1.1.1(vue@3.5.25(typescript@5.9.3))
       vue:
         specifier: '3'
         version: 3.5.25(typescript@5.9.3)
@@ -379,7 +379,7 @@ importers:
     dependencies:
       '@falconix/fep':
         specifier: 'catalog:'
-        version: 1.1.0(vue@3.5.25(typescript@5.9.3))
+        version: 1.1.1(vue@3.5.25(typescript@5.9.3))
       '@falconix/icons-vue':
         specifier: workspace:^
         version: link:../icons-vue
@@ -407,7 +407,7 @@ importers:
     dependencies:
       '@falconix/fep':
         specifier: 'catalog:'
-        version: 1.1.0(vue@3.5.25(typescript@5.9.3))
+        version: 1.1.1(vue@3.5.25(typescript@5.9.3))
       vue:
         specifier: '3'
         version: 3.5.25(typescript@5.9.3)
@@ -432,7 +432,7 @@ importers:
     dependencies:
       '@falconix/fep':
         specifier: 'catalog:'
-        version: 1.1.0(vue@3.5.25(typescript@5.9.3))
+        version: 1.1.1(vue@3.5.25(typescript@5.9.3))
       axios:
         specifier: 'catalog:'
         version: 1.13.2
@@ -457,7 +457,7 @@ importers:
         version: link:../packages/auto-save
       '@falconix/fep':
         specifier: 'catalog:'
-        version: 1.1.0(vue@3.5.25(typescript@5.9.3))
+        version: 1.1.1(vue@3.5.25(typescript@5.9.3))
       '@falconix/icons-vue':
         specifier: workspace:^
         version: link:../packages/icons-vue
@@ -1080,8 +1080,8 @@ packages:
     resolution: {integrity: sha512-43/qtrDUokr7LJqoF2c3+RInu/t4zfrpYdoSDfYyhg52rwLV6TnOvdG4fXm7IkSB3wErkcmJS9iEhjVtOSEjjA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@falconix/fep@1.1.0':
-    resolution: {integrity: sha512-6BwcBwQqx9HCXegn8/Unjvyglo1uG8QTEbVaQ6pv8El0CxxYBBi0x0EgzIHNq06TMunjx1rs/qzTWyW+lG3t7A==}
+  '@falconix/fep@1.1.1':
+    resolution: {integrity: sha512-ga66BHFRrwsCcHxrroWbPmxEAoxBvafpFI80NiC7KHWLxgQRVWOHNZOURxd8LQqeDGFC0N8msCXh5F6rIq2EVA==}
     peerDependencies:
       vue: ^3.3.0
 
@@ -3159,8 +3159,8 @@ packages:
     resolution: {integrity: sha512-gvVijfZvn7R+2qyPX8mAuKcFGDf6Nc61GdvGafQsHL0sBIxfKzA+usWn4GFC/bk+QdwPUD4kWFJLhElipq+0VA==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
 
-  lodash-es@4.17.22:
-    resolution: {integrity: sha512-XEawp1t0gxSi9x01glktRZ5HDy0HXqrM0x5pXQM98EaI0NxO6jVM7omDOxsuEo5UIASAnm2bRp1Jt/e0a2XU8Q==}
+  lodash-es@4.17.23:
+    resolution: {integrity: sha512-kVI48u3PZr38HdYz98UmfPnXl2DXrpdctLrFLCd3kOx1xUkOmpFPx7gCWWM5MPkL/fD8zb+Ph0QzjGFs4+hHWg==}
 
   lodash-unified@1.0.3:
     resolution: {integrity: sha512-WK9qSozxXOD7ZJQlpSqOT+om2ZfcT4yO+03FuzAHD0wF6S0l0090LRPDx3vhTTLZ8cFKpBn+IOcVXK6qOcIlfQ==}
@@ -3198,6 +3198,9 @@ packages:
 
   lodash@4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
+
+  lodash@4.17.23:
+    resolution: {integrity: sha512-LgVTMpQtIopCi79SJeDiP0TfWi5CNEc/L/aRdTh3yIvmZXTnheWpKjSZhnvMl8iXbC1tFg9gdHHDMLoV7CnG+w==}
 
   log-update@6.1.0:
     resolution: {integrity: sha512-9ie8ItPR6tjY5uYJh8K/Zrv/RMZ5VOlOWvtZdEHYSTFKZfIBPQa9tOAEeAWhd+AnIneLJ22w5fjOYtoutpWq5w==}
@@ -5170,7 +5173,7 @@ snapshots:
       '@eslint/core': 0.17.0
       levn: 0.4.1
 
-  '@falconix/fep@1.1.0(vue@3.5.25(typescript@5.9.3))':
+  '@falconix/fep@1.1.1(vue@3.5.25(typescript@5.9.3))':
     dependencies:
       '@ctrl/tinycolor': 3.6.1
       '@element-plus/icons-vue': 2.3.2(vue@3.5.25(typescript@5.9.3))
@@ -5181,9 +5184,9 @@ snapshots:
       '@vueuse/core': 10.11.1(vue@3.5.25(typescript@5.9.3))
       async-validator: 4.2.5
       dayjs: 1.11.19
-      lodash: 4.17.21
-      lodash-es: 4.17.22
-      lodash-unified: 1.0.3(@types/lodash-es@4.17.12)(lodash-es@4.17.22)(lodash@4.17.21)
+      lodash: 4.17.23
+      lodash-es: 4.17.23
+      lodash-unified: 1.0.3(@types/lodash-es@4.17.12)(lodash-es@4.17.23)(lodash@4.17.23)
       memoize-one: 6.0.0
       normalize-wheel-es: 1.2.0
       vue: 3.5.25(typescript@5.9.3)
@@ -7111,13 +7114,13 @@ snapshots:
     dependencies:
       p-locate: 6.0.0
 
-  lodash-es@4.17.22: {}
+  lodash-es@4.17.23: {}
 
-  lodash-unified@1.0.3(@types/lodash-es@4.17.12)(lodash-es@4.17.22)(lodash@4.17.21):
+  lodash-unified@1.0.3(@types/lodash-es@4.17.12)(lodash-es@4.17.23)(lodash@4.17.23):
     dependencies:
       '@types/lodash-es': 4.17.12
-      lodash: 4.17.21
-      lodash-es: 4.17.22
+      lodash: 4.17.23
+      lodash-es: 4.17.23
 
   lodash.camelcase@4.3.0: {}
 
@@ -7138,6 +7141,8 @@ snapshots:
   lodash.upperfirst@4.3.1: {}
 
   lodash@4.17.21: {}
+
+  lodash@4.17.23: {}
 
   log-update@6.1.0:
     dependencies:

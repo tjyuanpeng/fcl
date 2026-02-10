@@ -194,3 +194,28 @@ const ref = ref('')
   </el-form-item>
 </template>
 ```
+
+## dropdown
+
+扩展了 `referenceElementProps` 属性，用来控制当 `split-button` 时，左侧按钮的属性
+
+`referenceElementProps` 会 merge `buttonProps` 的值
+
+```vue
+<script setup lang="ts">
+const ref = ref('')
+</script>
+
+<template>
+  <el-dropdown split-button :reference-element-props="{ disabled: true }">
+    edit
+    <template #dropdown>
+      <el-dropdown-menu>
+        <el-dropdown-item>
+          add
+        </el-dropdown-item>
+      </el-dropdown-menu>
+    </template>
+  </el-dropdown>
+</template>
+```

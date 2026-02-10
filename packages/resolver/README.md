@@ -47,10 +47,10 @@ export default defineConfig(() => {
 
 - 组件的样式文件放到根目录并命名为：`index.css`。例：`@falconix/xxx/index.css`
 
-如果组件不符合自动导入要求，请配置 `exclude` 属性用来排除组件
+如果组件不符合自动导入要求，请配置 `exclude` 属性用来排除组件。`exclude` 支持正则表达式
 
 ```typescript
 FepResolver({
-  exclude: '@falconix/xxx'
+  exclude: 'FBar'
 })
 ```

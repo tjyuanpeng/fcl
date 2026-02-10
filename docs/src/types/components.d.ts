@@ -11,6 +11,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    ElAlert: typeof import('@falconix/fep/es')['ElAlert']
     ElBreadcrumb: typeof import('@falconix/fep/es')['ElBreadcrumb']
     ElBreadcrumbItem: typeof import('@falconix/fep/es')['ElBreadcrumbItem']
     ElButton: typeof import('@falconix/fep/es')['ElButton']
@@ -36,6 +37,7 @@ declare module 'vue' {
     ElRow: typeof import('@falconix/fep/es')['ElRow']
     ElSegmented: typeof import('@falconix/fep/es')['ElSegmented']
     ElSelect: typeof import('@falconix/fep/es')['ElSelect']
+    ElSpace: typeof import('@falconix/fep/es')['ElSpace']
     ElSwitch: typeof import('@falconix/fep/es')['ElSwitch']
     ElTable: typeof import('@falconix/fep/es')['ElTable']
     ElTableColumn: typeof import('@falconix/fep/es')['ElTableColumn']
@@ -45,6 +47,7 @@ declare module 'vue' {
     ElTimeline: typeof import('@falconix/fep/es')['ElTimeline']
     ElTimelineItem: typeof import('@falconix/fep/es')['ElTimelineItem']
     ElTooltip: typeof import('@falconix/fep/es')['ElTooltip']
+    FAutoSave: typeof import('@falconix/auto-save')['FAutoSave']
     FSplitPanel: typeof import('@falconix/split-panel')['FSplitPanel']
     FSteps2: typeof import('@falconix/steps2')['FSteps2']
   }
