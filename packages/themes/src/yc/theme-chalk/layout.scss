@@ -1,0 +1,112 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  transition:
+    color 0.5s,
+    background-color 0.5s;
+  line-height: 1.6;
+  font-family:
+    'PingFang SC',
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    'Fira Sans',
+    'Droid Sans',
+    'Helvetica Neue',
+    sans-serif;
+  font-size: 14px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#app {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.main-layout {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+
+  > .sidebar {
+    width: 238px;
+    height: 100%;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 24px;
+    background-color: #fafaff;
+    padding: 24px 9px;
+
+    .sidebar-header {
+      font-size: 20px;
+      font-weight: 500;
+      color: #161823;
+      padding-left: 27px;
+    }
+    .el-menu {
+      width: 100%;
+      font-size: 16px;
+      border-color: transparent;
+      background-color: transparent;
+    }
+    .el-menu-item {
+      border-radius: 30px;
+      height: 48px;
+      line-height: 48px;
+      font-size: 16px;
+
+      &.is-active {
+        font-weight: 500;
+        background-color: #e0e7ff;
+      }
+    }
+    .el-menu--vertical:not(.el-menu--collapse):not(.el-menu--popup-container) .el-menu-item,
+    .el-menu--vertical:not(.el-menu--collapse):not(.el-menu--popup-container) .el-sub-menu__title,
+    .el-menu--vertical:not(.el-menu--collapse):not(.el-menu--popup-container) .el-menu-item-group__title {
+      padding: 0 24px 0 40px;
+    }
+    .el-menu-item + .el-menu-item {
+      margin-top: 6px;
+    }
+  }
+  > .main-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: hidden;
+    padding: 24px 24px 0 24px;
+
+    > .second-level-tabs {
+      margin-bottom: 15px;
+    }
+
+    > .scroll-view {
+      padding-bottom: 24px;
+      height: 100%;
+      width: 100%;
+      overflow-x: auto;
+      flex: 1;
+      > .content-area {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        min-width: 1200px;
+      }
+    }
+  }
+}

@@ -1,0 +1,211 @@
+/** 组件样式 */
+
+/** search-line 筛选行 */
+.searchbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.searchbar__input {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 6px;
+  .el-select,
+  .el-input,
+  .people-tree-selector {
+    width: var(--yc-filter-inline-input-width);
+  }
+  .el-date-editor.el-range-editor.el-input__wrapper {
+    flex-grow: 0;
+  }
+}
+.searchbar__action {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/** radio group indy  */
+.el-radio-group--indy {
+  .el-radio-button {
+    color: #fff;
+
+    .el-radio-button__inner {
+      border-radius: var(--el-border-radius-round) !important;
+      border: 0;
+      padding: 8px 15px;
+      font-size: 14px;
+    }
+
+    &.is-active .el-radio-button__original-radio:not(:disabled) + .el-radio-button__inner {
+      background-color: var(--el-color-primary-light-9);
+      border-color: var(--el-color-primary-light-9);
+      color: var(--el-color-primary);
+      box-shadow: none;
+      font-weight: 1rem;
+    }
+  }
+}
+/** radio group indy end */
+
+/** 操作历史 */
+.operation-history {
+  &.el-collapse {
+    border: 0;
+  }
+  .el-collapse-item {
+    .el-collapse-item__header {
+      padding: 15px;
+      margin-top: 6px;
+      border-radius: var(--el-border-radius-base);
+      background-color: var(--el-fill-color-extra-light);
+      height: auto;
+      border: 0;
+      transition: background-color 0.3s;
+
+      &.is-active {
+        background-color: var(--el-color-primary-light-7);
+      }
+    }
+
+    .el-collapse-item__wrap {
+      border-bottom: 0;
+    }
+    .el-collapse-item__content {
+      padding: 12px 9px;
+    }
+
+    &.is-disabled {
+      .el-collapse-item__header {
+        cursor: default;
+        .el-collapse-item__arrow {
+          display: none;
+        }
+      }
+    }
+    &:first-child .el-collapse-item {
+      margin-top: 0;
+    }
+  }
+
+  .el-timeline-item:last-child {
+    padding-bottom: 0;
+    .el-timeline-item__node--normal {
+      width: 7px;
+      height: 7px;
+      border-width: 2px;
+      background-color: #fff;
+      left: 1px;
+      top: 0.4em;
+    }
+  }
+  .record {
+    line-height: 1.5rem;
+    .content {
+      color: var(--el-text-color-regular);
+      display: inline-flex;
+      justify-content: flex-start;
+    }
+    .info {
+      color: var(--el-text-color-secondary);
+    }
+  }
+
+  .node-header {
+    .title {
+      color: var(--el-text-color-regular);
+    }
+    .subtitle {
+      color: var(--el-text-color-secondary);
+    }
+  }
+  .node-body {
+    .audit {
+      margin-top: 15px;
+      display: flex;
+      flex-direction: row;
+      gap: 6px;
+      .content {
+        flex: 1;
+        .desc {
+          margin-left: 6px;
+        }
+        .time {
+          color: var(--el-text-color-secondary);
+        }
+        .remark {
+          padding: 12px;
+          border-radius: 3px 12px 12px 12px;
+          background-color: var(--el-fill-color-light);
+          color: var(--el-text-color-secondary);
+        }
+      }
+    }
+  }
+}
+/** 操作历史 end */
+
+/** 导航步骤 start */
+.nav-step.el-steps--simple {
+  background-color: transparent;
+  padding: 0;
+  .el-step__head {
+    display: none;
+  }
+
+  .el-step__title {
+    display: inline-flex;
+    align-items: center;
+    line-height: unset;
+    gap: 9px;
+    .index {
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+      border-radius: 50%;
+      background: var(--el-fill-color-light);
+      color: var(--el-text-color-secondary);
+      font-size: 16px;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    .text {
+      color: var(--el-text-color-secondary);
+      font-size: 18px;
+    }
+
+    &.is-process {
+      .index {
+        background-color: var(--el-color-primary);
+        color: var(--el-color-white);
+      }
+      .text {
+        color: var(--el-color-primary);
+      }
+    }
+  }
+  .el-step.is-simple:not(:last-of-type) .el-step__title {
+    max-width: none;
+  }
+
+  .el-step__arrow {
+    position: relative;
+    min-width: 80px;
+    &::before {
+      display: none;
+    }
+    &::after {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      content: '';
+      width: calc(100% - 20px);
+      height: 1px;
+      background-color: var(--el-border-color);
+    }
+  }
+}
+/** 导航步骤 end */
