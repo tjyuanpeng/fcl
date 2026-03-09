@@ -1,7 +1,7 @@
 {
   "name": "@falconix/themes",
-  "version": "1.0.27",
-  "description": "鹰才皮肤",
+  "version": "1.0.0",
+  "description": "基于Element Plus的样式覆盖",
   "author": "YC Team",
   "license": "MIT",
   "repository": {
