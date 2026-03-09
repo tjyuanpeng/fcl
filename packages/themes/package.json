@@ -23,7 +23,10 @@
     "dist"
   ],
   "scripts": {
-    "build": "vite build"
+    "dev": "vite",
+    "build": "vite build",
+    "typecheck": "vue-tsc --noEmit",
+    "lint": "eslint ."
   },
   "peerDependencies": {
     "element-plus": "^2.13.0"
