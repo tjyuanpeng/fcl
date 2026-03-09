@@ -1,0 +1,94 @@
+@use 'sass:map';
+@use 'element-plus/theme-chalk/src/mixins/function.scss' as *;
+
+$colors_: (
+  'primary': (
+    'base': #5c67e5,
+  ),
+  'success': (
+    'base': #4ebf13,
+  ),
+  'warning': (
+    'base': #ff7716,
+  ),
+  'danger': (
+    'base': #f20c32,
+  ),
+  'error': (
+    'base': #f20c32,
+  ),
+);
+
+$text-color_: (
+  'primary': #292a33,
+  'regular': #5c5e73,
+  'secondary': #8d8fa6,
+  'placeholder': #bcbdcc,
+  'disabled': #bcbdcc,
+);
+
+$border-color_: (
+  '': #e6e7f2,
+  'light': #f5f6fc,
+  'lighter': #f5f6fc,
+);
+
+$fill-color_: (
+  'light': #f5f6fc,
+);
+
+$border-radius_: (
+  'base': 9px,
+);
+
+$disabled_: (
+  'text-color': getCssVar('text-color', 'disabled'),
+);
+
+$common-component-size_: (
+  'large': 48px,
+  'default': 40px,
+  'small': 30px,
+);
+
+$button_: (
+  hover-text-color: getCssVar('color-primary-light-5'),
+);
+
+$tag_: (
+  'border-radius': 6px,
+  'border-radius-rounded': 12px,
+);
+
+$table_: (
+  'header-bg-color': #fafaff,
+  'header-text-color': getCssVar('text-color-secondary'),
+  'text-color': getCssVar('text-color-primary'),
+);
+$pagination_: (
+  'button-width': 30px,
+  'button-height': 30px,
+  'border-radius': 9px,
+  'item-gap': 6px,
+  'text-color': getCssVar('text-color-secondary'),
+  'button-color': getCssVar('text-color-regular'),
+  'hover-color': getCssVar('color-primary'),
+);
+
+$popover_: (
+  'padding': 8px,
+);
+
+$dialog_: (
+  'title-font-size': getCssVar('font-size-medium'),
+  'border-radius': 18px,
+  'padding-primary': 18px,
+);
+
+$messagebox_: (
+  'border-radius': 18px,
+);
+
+$timeline_: (
+  'node-size-normal': 5px,
+);
