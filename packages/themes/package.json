@@ -25,8 +25,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "typecheck": "vue-tsc --noEmit",
     "lint": "eslint ."
+
   },
   "peerDependencies": {
     "@falconix/fep": "catalog:"
