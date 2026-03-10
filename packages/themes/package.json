@@ -29,7 +29,7 @@
     "lint": "eslint ."
   },
   "peerDependencies": {
-    "element-plus": "^2.13.0"
+    "@falconix/fep": "catalog:"
   },
   "devDependencies": {
     "sass": "catalog:",

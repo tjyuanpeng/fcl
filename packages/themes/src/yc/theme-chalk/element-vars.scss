@@ -1,5 +1,5 @@
 @use 'sass:map';
-@use 'element-plus/theme-chalk/src/mixins/function.scss' as *;
+@use '@falconix/fep/theme-chalk/src/mixins/function.scss' as *;
 
 $colors_: (
   'primary': (
