@@ -32,7 +32,7 @@
     "@falconix/fep": "catalog:"
   },
   "devDependencies": {
-    "sass": "catalog:",
+    "sass-embedded": "catalog:",
     "vite": "catalog:",
     "vite-plugin-lib-inject-css": "catalog:",
     "vite-plugin-static-copy": "catalog:"
