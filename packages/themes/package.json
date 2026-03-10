@@ -1,6 +1,6 @@
 {
   "name": "@falconix/themes",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "基于Element Plus的样式覆盖",
   "author": "YC Team",
   "license": "MIT",
@@ -26,7 +26,6 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint ."
-
   },
   "peerDependencies": {
     "@falconix/fep": "catalog:"
