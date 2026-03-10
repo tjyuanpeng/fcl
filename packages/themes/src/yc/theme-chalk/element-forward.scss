@@ -1,0 +1,20 @@
+@use './element-vars.scss' as *;
+
+// You should use them in scss, because we calculate it by sass.
+// comment next lines to use default color
+@forward '@falconix/fep/theme-chalk/src/common/var.scss' with (
+  // do not use same name, it will override.
+  $colors: $colors_,
+  $text-color: $text-color_,
+  $border-color: $border-color_,
+  $fill-color: $fill-color_,
+  $border-radius: $border-radius_,
+  $common-component-size: $common-component-size_,
+  $button: $button_,
+  $tag: $tag_,
+  $table: $table_,
+  $pagination: $pagination_,
+  $popover: $popover_,
+  $dialog: $dialog_,
+  $timeline: $timeline_
+);
