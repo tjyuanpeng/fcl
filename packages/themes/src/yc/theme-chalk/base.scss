@@ -1,9 +1,3 @@
-:root {
-  --yc-filter-inline-input-width: 220px;
-}
-a {
-  color: var(--el-color-primary);
-}
 /* 修改整个滚动条的样式 */
 ::-webkit-scrollbar {
   width: 6px; /* 对于垂直滚动条，设置宽度 */
@@ -18,18 +12,36 @@ a {
 
 /* 修改滚动条滑块的样式 */
 ::-webkit-scrollbar-thumb {
-  background-color: rgba(144, 147, 153, 0.3); /* 滑块的背景颜色 */
-  border-radius: 10px; /* 滑块的圆角 */
+  background-color: rgb(144 147 153 / 30%); /* 滑块的背景颜色 */
   border: none; /* 滑块的边框和颜色 */
+  border-radius: 10px; /* 滑块的圆角 */
 }
 
 /* 修改滚动条滑块在悬停时的样式 */
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(144, 147, 153, 0.5); /* 滑块悬停时的背景颜色 */
+  background: rgb(144 147 153 / 50%); /* 滑块悬停时的背景颜色 */
 }
 
-.dialog-footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+:root {
+  --yc-filter-inline-input-width: 200px;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#app {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+a {
+  color: var(--el-color-primary);
 }
