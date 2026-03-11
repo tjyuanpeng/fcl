@@ -6,14 +6,14 @@
 
 增加了对字体和文本颜色的默认指定
 
+请不要在项目的任何代码中再次指定字体
+
 ```css
 :root {
   font-family: getCssVar('font-family');
   color: var(--el-text-color-primary);
 }
 ```
-
-**_请不要在项目的任何代码中再次指定字体_**
 
 ## icon
 
@@ -219,3 +219,71 @@ const ref = ref('')
   </el-dropdown>
 </template>
 ```
+
+## select
+
+- count-tags: boolean
+
+  多选模式下，显示已选中的数量
+
+  屏蔽 `collapse-tags`、`collapse-tags-tooltip`、`max-collapse-tags` 三个属性的作用
+
+```vue
+<template>
+  <div>{{ multiSelect }}</div>
+  <br>
+  <el-select
+    v-model="value"
+    :options="options"
+    multiple
+    count-tags
+  />
+</template>
+```
+
+- lazy-write-back: boolean
+
+  多选模式下，在值改变后不立即更新 `v-model`，点击确定后才更新 `v-model`
+
+```vue
+<template>
+  <div>{{ multiSelect }}</div>
+  <br>
+  <el-select
+    v-model="value"
+    :options="options"
+    multiple
+    lazy-write-back
+  />
+</template>
+```
+
+- #option-label="{ option: Option, index: number }"`
+
+  选项自定义展示插槽
+
+  需要注意的是，插槽内容需要为行内元素(inline/inline-block/inline-flex)
+  - option: any
+
+    选项对象
+
+  - index: number
+
+    选项索引值
+
+```vue
+<template>
+  <el-select
+    v-model="value"
+    :options="options"
+  >
+    <template #option-label="{ option }">
+      <span>{{ option.label }}-{{ option.subText }}</span>
+    </template>
+  </el-select>
+</template>
+```
+
+完成结合三者的demo：
+
+<demo vue="select.vue" />
