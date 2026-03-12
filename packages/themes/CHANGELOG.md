@@ -1,5 +1,11 @@
 # @falconix/themes
 
+## 2.0.1
+
+### Patch Changes
+
+- 2fefbf4: 更新表格样式
+
 ## 2.0.0
 
 ### Major Changes
