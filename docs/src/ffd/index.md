@@ -20,7 +20,7 @@ FFD 采用 chrome 扩展 的形式
 
 ## 下载
 
-[点击此处下载](https://alidocs.dingtalk.com/i/nodes/r1R7q3QmWe4p7bMnIz0orDlY8xkXOEP2?rnd=0.22878570218067162)
+[点击此处下载](/downloads/ffd.zip)
 
 ## 安装
 
