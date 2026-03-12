@@ -1,5 +1,11 @@
 # @falconix/icons-vue
 
+## 1.0.4
+
+### Patch Changes
+
+- 2fefbf4: 添加51供应商项目icon
+
 ## 1.0.3
 
 ### Patch Changes
