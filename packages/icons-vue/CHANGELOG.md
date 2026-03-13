@@ -1,5 +1,11 @@
 # @falconix/icons-vue
 
+## 1.0.5
+
+### Patch Changes
+
+- 2c0ed26: 统一尺寸
+
 ## 1.0.4
 
 ### Patch Changes
