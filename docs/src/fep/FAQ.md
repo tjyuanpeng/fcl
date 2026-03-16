@@ -10,7 +10,7 @@
 
 如果不使用 `fep-resolver`，在手动引入相关ts的同时，需同时引入相关组件的样式，否则会导致样式错乱
 
-## 我可以在 vue template 中使用组件的全局函数吗
+## 使用@falconix/fep-resolver，可以在 vue template 中使用组件的全局函数吗
 
 不可以
 
@@ -22,14 +22,36 @@ const clear = () => ElMessage.closeAll()
 </script>
 
 <template>
-  <!-- YES -->
+  <!-- Correct -->
   <el-button style="margin-left: auto" @click="clear">
     clear all
   </el-button>
 
-  <!-- NO -->
+  <!-- Wrong -->
   <el-button style="margin-left: auto" @click="ElMessage.closeAll()">
     clear all
+  </el-button>
+</template>
+```
+
+## 使用@falconix/fep-resolver，有时候组件的样式没有生效？
+
+可能是由于手动引入组件导致的
+
+手动导入组件，导致 `fep-resolver` 跳过自动导入组件及其样式，导致样式丢失
+
+请手动删除相关组件的import
+
+```vue
+<script>
+// do not import component manually
+import { ElButton } from '@falconix/fep/components'
+</script>
+
+<template>
+  <!-- Correct -->
+  <el-button>
+    btn
   </el-button>
 </template>
 ```
