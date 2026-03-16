@@ -1,5 +1,11 @@
 # @falconix/icons-vue
 
+## 1.0.6
+
+### Patch Changes
+
+- 3df6979: 添加 ym-quesheng-wenjian
+
 ## 1.0.5
 
 ### Patch Changes
