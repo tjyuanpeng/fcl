@@ -9,7 +9,7 @@ catalog:
   '@commitlint/cli': ^20.2.0
   '@commitlint/config-conventional': ^20.2.0
   '@element-plus/icons-vue': ^2.3.2
-  '@falconix/fep': ^1.2.2
+  '@falconix/fep': ^1.2.3
   '@types/fs-extra': 11.0.4
   '@types/node': ^24.10.1
   '@types/semver': ^7.7.1

@@ -47,6 +47,7 @@ declare module 'vue' {
     ElTimeline: typeof import('@falconix/fep/es')['ElTimeline']
     ElTimelineItem: typeof import('@falconix/fep/es')['ElTimelineItem']
     ElTooltip: typeof import('@falconix/fep/es')['ElTooltip']
+    ElTreeSelect: typeof import('@falconix/fep/es')['ElTreeSelect']
     FAutoSave: typeof import('@falconix/auto-save')['FAutoSave']
     FSplitPanel: typeof import('@falconix/split-panel')['FSplitPanel']
     FSteps2: typeof import('@falconix/steps2')['FSteps2']
