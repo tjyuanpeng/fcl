@@ -1,7 +1,7 @@
 {
   "name": "@falconix/icons-vue",
   "type": "module",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "falconix icons svg",
   "exports": {
     ".": "./dist/index.js",

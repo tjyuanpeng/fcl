@@ -1,5 +1,11 @@
 # @falconix/icons-vue
 
+## 1.0.7
+
+### Patch Changes
+
+- 18351a4: feat: 添加文件类型icon
+
 ## 1.0.6
 
 ### Patch Changes
