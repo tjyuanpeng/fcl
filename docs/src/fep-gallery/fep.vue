@@ -361,77 +361,77 @@ function close() {
 const dialogVisible = ref(false)
 const editTableHasError = ref(false)
 const editTrigger = ref(true)
-// const treeSelectValue = ref()
-// const treeData = [
-//   {
-//     value: '1',
-//     label: 'Level one 1',
-//     children: [
-//       {
-//         value: '1-1',
-//         label: 'Level two 1-1',
-//         children: [
-//           {
-//             value: '1-1-1',
-//             label: 'Level three 1-1-1',
-//           },
-//         ],
-//       },
-//     ],
-//   },
-//   {
-//     value: '2',
-//     label: 'Level one 2',
-//     children: [
-//       {
-//         value: '2-1',
-//         label: 'Level two 2-1',
-//         children: [
-//           {
-//             value: '2-1-1',
-//             label: 'Level three 2-1-1',
-//           },
-//         ],
-//       },
-//       {
-//         value: '2-2',
-//         label: 'Level two 2-2',
-//         children: [
-//           {
-//             value: '2-2-1',
-//             label: 'Level three 2-2-1',
-//           },
-//         ],
-//       },
-//     ],
-//   },
-//   {
-//     value: '3',
-//     label: 'Level one 3',
-//     children: [
-//       {
-//         value: '3-1',
-//         label: 'Level two 3-1',
-//         children: [
-//           {
-//             value: '3-1-1',
-//             label: 'Level three 3-1-1',
-//           },
-//         ],
-//       },
-//       {
-//         value: '3-2',
-//         label: 'Level two 3-2',
-//         children: [
-//           {
-//             value: '3-2-1',
-//             label: 'Level three 3-2-1',
-//           },
-//         ],
-//       },
-//     ],
-//   },
-// ]
+const treeSelectValue = ref()
+const treeData = [
+  {
+    value: '1',
+    label: 'Level one 1',
+    children: [
+      {
+        value: '1-1',
+        label: 'Level two 1-1',
+        children: [
+          {
+            value: '1-1-1',
+            label: 'Level three 1-1-1',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    value: '2',
+    label: 'Level one 2',
+    children: [
+      {
+        value: '2-1',
+        label: 'Level two 2-1',
+        children: [
+          {
+            value: '2-1-1',
+            label: 'Level three 2-1-1',
+          },
+        ],
+      },
+      {
+        value: '2-2',
+        label: 'Level two 2-2',
+        children: [
+          {
+            value: '2-2-1',
+            label: 'Level three 2-2-1',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    value: '3',
+    label: 'Level one 3',
+    children: [
+      {
+        value: '3-1',
+        label: 'Level two 3-1',
+        children: [
+          {
+            value: '3-1-1',
+            label: 'Level three 3-1-1',
+          },
+        ],
+      },
+      {
+        value: '3-2',
+        label: 'Level two 3-2',
+        children: [
+          {
+            value: '3-2-1',
+            label: 'Level three 3-2-1',
+          },
+        ],
+      },
+    ],
+  },
+]
 </script>
 
 <template>
@@ -539,22 +539,34 @@ const editTrigger = ref(true)
         />
         <el-select
           v-model="multiSelect"
-          size="large"
           :options="options"
           placeholder="Select"
           style="width: 240px"
           multiple
         />
+        <el-select
+          v-model="multiSelect"
+          size="large"
+          :options="options"
+          placeholder="Select"
+          style="width: 240px"
+          multiple
+          count-tags
+          lazy-write-back
+        />
       </div>
 
-      <!-- <h3>tree-select</h3>
+      <h3>tree-select</h3>
       <div class="box">
         <el-tree-select
           v-model="treeSelectValue"
           :data="treeData"
+          multiple
+          show-checkbox
+          placeholder="Tree Select"
           style="width: 240px"
         />
-      </div> -->
+      </div>
 
       <h3>cascader</h3>
       <div class="box">
