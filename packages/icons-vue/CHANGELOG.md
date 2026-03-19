@@ -1,5 +1,11 @@
 # @falconix/icons-vue
 
+## 1.0.8
+
+### Patch Changes
+
+- fix(packages/icons-vue): 修复 word文件图标错误
+
 ## 1.0.7
 
 ### Patch Changes
