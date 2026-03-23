@@ -1,5 +1,11 @@
 # @falconix/themes
 
+## 2.0.2
+
+### Patch Changes
+
+- d6c89d6: 更新.el-radio-group--indy的样式
+
 ## 2.0.1
 
 ### Patch Changes
