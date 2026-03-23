@@ -28,22 +28,24 @@
 
 /** radio group indy  */
 .el-radio-group--indy {
+  gap: 15px;
   .el-radio-button {
     color: #fff;
 
     .el-radio-button__inner {
-      border-radius: var(--el-border-radius-round) !important;
       border: 0;
-      padding: 8px 15px;
       font-size: 14px;
+      outline: none;
+      color: var(--el-text-color-secondary);
+      box-shadow: none;
+      padding: 6px;
     }
 
     &.is-active .el-radio-button__original-radio:not(:disabled) + .el-radio-button__inner {
-      background-color: var(--el-color-primary-light-9);
-      border-color: var(--el-color-primary-light-9);
       color: var(--el-color-primary);
+      background-color: transparent;
+      border: 0;
       box-shadow: none;
-      font-weight: 1rem;
     }
   }
 }
