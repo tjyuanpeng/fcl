@@ -19,31 +19,31 @@ $colors_: (
   ),
 );
 
-$text-color_: (
+/* $text-color_: (
   'primary': #292a33,
   'regular': #5c5e73,
   'secondary': #8d8fa6,
   'placeholder': #bcbdcc,
   'disabled': #bcbdcc,
-);
+); */
 
-$border-color_: (
+/* $border-color_: (
   '': #e6e7f2,
   'light': #f5f6fc,
   'lighter': #f5f6fc,
-);
+); */
 
-$fill-color_: (
+/* $fill-color_: (
   'light': #f5f6fc,
-);
+); */
 
 $border-radius_: (
   'base': 9px,
 );
 
-$disabled_: (
+/* $disabled_: (
   'text-color': getCssVar('text-color', 'disabled'),
-);
+); */
 
 $common-component-size_: (
   'large': 48px,
@@ -51,28 +51,28 @@ $common-component-size_: (
   'small': 30px,
 );
 
-$button_: (
+/* $button_: (
   hover-text-color: getCssVar('color-primary-light-5'),
-);
+); */
 
 $tag_: (
   'border-radius': 6px,
   'border-radius-rounded': 12px,
 );
 
-$table_: (
+/* $table_: (
   'header-bg-color': #fafaff,
   'header-text-color': getCssVar('text-color-secondary'),
   'text-color': getCssVar('text-color-primary'),
-);
+); */
 $pagination_: (
   'button-width': 30px,
   'button-height': 30px,
   'border-radius': 9px,
-  'item-gap': 6px,
-  'text-color': getCssVar('text-color-secondary'),
+  'item-gap': 6px
+    /* 'text-color': getCssVar('text-color-secondary'),
   'button-color': getCssVar('text-color-regular'),
-  'hover-color': getCssVar('color-primary'),
+  'hover-color': getCssVar('color-primary'), */,
 );
 
 $popover_: (
