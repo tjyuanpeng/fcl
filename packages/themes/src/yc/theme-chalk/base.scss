@@ -23,14 +23,13 @@
 }
 
 :root {
-  --yc-filter-inline-input-width: 200px;
+  --yc-inline-input-width: 200px;
 }
 
 html,
 body {
   height: 100%;
   width: 100%;
-  overflow: hidden;
   font-size: 14px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -39,7 +38,6 @@ body {
 #app {
   height: 100%;
   width: 100%;
-  overflow: hidden;
 }
 
 a {

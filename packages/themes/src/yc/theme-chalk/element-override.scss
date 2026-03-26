@@ -1,6 +1,6 @@
 @use './element-index.scss';
 /* el-button begin */
-.el-button.is-plain {
+/* .el-button.is-plain {
   --el-button-bg-color: #fff;
   --el-button-hover-border-color: var(--el-color-primary-light-3);
   --el-button-hover-text-color: var(--el-color-primary-light-3);
@@ -33,7 +33,7 @@
   background-color: var(--el-disabled-bg-color) !important;
   border-color: var(--el-disabled-border-color) !important;
   color: var(--el-disabled-text-color) !important;
-}
+} */
 .el-button:not(.is-circle):not(.el-button--small):not(.is-link) {
   min-width: 90px;
 }
