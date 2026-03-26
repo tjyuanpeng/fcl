@@ -1,5 +1,11 @@
 # @falconix/themes
 
+## 2.0.3
+
+### Patch Changes
+
+- 14c9887: 优化yc样式
+
 ## 2.0.2
 
 ### Patch Changes
