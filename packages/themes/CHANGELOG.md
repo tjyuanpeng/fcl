@@ -1,5 +1,12 @@
 # @falconix/themes
 
+## 2.0.4
+
+### Patch Changes
+
+- 9e63382: 修改圆角弧度
+  优化tab样式
+
 ## 2.0.3
 
 ### Patch Changes
