@@ -61,6 +61,9 @@
 /* el-tag end */
 
 /* el-tabs begin */
+.el-tabs {
+  --el-tabs-item-font-size: var(--el-font-size-medium);
+}
 .el-tabs__header {
   margin-bottom: 0;
 }
@@ -89,7 +92,7 @@
 .el-tabs__item {
   color: var(--el-text-color-secondary);
   align-items: flex-start;
-  font-size: var(--el-font-size-large);
+  font-size: var(--el-tabs-item-font-size);
   font-weight: 400;
   &.is-active {
     font-weight: 500;
