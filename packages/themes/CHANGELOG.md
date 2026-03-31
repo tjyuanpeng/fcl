@@ -1,5 +1,11 @@
 # @falconix/themes
 
+## 2.0.5
+
+### Patch Changes
+
+- d09dc68: 修复鹰才时间线样式
+
 ## 2.0.4
 
 ### Patch Changes
