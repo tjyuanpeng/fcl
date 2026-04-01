@@ -1,5 +1,9 @@
 @use './element-index.scss';
 /* el-button begin */
+.el-button {
+  font-weight: var(--el-font-weight-primary);
+}
+
 /* .el-button.is-plain {
   --el-button-bg-color: #fff;
   --el-button-hover-border-color: var(--el-color-primary-light-3);
@@ -203,9 +207,19 @@
   padding-bottom: 15px;
 }
 .el-dialog__title {
-  font-weight: 500;
+  font-weight: var(--el-font-weight-primary);
 }
 .el-dialog__headerbtn .el-dialog__close {
   color: var(--el-text-color-secondary);
 }
 /* el-dialog end */
+
+/**
+ * el-form begin
+ */
+.el-form-item--label-top .el-form-item__label {
+  font-weight: var(--el-font-weight-primary);
+}
+/**
+ * el-form end
+ */
