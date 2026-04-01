@@ -211,3 +211,28 @@
   }
 }
 /** 导航步骤 end */
+
+/**
+ * special-input begin
+ */
+.special-input {
+  position: relative;
+  .el-input__wrapper {
+    justify-content: flex-start;
+    display: flex;
+    .el-input__inner {
+      display: block;
+      flex: 1;
+    }
+  }
+  .el-input__suffix {
+    margin-right: 70px;
+    .el-button {
+      height: 32px;
+      min-width: 74px !important;
+      position: absolute;
+      top: 4px;
+      right: 4px;
+    }
+  }
+}
