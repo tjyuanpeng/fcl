@@ -1,115 +1,126 @@
-# @falconix/use-ajax
+# @falconix/micro-app
 
-基于 axios 的 http 请求客户端
+falconix 微前端应用
 
 ## 安装
 
 ```shell
-pnpm i @falconix/use-ajax
+pnpm i @falconix/micro-app
 ```
 
-## 使用
+## 类型定义
 
-基于 [axios](https://axios-http.com/zh/docs/intro) 进行扩展
+### 全局变量补充
 
-基本使用方法请参考 `axios` 文档
+为 `wujie` / `wujie-x` 的全局变量补充类型定义
+
+### 额外类型
+
+提供两个额外的类型，用于扩展类型
+
+- $WujieXProps
+
+  用于描述
 
 ```ts
-import { setUseAjaxGlobalConfig, useAjax } from '@falconix/use-ajax'
+interface $WujieXProps {
+  username: string
+}
+```
 
-setUseAjaxGlobalConfig({
-  baseURL: '/api',
-  showMessageTip: msg => ElMessage({ message: msg, type: 'error' }),
+- $WujieXEventMap
+
+  用于描述 事件 以及 对应的回调函数 的类型
+
+```ts
+interface $WujieXEventMap {
+  'event-name': (data: { key: string }) => void
+}
+```
+
+## Hooks
+
+### use-micro-app
+
+微应用使用的相关方法
+
+```ts
+import { useMicroApp } from '@falconix/micro-app'
+
+const microApp = useMicroApp()
+
+microApp.isInMicroapp() // 是否在微应用中运行
+microApp.isNewFramework() // 是否在新框架中运行
+microApp.isFrameMode() // 是否在 frame 模式中运行
+
+microApp.isClient() // 是否在客户端运行
+microApp.getClientInfo() // 获取客户端信息
+
+microApp.getToken() // 获取 token
+microApp.getButtonPermissions() // 获取 按钮权限
+microApp.getMenuPermissions() // 获取 菜单权限
+microApp.getCurrentEntityId() // 获取当前实体ID
+
+microApp.openNewWindow('/web/test?key=value', { frameMode: true }) // 在新窗口打开链接
+microApp.pushMain('/web/test?key=value') // 主应用路由 push
+microApp.replaceMain('/web/test?key=value') // 主应用路由 replace
+
+microApp.$emit('event-name', { key: 'value', }) // 触发事件
+microApp.$on('event-name', (data) => {}) // 监听事件
+```
+
+### emit-event
+
+用于触发事件，在 `$WujieXEventMap` 中定义的事件类型
+
+```ts
+import { useMicroApp } from '@falconix/micro-app'
+
+const microApp = useMicroApp()
+
+microApp.$emit('event-name', {
+  key: 'value',
 })
-async function test() {
-  const { result } = await useAjax.post({
-    url: '/foo/bar',
-  })
-}
-test()
 ```
 
-<demo vue="use-ajax.vue" />
+### on-event
 
-## 配置项
-
-`use-ajax` 扩展了 `axios` 配置项
+用于监听事件，在 `$WujieXEventMap` 中定义的事件类型
 
 ```ts
-declare module 'axios' {
-  interface AxiosRequestConfig {
-    checkBizError?: ((response: AxiosResponse) => boolean) | false
-    noErrorThrown?: boolean
-    getMessage?: (response: AxiosResponse) => string
-    showMessageTip?: ((msg: string) => void) | false
-    checkAuthError?: ((error: any) => boolean) | false
-    gotoLogin?: () => void | false
-  }
-  interface AxiosResponse<T> {
-    error?: AxiosError
-    result: T
-    msg: string
-  }
-}
+import { useMicroApp } from '@falconix/micro-app'
 
-// default values:
-const globalConfig: AxiosRequestConfig = {
-  checkBizError: response => response.data.code !== 200,
-  noErrorThrown: false,
-  getMessage: response => response.data.message ?? response.data.msg ?? '网络异常，请稍后再试',
-  showMessageTip: msg => ElMessage({ message: msg, type: 'error' }),
-  checkAuthError: error => error?.response?.data?.code === 403,
-  gotoLogin: () => {
-    localStorage.removeItem('token')
-    location.href = '/login'
-  },
-}
+const microApp = useMicroApp()
+
+microApp.$on('event-name', (data) => {
+  console.log(data) // { key: 'value' }
+})
 ```
 
-- checkBizError: 检测业务错误
+### use-micro-app-props
 
-  如果传递`false`，则禁止检测业务错误；可以传入函数覆盖默认逻辑
-
-- noErrorThrown: 禁止抛出异常
-
-  如果传递`true`，遇到错误后不再抛出异常，而是在返回值增加`error`属性，表明是否有错误发生
-
-- getMessage: 设置如何解析消息
-
-- showMessageTip: 如何显示消息提示
-
-  如果传递`false`，则禁止显示消息提示；可以传入函数覆盖默认逻辑
-
-- checkAuthError: 是否检测认证错误消息
-
-  如果传递`false`，则禁止检测认证错误；可以传入函数覆盖默认逻辑
-
-- gotoLogin: 检测到认证错误消息后的行为
-
-  如果传递`false`，则禁止默认逻辑；可以传入函数覆盖默认逻辑
-
-## 方法
-
-### useAjax
+用于获取传递给微应用的 props
 
 ```ts
-function useAjax<T = any, R = AxiosResponse<T>, D = any>(config: AxiosRequestConfig<D>): Promise<R>
+import { useMicroAppProps } from '@falconix/micro-app'
+
+const props = useMicroAppProps()
+console.log(props.username)
 ```
 
-### useAjax.get、useAjax.post、useAjax.put、useAjax.delete
+### on-micro-app-activated
 
-作为`useAjax`的快捷函数存在，对`method`属性分别进行设置
-
-```ts
-useAjax.post({ url: '/foo/bar' })
-// 等价于
-useAjax({ url: '/foo/bar', method: 'post' })
-```
-
-### setUseAjaxGlobalConfig
-
-设置全局配置项
+用于监听微应用激活事件
 
 ```ts
-function setUseAjaxGlobalConfig(config: AxiosRequestConfig): void
+import { onMicroAppActivated } from '@falconix/micro-app'
+
+onMicroAppActivated(() => {
+  console.log('Micro app was activated.')
+})
+
+// Option: immediate
+onMicroAppActivated(() => {}, {
+  immediate: true, // boolean | 'onMounted' | 'onActivated'
+})
 ```

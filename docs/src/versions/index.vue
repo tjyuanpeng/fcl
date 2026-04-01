@@ -15,12 +15,19 @@ ajax.interceptors.request.use((config) => {
 
 const formatDate = (date: string) => new Date(date).toLocaleString('zh-CN', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })
 const getPackageList = async () => {
-  const { data } = await ajax<{ items: any[] }>({
-    url: `/service/rest/v1/search`,
-    params: { repository: 'ym-hosted', group: 'falconix', format: 'npm', sort: 'name' },
+  const { data: { result: { data } } } = await ajax({
+    url: `/service/extdirect`,
+    method: 'POST',
+    data: {
+      action: 'coreui_Browse',
+      method: 'read',
+      data: [{ repositoryName: 'ym-hosted', node: '%40falconix' }],
+      type: 'rpc',
+      tid: 8,
+    },
   })
-  const set = data.items.reduce((acc: Set<string>, cur: any) => acc.add(cur.assets[0].npm.name), new Set<string>())
-  return [...set]
+  const pList = data.map((i: any) => decodeURIComponent(i.id))
+  return pList as string[]
 }
 const getPackage = async (name: string) => {
   const { data } = await ajax({
@@ -34,7 +41,6 @@ onMounted(async () => {
   const pkgInfos = await Promise.all(pkglist.map(name => getPackage(name)))
   pkgInfos.sort((a, b) => new Date(b.time.modified).getTime() - new Date(a.time.modified).getTime())
   tableData.value = pkgInfos
-  console.log(pkgInfos)
 })
 const expandRowKeys = ref<string[]>([])
 const rowClick = (row: any) => {
