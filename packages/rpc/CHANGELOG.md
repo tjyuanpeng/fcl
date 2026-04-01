@@ -1,5 +1,11 @@
 # @falconix/wujie-rpc
 
+## 1.1.0
+
+### Minor Changes
+
+- 5a8c5e2: add @falconix/micro-app & update wujie-rpc deps to wujie-x
+
 ## 1.0.0
 
 ### Major Changes
