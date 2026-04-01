@@ -12,6 +12,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    ElAlert: typeof import('@falconix/fep/es')['ElAlert']
     ElButton: typeof import('@falconix/fep/es')['ElButton']
     ElCol: typeof import('@falconix/fep/es')['ElCol']
     ElForm: typeof import('@falconix/fep/es')['ElForm']
@@ -22,7 +23,10 @@ declare module 'vue' {
     ElMenuItem: typeof import('@falconix/fep/es')['ElMenuItem']
     ElMenuItemGroup: typeof import('@falconix/fep/es')['ElMenuItemGroup']
     ElRow: typeof import('@falconix/fep/es')['ElRow']
+    ElSpace: typeof import('@falconix/fep/es')['ElSpace']
     ElSubMenu: typeof import('@falconix/fep/es')['ElSubMenu']
+    ElTag: typeof import('@falconix/fep/es')['ElTag']
+    FAutoSave: typeof import('@falconix/auto-save')['FAutoSave']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
@@ -30,6 +34,7 @@ declare module 'vue' {
 
 // For TSX support
 declare global {
+  const ElAlert: typeof import('@falconix/fep/es')['ElAlert']
   const ElButton: typeof import('@falconix/fep/es')['ElButton']
   const ElCol: typeof import('@falconix/fep/es')['ElCol']
   const ElForm: typeof import('@falconix/fep/es')['ElForm']
@@ -40,7 +45,10 @@ declare global {
   const ElMenuItem: typeof import('@falconix/fep/es')['ElMenuItem']
   const ElMenuItemGroup: typeof import('@falconix/fep/es')['ElMenuItemGroup']
   const ElRow: typeof import('@falconix/fep/es')['ElRow']
+  const ElSpace: typeof import('@falconix/fep/es')['ElSpace']
   const ElSubMenu: typeof import('@falconix/fep/es')['ElSubMenu']
+  const ElTag: typeof import('@falconix/fep/es')['ElTag']
+  const FAutoSave: typeof import('@falconix/auto-save')['FAutoSave']
   const RouterLink: typeof import('vue-router')['RouterLink']
   const RouterView: typeof import('vue-router')['RouterView']
 }

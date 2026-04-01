@@ -1,8 +1,8 @@
 {
-  "name": "@falconix/wujie-rpc",
+  "name": "@falconix/micro-app",
   "type": "module",
-  "version": "1.0.0",
-  "description": "falconix wujie rpc",
+  "version": "0.0.1",
+  "description": "falconix 微前端应用",
   "exports": {
     ".": "./dist/index.mjs",
     "./package.json": "./package.json"
@@ -22,6 +22,9 @@
   "peerDependencies": {
     "vue": "3",
     "wujie-x": "catalog:"
+  },
+  "dependencies": {
+    "axios": "catalog:"
   },
   "devDependencies": {
     "@falconix/configs": "workspace:^",

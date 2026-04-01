@@ -1,7 +1,7 @@
 import { getCurrentInstance, nextTick, onActivated, onDeactivated, onMounted, onUnmounted } from 'vue'
-import WujieVue from 'wujie-vue3'
+import { bus as WujieXBus } from 'wujie-x'
 
-const { bus } = WujieVue
+const bus = (window as any)?.$wujie?.bus ?? WujieXBus
 
 export interface RpcEvent<T> {
   type: string

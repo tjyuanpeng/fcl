@@ -123,9 +123,9 @@ catalogs:
     vue-tsc:
       specifier: ^3.1.8
       version: 3.1.8
-    wujie-vue3:
-      specifier: ^1.0.29
-      version: 1.0.29
+    wujie-x:
+      specifier: ^1.0.0
+      version: 1.0.0
 
 importers:
 
@@ -340,6 +340,28 @@ importers:
         specifier: 'catalog:'
         version: 3.1.8(typescript@5.9.3)
 
+  packages/micro-app:
+    dependencies:
+      axios:
+        specifier: 'catalog:'
+        version: 1.13.2
+      vue:
+        specifier: '3'
+        version: 3.5.25(typescript@5.9.3)
+      wujie-x:
+        specifier: 'catalog:'
+        version: 1.0.0
+    devDependencies:
+      '@falconix/configs':
+        specifier: workspace:^
+        version: link:../configs
+      tsdown:
+        specifier: 'catalog:'
+        version: 0.16.8(synckit@0.11.12)(typescript@5.9.3)(vue-tsc@3.1.8(typescript@5.9.3))
+      typescript:
+        specifier: 'catalog:'
+        version: 5.9.3
+
   packages/resolver:
     dependencies:
       local-pkg:
@@ -367,9 +389,9 @@ importers:
       vue:
         specifier: '3'
         version: 3.5.25(typescript@5.9.3)
-      wujie-vue3:
+      wujie-x:
         specifier: 'catalog:'
-        version: 1.0.29(vue@3.5.25(typescript@5.9.3))
+        version: 1.0.0
     devDependencies:
       '@falconix/configs':
         specifier: workspace:^
@@ -4705,13 +4727,8 @@ packages:
     resolution: {integrity: sha512-42AtmgqjV+X1VpdOfyTGOYRi0/zsoLqtXQckTmqTeybT+BDIbM/Guxo7x3pE2vtpr1ok6xRqM9OpBe+Jyoqyww==}
     engines: {node: '>=18'}
 
-  wujie-vue3@1.0.29:
-    resolution: {integrity: sha512-OGt5Veyq/DtmFzHQCANmv8nZgu877u7ZjS5qjFpSrtKARKhLjID3x99D40a4pb3Kj5UmRatkV5Gn5hqOWpziZQ==}
-    peerDependencies:
-      vue: ^3.0.0
-
-  wujie@1.0.29:
-    resolution: {integrity: sha512-u7PmBT4l5ov7ciwmZNG8DLIRKrYrnXDa0LnAFgRQikJ/ZrVZYzzSNz6duzEJoj8/o46dnMy/g9Hh/PBYGbgFUw==}
+  wujie-x@1.0.0:
+    resolution: {integrity: sha512-pGJ1IAipJ3I5giADlzkw5CbDseuFChcjDUBz2bxbZzOaotsSDVnCV/ZegMdTbNDDj2fRVeOoEnMK1N7qKiuPAg==}
 
   xml-name-validator@4.0.0:
     resolution: {integrity: sha512-ICP2e+jsHvAj2E2lIHxa5tjXRlKDJo4IdvPvCXbXQGdzSfmSpNVyIKMvoZHjDY9DP0zV17iI85o90vRFXNccRw==}
@@ -5221,7 +5238,7 @@ snapshots:
   '@commitlint/is-ignored@20.2.0':
     dependencies:
       '@commitlint/types': 20.2.0
-      semver: 7.7.3
+      semver: 7.7.4
 
   '@commitlint/lint@20.2.0':
     dependencies:
@@ -8625,7 +8642,7 @@ snapshots:
       obug: 2.1.1
       rolldown: 1.0.0-beta.52
       rolldown-plugin-dts: 0.18.3(rolldown@1.0.0-beta.52)(typescript@5.9.3)(vue-tsc@3.1.8(typescript@5.9.3))
-      semver: 7.7.3
+      semver: 7.7.4
       tinyexec: 1.0.2
       tinyglobby: 0.2.15
       tree-kill: 1.2.2
@@ -9001,14 +9018,7 @@ snapshots:
       string-width: 7.2.0
       strip-ansi: 7.1.2
 
-  wujie-vue3@1.0.29(vue@3.5.25(typescript@5.9.3)):
-    dependencies:
-      vue: 3.5.25(typescript@5.9.3)
-      wujie: 1.0.29
-
-  wujie@1.0.29:
-    dependencies:
-      '@babel/runtime': 7.28.4
+  wujie-x@1.0.0: {}
 
   xml-name-validator@4.0.0: {}
 
