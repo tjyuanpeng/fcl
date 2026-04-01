@@ -1,5 +1,11 @@
 # @falconix/themes
 
+## 2.0.6
+
+### Patch Changes
+
+- 3b115f2: 添加鹰才样式
+
 ## 2.0.5
 
 ### Patch Changes
