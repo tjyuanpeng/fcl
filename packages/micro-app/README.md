@@ -42,7 +42,7 @@ interface $WujieXEventMap {
 
 ### use-micro-app
 
-微应用使用的相关方法
+微应用使用相关的方法
 
 ```ts
 import { useMicroApp } from '@falconix/micro-app'
