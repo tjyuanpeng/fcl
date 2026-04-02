@@ -1,7 +1,7 @@
 {
   "name": "@falconix/micro-app",
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "falconix 微前端应用",
   "exports": {
     ".": "./dist/index.mjs",
