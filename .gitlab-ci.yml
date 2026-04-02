@@ -178,7 +178,7 @@ docs-deploy:
   script:
     - set -e
     - ssh-keyscan ${DOC_SERVER_HOST} >> ~/.ssh/known_hosts 2>/dev/null || true
-    - ssh -t root@${DOC_SERVER_HOST} -p 22 "rm -rf /data/fcl_docs/*"
+    - ssh root@${DOC_SERVER_HOST} -p 22 "rm -rf /data/fcl_docs/*"
     - scp -P 22 -r -O docs/.vitepress/dist/* root@${DOC_SERVER_HOST}:/data/fcl_docs/
 
 # play-build:

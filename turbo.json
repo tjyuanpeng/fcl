@@ -18,7 +18,8 @@
     },
     "docs#build": {
       "dependsOn": ["^build"],
-      "outputs": [".vitepress/dist/**"]
+      "outputs": [".vitepress/dist/**"],
+      "cache": false
     },
     "play#play:dev": {
       "dependsOn": ["@falconix/fep-resolver#build", "@falconix/icons-vue#build"],
