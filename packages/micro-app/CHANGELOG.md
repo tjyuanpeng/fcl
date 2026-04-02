@@ -1,5 +1,11 @@
 # @falconix/micro-app
 
+## 1.0.2
+
+### Patch Changes
+
+- 4072746: add setHrefMain
+
 ## 1.0.1
 
 ### Patch Changes
