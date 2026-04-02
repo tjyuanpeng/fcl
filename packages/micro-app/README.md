@@ -61,9 +61,11 @@ microApp.getButtonPermissions() // 获取 按钮权限
 microApp.getMenuPermissions() // 获取 菜单权限
 microApp.getCurrentEntityId() // 获取当前实体ID
 
-microApp.openNewWindow('/web/test?key=value', { frameMode: true }) // 在新窗口，使用frame模式，打开链接
 microApp.pushMain('/web/test?key=value') // 主应用路由 push
 microApp.replaceMain('/web/test?key=value') // 主应用路由 replace
+microApp.openNewWindow('/web/test?key=value', { frameMode: true }) // 在新窗口，使用frame模式，使用主框架域名补全URL，打开链接
+microApp.openNewWindow('https://www.baidu.com/') // 在新窗口，打开链接
+microApp.setHrefMain('https://www.baidu.com/') // 设置主应用URL，触发页面刷新
 
 microApp.$emit('event-name', { key: 'value', }) // 触发事件
 microApp.$on('event-name', (data) => {}) // 监听事件
