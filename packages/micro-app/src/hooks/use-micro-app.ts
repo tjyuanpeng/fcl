@@ -22,24 +22,19 @@ export const useMicroApp = () => {
     getMenuPermissions: () => localStorage.getItem('menuPermissions'),
     getCurrentEntityId: () => localStorage.getItem('CURR_ENTITY_ID'),
 
-    openNewWindow: (url: string, { target = '_blank', frameMode }: { target?: string, frameMode?: boolean } = {}): void => {
-      const useframeMode = frameMode ?? microApp.isFrameMode()
-      if (useframeMode && new URL(url, location.origin).origin === location.origin) {
+    openNewWindow: (url: string, { target = '_blank', frameMode = false }: { target?: string, frameMode?: boolean } = {}): void => {
+      if (frameMode && new URL(url, location.origin).origin === location.origin) {
         url = replacePathname(url, '/web', '/_web')
       }
-      window.open(url, target)
+      window.top?.open(url, target)
     },
     pushMain: (fullPath: string): void => {
-      if (window.top) {
-        window.top.history.pushState(window.history.state, '', fullPath)
-        window.top.dispatchEvent(new PopStateEvent('popstate', { state: window.history.state }))
-      }
+      window.top?.history.pushState(window.history.state, '', fullPath)
+      window.top?.dispatchEvent(new PopStateEvent('popstate', { state: window.history.state }))
     },
     replaceMain: (fullPath: string): void => {
-      if (window.top) {
-        window.top.history.replaceState(window.history.state, '', fullPath)
-        window.top.dispatchEvent(new PopStateEvent('popstate', { state: window.history.state }))
-      }
+      window.top?.history.replaceState(window.history.state, '', fullPath)
+      window.top?.dispatchEvent(new PopStateEvent('popstate', { state: window.history.state }))
     },
     $emit: emitEvent,
     $on: onEvent,
