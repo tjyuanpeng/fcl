@@ -1,5 +1,11 @@
 # @falconix/micro-app
 
+## 1.1.0
+
+### Minor Changes
+
+- 1eec9de: version v1.1.0
+
 ## 1.0.2
 
 ### Patch Changes
