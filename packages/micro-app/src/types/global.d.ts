@@ -20,7 +20,7 @@ declare global {
       defaultDeptId: number
       defaultDeptName: string
       defaultUserDeptId: number
-    }
+    } | undefined
     refreshRedDot: () => void
   }
 

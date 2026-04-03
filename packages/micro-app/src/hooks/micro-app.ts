@@ -47,6 +47,6 @@ export const setHrefMain = (url: string): void => {
   window.top && (window.top.location.href = url)
 }
 
-export const getUserInfo = (): any => window.$wujie?.props?.getUserInfo()
+export const getUserInfo = (): ReturnType<$WujieXProps['getUserInfo']> => window.$wujie?.props?.getUserInfo()
 
 export const refreshRedDot = (): void => window.$wujie?.props?.refreshRedDot()
