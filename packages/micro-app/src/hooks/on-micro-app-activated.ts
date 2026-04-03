@@ -1,10 +1,10 @@
 import { getCurrentInstance, onActivated, onMounted } from 'vue'
-import { onEvent } from './on-event'
+import { $on } from './event'
 
 export const onMicroAppActivated = (callback: () => void, options: { immediate?: boolean | 'onMounted' | 'onActivated' } = {}): () => void => {
   let stop = (): void => {}
   if (window.__WUJIE) {
-    stop = onEvent(`@wujie-x/app-activated:${(window.__WUJIE as any).id}` as 'WujieXCustomEvent', callback)
+    stop = $on(`@wujie-x/app-activated:${(window.__WUJIE as any).id}` as '@wujie-x/app-activated', callback)
   }
 
   if (options.immediate === 'onMounted' && getCurrentInstance()) {

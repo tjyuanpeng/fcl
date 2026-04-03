@@ -1,22 +1,55 @@
-import type { bus } from 'wujie-x'
-
 declare global {
 
   interface $WujieXProps {
+    newFramework: boolean
+    getUserInfo: () => {
+      nickName: string
+      userId: number
+      avatarUrl: string
+      userName: string
+      position: string
+      deptName: string
+      defaultPosition: string
+      userDeptOptions: {
+        label: string
+        value: number
+        default: boolean
+      }[]
+      userDeptIds: number[]
+      deptIds: number[]
+      defaultDeptId: number
+      defaultDeptName: string
+      defaultUserDeptId: number
+    } | undefined
+    refreshRedDot: () => void
   }
 
   interface $WujieXEventMap {
-    'WujieXCustomEvent': any
+    // wujie-x
+    '@wujie-x/app-activated': () => void
+    '@wujie-x/props-change': () => void
+    '@wujie-x-vue/update-props': (props: $WujieXProps) => void
 
+    // auth
     'loginExpired': () => void
-    'reloadTodoNum': () => void
+
+    // drawer
+    'drawerOpen': (data: any) => void
+    'showShadowBoxOverlay': (data: { url: string, props: any }) => void
+    'shadowBoxOverlayClose': () => void
+
+    // red dot
     'reloadMainMenu': () => void
+    'reloadTodoNum': () => void
+
+    // home page
+    'layoutChange': () => void
+
+    // top bar serach input
+    'initTobBarSearchShow': () => void
     'tobBarSearchShow': () => void
 
-    'drawerOpen': (data: any) => void
-    'shadowBoxOverlayClose': () => void
-    'showShadowBoxOverlay': (data: { url: string, props: any }) => void
-
+    // upload center
     'upload-complete-change': (data: any) => void
   }
 
@@ -30,7 +63,11 @@ declare global {
     __WUJIE_MOUNT: () => void
     __WUJIE_UNMOUNT: () => void | Promise<void>
     $wujie: {
-      bus: typeof bus
+      bus: {
+        $emit: <T extends keyof $WujieXEventMap>(eventName: T, ...args: Parameters<$WujieXEventMap[T]>) => void
+        $on: <T extends keyof $WujieXEventMap>(eventName: T, callback: $WujieXEventMap[T]) => void
+        $off: <T extends keyof $WujieXEventMap>(eventName: T, callback: $WujieXEventMap[T]) => void
+      }
       shadowRoot?: ShadowRoot
       props?: $WujieXProps
       location?: object
