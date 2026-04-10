@@ -75,31 +75,40 @@ console.log(props.username)
 ```ts
 import { microApp } from '@falconix/micro-app'
 
-// 或者直接导出函数直接使用
+// 或者直接导出函数使用
 // import { isInMicroapp, $emit, $on } from '@falconix/micro-app'
 
+// 环境信息
 microApp.isInMicroapp() // 是否在微应用中运行
 microApp.isNewFramework() // 是否在新框架中运行
 microApp.isFrameMode() // 是否在 frame 模式中运行
 
-microApp.isClient() // 是否在客户端运行
-microApp.getClientInfo() // 获取客户端信息
-
+// 业务信息
 microApp.getToken() // 获取 token
 microApp.getButtonPermissions() // 获取 按钮权限
 microApp.getMenuPermissions() // 获取 菜单权限
 microApp.getCurrentEntityId() // 获取当前实体ID
-
-microApp.pushMain('/web/test?key=value') // 主应用路由 push
-microApp.replaceMain('/web/test?key=value') // 主应用路由 replace
-microApp.openNewWindow('/web/test?key=value', { frameMode: true }) // 在新窗口，使用frame模式，使用主框架域名补全URL，打开链接
-microApp.openNewWindow('https://www.baidu.com/') // 在新窗口，打开链接
-microApp.setHrefMain('https://www.baidu.com/') // 设置主应用URL，触发页面刷新
-
 microApp.getUserInfo() // 获取用户信息
+
+// 红点
 microApp.refreshRedDot() // 刷新红点
 
+// 路由
+microApp.pushMain('/web/test?key=value') // 主应用路由 push
+microApp.replaceMain('/web/test?key=value') // 主应用路由 replace
+microApp.setHrefMain('https://www.baidu.com/') // 设置主应用URL，触发页面刷新
+
+microApp.openNewWindow('/web/test?key=value', { frameMode: true }) // 在新窗口，使用frame模式，使用主框架域名补全URL，打开链接
+
+microApp.replacePathname('https://www.yingmai.net/web/test/foo/bar', '/web', '/_web') // output: 'https://www.yingmai.net/_web/test/foo/bar'
+microApp.getFullPathFromUrl('https://www.yingmai.net:1234/web/test/foo/bar?a=1#b=2') // output: '/web/test/foo/bar?a=1#b=2'
+
+// 事件
 microApp.$emit('event-name', { key: 'value', }) // 触发事件
 const stop = microApp.$on('event-name', (data) => {}) // 监听事件。会结合 vue3 的生命周期函数，自动在组件相关生命周期中，监听/取消 事件
 microApp.$off('event-name', (data) => {}) // 取消监听事件
+
+// 客户端相关
+microApp.isClient() // 是否在客户端运行
+microApp.getClientInfo() // 获取客户端信息
 ```
