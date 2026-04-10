@@ -39,15 +39,14 @@ declare global {
     'shadowBoxOverlayClose': () => void
 
     // red dot
-    'reloadMainMenu': () => void
-    'reloadTodoNum': () => void
+    'redDotRefreshed': () => void
 
     // home page
     'layoutChange': () => void
 
     // top bar serach input
     'initTobBarSearchShow': () => void
-    'tobBarSearchShow': () => void
+    'tobBarSearchShow': (progress: number) => void
 
     // upload center
     'upload-complete-change': (data: any) => void

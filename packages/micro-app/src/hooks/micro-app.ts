@@ -28,6 +28,11 @@ export const replaceMain = (fullPath: string): void => {
   window.top?.dispatchEvent(new PopStateEvent('popstate', { state: window.top.history.state }))
 }
 
+export const getFullPathFromUrl = (url: string): string => {
+  const u = new URL(url, location.origin)
+  return u.pathname + u.search + u.hash
+}
+
 export const replacePathname = (url: string, from: string, to: string): string => {
   const u = new URL(url, location.origin)
   u.pathname = u.pathname.replace(from, to)
