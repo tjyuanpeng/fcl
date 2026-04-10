@@ -1,5 +1,11 @@
 # @falconix/micro-app
 
+## 1.1.1
+
+### Patch Changes
+
+- 1d94306: upd micro-app
+
 ## 1.1.0
 
 ### Minor Changes
