@@ -80,6 +80,10 @@ FFD 采用 chrome 扩展 的形式
 
 ![](/ffd-img/ffd-11.png)
 
+v1.2.0 增加切换新框架的按钮，用来切换加载子应用的模式
+
+![](/ffd-img/ffd-14.png)
+
 ### Token获取工具
 
 使用token获取工具，方便开发时获取token
