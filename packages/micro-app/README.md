@@ -95,13 +95,16 @@ microApp.refreshRedDot() // 刷新红点
 
 // 路由
 microApp.pushMain('/web/test?key=value') // 主应用路由 push
+microApp.pushMain('https://www.yingmai.net:1234/web/test/foo/bar?a=1#b=2') // 忽略 origin，只保留 pathname、search、hash
 microApp.replaceMain('/web/test?key=value') // 主应用路由 replace
-microApp.setHrefMain('https://www.baidu.com/') // 设置主应用URL，触发页面刷新
 
+// 新窗口
 microApp.openNewWindow('/web/test?key=value', { frameMode: true }) // 在新窗口，使用frame模式，使用主框架域名补全URL，打开链接
+microApp.openNewWindow('https://www.yingmai.net:1234/web/test/foo/bar?token=xxx&a=1', { frameMode: true }) // 忽略 origin，删除 token
+// url: https://www.yingmai.net/_web/test/foo/bar?a=1
 
-microApp.replacePathname('https://www.yingmai.net/web/test/foo/bar', '/web', '/_web') // output: 'https://www.yingmai.net/_web/test/foo/bar'
-microApp.getFullPathFromUrl('https://www.yingmai.net:1234/web/test/foo/bar?a=1#b=2') // output: '/web/test/foo/bar?a=1#b=2'
+// 主应用URL
+microApp.setHrefMain('https://www.xxx.com/') // 设置主应用URL，触发页面刷新
 
 // 事件
 microApp.$emit('event-name', { key: 'value', }) // 触发事件
