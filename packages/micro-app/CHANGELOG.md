@@ -1,5 +1,11 @@
 # @falconix/micro-app
 
+## 1.1.2
+
+### Patch Changes
+
+- 3da6d4e: v1.1.2
+
 ## 1.1.1
 
 ### Patch Changes
