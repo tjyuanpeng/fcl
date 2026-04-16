@@ -6,10 +6,6 @@ export const isNewFramework = (): boolean => Boolean(window.$wujie?.props?.newFr
 
 export const isFrameMode = (): boolean => window.location.pathname.startsWith('/_web')
 
-export const isClient = (): boolean => false
-
-export const getClientInfo = (): unknown => ({})
-
 export const getToken = (): string | null => localStorage.getItem('token')
 
 export const getButtonPermissions = (): string | null => localStorage.getItem('buttonPermissions')
@@ -18,19 +14,41 @@ export const getMenuPermissions = (): string | null => localStorage.getItem('men
 
 export const getCurrentEntityId = (): string | null => localStorage.getItem('CURR_ENTITY_ID')
 
-export const pushMain = (fullPath: string): void => {
-  window.top?.history.pushState(window.history.state, '', fullPath)
-  window.top?.dispatchEvent(new PopStateEvent('popstate', { state: window.top.history.state }))
-}
-
-export const replaceMain = (fullPath: string): void => {
-  window.top?.history.replaceState(window.history.state, '', fullPath)
-  window.top?.dispatchEvent(new PopStateEvent('popstate', { state: window.top.history.state }))
-}
+export const getUserInfo = (): ReturnType<$WujieXProps['getUserInfo']> => window.$wujie?.props?.getUserInfo()
 
 export const getFullPathFromUrl = (url: string): string => {
   const u = new URL(url, location.origin)
   return u.pathname + u.search + u.hash
+}
+
+export const pushMain = (url: string): void => {
+  window.top?.history.pushState(window.history.state, '', getFullPathFromUrl(url))
+  window.top?.dispatchEvent(new PopStateEvent('popstate', { state: window.top.history.state }))
+}
+
+export const replaceMain = (url: string): void => {
+  window.top?.history.replaceState(window.history.state, '', getFullPathFromUrl(url))
+  window.top?.dispatchEvent(new PopStateEvent('popstate', { state: window.top.history.state }))
+}
+
+export const openNewWindow = (url: string, { target = '_blank', frameMode = false }: { target?: string, frameMode?: boolean } = {}): void => {
+  if (!isInMicroapp()) {
+    window.open(url, target)
+    return
+  }
+
+  if (frameMode) {
+    const u = new URL(url, location.origin)
+    u.protocol = location.protocol
+    u.hostname = location.hostname
+    u.port = location.port
+    u.pathname = u.pathname.startsWith('/web') ? u.pathname.replace('/web', '/_web') : u.pathname
+    u.searchParams.delete('token')
+    window.top?.open(u.toString(), target)
+    return
+  }
+
+  window.top?.open(url, target)
 }
 
 export const replacePathname = (url: string, from: string, to: string): string => {
@@ -39,19 +57,12 @@ export const replacePathname = (url: string, from: string, to: string): string =
   return u.toString()
 }
 
-export const openNewWindow = (url: string, { target = '_blank', frameMode = false }: { target?: string, frameMode?: boolean } = {}): void => {
-  const u = new URL(url, location.origin)
-  url = u.toString()
-  if (frameMode && u.origin === location.origin) {
-    url = replacePathname(url, '/web', '/_web')
-  }
-  window.top?.open(url, target)
-}
-
 export const setHrefMain = (url: string): void => {
   window.top && (window.top.location.href = url)
 }
 
-export const getUserInfo = (): ReturnType<$WujieXProps['getUserInfo']> => window.$wujie?.props?.getUserInfo()
+export const isClient = (): boolean => false
+
+export const getClientInfo = (): unknown => ({})
 
 export const refreshRedDot = (): void => window.$wujie?.props?.refreshRedDot()
