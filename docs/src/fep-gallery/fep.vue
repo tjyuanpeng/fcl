@@ -310,14 +310,14 @@ const ccOptions = [
 const activeName = ref('1')
 const alert = () => {
   ElMessageBox.alert(
-    '本次申请需消耗30000鹰眼币，请确认线索相关评估内容已填写完整。',
+    '本次申请需消耗3000币，请确认线索相关评估内容已填写完整。',
     '确定提交',
     { type: 'warning' },
   )
 }
 const confirm = () => {
   ElMessageBox.confirm(
-    '本次申请需消耗30000鹰眼币，请确认线索相关评估内容已填写完整。',
+    '本次申请需消耗30000币，请确认线索相关评估内容已填写完整。',
     '确定提交',
     { type: 'warning' },
   )

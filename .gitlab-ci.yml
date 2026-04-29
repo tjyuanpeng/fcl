@@ -100,10 +100,10 @@ pre-pkgs-publish:
     - |
       curl --silent --show-error --fail -L \
       --header "PRIVATE-TOKEN: $SNIPPET_TOKEN" \
-      --url "http://10.168.2.105:8888/api/v4/snippets/2/raw" | \
+      --url "http://xxxx/api/v4/snippets/2/raw" | \
       sed "s|{{NPM_AUTH_TOKEN}}|$NPM_AUTH_TOKEN|g" \
       > .npmrc
-    - npm_config_registry=http://10.168.2.110:31001/repository/ym-hosted/ pnpm changeset publish
+    - npm_config_registry=http://xxxx/repository/ym-hosted/ pnpm changeset publish
     - |
       if git tag | grep -q "^@falconix/"; then
         git push origin $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME --follow-tags
@@ -155,10 +155,10 @@ pkgs-publish:
     - |
       curl --silent --show-error --fail -L \
       --header "PRIVATE-TOKEN: $SNIPPET_TOKEN" \
-      --url "http://10.168.2.105:8888/api/v4/snippets/2/raw" | \
+      --url "http://xxxx/api/v4/snippets/2/raw" | \
       sed "s|{{NPM_AUTH_TOKEN}}|$NPM_AUTH_TOKEN|g" \
       > .npmrc
-    - npm_config_registry=http://10.168.2.110:31001/repository/ym-hosted/ pnpm changeset publish
+    - npm_config_registry=http://xxxx/repository/ym-hosted/ pnpm changeset publish
     - |
       if git tag | grep -q "^@falconix/"; then
         git push origin main --follow-tags

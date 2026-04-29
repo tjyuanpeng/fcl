@@ -21,9 +21,6 @@ catalogs:
     '@element-plus/icons-vue':
       specifier: ^2.3.2
       version: 2.3.2
-    '@falconix/fep':
-      specifier: ^1.2.3
-      version: 1.2.3
     '@types/fs-extra':
       specifier: 11.0.4
       version: 11.0.4
@@ -127,6 +124,9 @@ catalogs:
       specifier: ^1.0.0
       version: 1.0.0
 
+overrides:
+  '@falconix/fep': file:./fep/falconix-fep-1.2.3.tgz
+
 importers:
 
   .:
@@ -168,8 +168,8 @@ importers:
         specifier: workspace:^
         version: link:../packages/auto-save
       '@falconix/fep':
-        specifier: 'catalog:'
-        version: 1.2.3(typescript@5.9.3)(vue@3.5.25(typescript@5.9.3))
+        specifier: file:../fep/falconix-fep-1.2.3.tgz
+        version: file:fep/falconix-fep-1.2.3.tgz(typescript@5.9.3)(vue@3.5.25(typescript@5.9.3))
       '@falconix/icon':
         specifier: workspace:^
         version: link:../packages/icon
@@ -238,8 +238,8 @@ importers:
   packages/auto-save:
     dependencies:
       '@falconix/fep':
-        specifier: 'catalog:'
-        version: 1.2.3(typescript@5.9.3)(vue@3.5.25(typescript@5.9.3))
+        specifier: file:../../fep/falconix-fep-1.2.3.tgz
+        version: file:fep/falconix-fep-1.2.3.tgz(typescript@5.9.3)(vue@3.5.25(typescript@5.9.3))
       vue:
         specifier: '3'
         version: 3.5.25(typescript@5.9.3)
@@ -406,8 +406,8 @@ importers:
   packages/split-panel:
     dependencies:
       '@falconix/fep':
-        specifier: 'catalog:'
-        version: 1.2.3(typescript@5.9.3)(vue@3.5.25(typescript@5.9.3))
+        specifier: file:../../fep/falconix-fep-1.2.3.tgz
+        version: file:fep/falconix-fep-1.2.3.tgz(typescript@5.9.3)(vue@3.5.25(typescript@5.9.3))
       '@falconix/icons-vue':
         specifier: workspace:^
         version: link:../icons-vue
@@ -434,8 +434,8 @@ importers:
   packages/steps2:
     dependencies:
       '@falconix/fep':
-        specifier: 'catalog:'
-        version: 1.2.3(typescript@5.9.3)(vue@3.5.25(typescript@5.9.3))
+        specifier: file:../../fep/falconix-fep-1.2.3.tgz
+        version: file:fep/falconix-fep-1.2.3.tgz(typescript@5.9.3)(vue@3.5.25(typescript@5.9.3))
       vue:
         specifier: '3'
         version: 3.5.25(typescript@5.9.3)
@@ -459,8 +459,8 @@ importers:
   packages/themes:
     dependencies:
       '@falconix/fep':
-        specifier: 'catalog:'
-        version: 1.2.3(typescript@5.9.3)(vue@3.5.25(typescript@5.9.3))
+        specifier: file:../../fep/falconix-fep-1.2.3.tgz
+        version: file:fep/falconix-fep-1.2.3.tgz(typescript@5.9.3)(vue@3.5.25(typescript@5.9.3))
     devDependencies:
       sass-embedded:
         specifier: 'catalog:'
@@ -478,8 +478,8 @@ importers:
   packages/use-ajax:
     dependencies:
       '@falconix/fep':
-        specifier: 'catalog:'
-        version: 1.2.3(typescript@5.9.3)(vue@3.5.25(typescript@5.9.3))
+        specifier: file:../../fep/falconix-fep-1.2.3.tgz
+        version: file:fep/falconix-fep-1.2.3.tgz(typescript@5.9.3)(vue@3.5.25(typescript@5.9.3))
       axios:
         specifier: 'catalog:'
         version: 1.13.2
@@ -503,8 +503,8 @@ importers:
         specifier: workspace:^
         version: link:../packages/auto-save
       '@falconix/fep':
-        specifier: 'catalog:'
-        version: 1.2.3(typescript@5.9.3)(vue@3.5.25(typescript@5.9.3))
+        specifier: file:../fep/falconix-fep-1.2.3.tgz
+        version: file:fep/falconix-fep-1.2.3.tgz(typescript@5.9.3)(vue@3.5.25(typescript@5.9.3))
       '@falconix/icons-vue':
         specifier: workspace:^
         version: link:../packages/icons-vue
@@ -1195,8 +1195,9 @@ packages:
     resolution: {integrity: sha512-iH1B076HoAshH1mLpHMgwdGeTs0CYwL0SPMkGuSebZrwBp16v415e9NZXg2jtrqPVQjf6IANe2Vtlr5KswtcZQ==}
     engines: {node: ^20.19.0 || ^22.13.0 || >=24}
 
-  '@falconix/fep@1.2.3':
-    resolution: {integrity: sha512-jITtYJRlMDtyOE2KKcyizUhS03Gc+XYr7Ij6jt1MhnKja/Kcul8qKI33lou1OLjyGMH5omCWTiaP/bVuNntXsQ==}
+  '@falconix/fep@file:fep/falconix-fep-1.2.3.tgz':
+    resolution: {integrity: sha512-/hbA18By5PoFWmN17jmwX384nKsr7npgSAPy8G/cnkYIYw5RqPHPT+2kkJny4D5gtoiigNWUT8IqPcuF6Op9SA==, tarball: file:fep/falconix-fep-1.2.3.tgz}
+    version: 1.2.3
     peerDependencies:
       vue: ^3.3.0
 
@@ -5506,7 +5507,7 @@ snapshots:
       '@eslint/core': 1.1.1
       levn: 0.4.1
 
-  '@falconix/fep@1.2.3(typescript@5.9.3)(vue@3.5.25(typescript@5.9.3))':
+  '@falconix/fep@file:fep/falconix-fep-1.2.3.tgz(typescript@5.9.3)(vue@3.5.25(typescript@5.9.3))':
     dependencies:
       '@ctrl/tinycolor': 4.2.0
       '@element-plus/icons-vue': 2.3.2(vue@3.5.25(typescript@5.9.3))

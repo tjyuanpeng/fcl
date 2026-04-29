@@ -3,8 +3,8 @@ const countTags = ref(true)
 const lazyWriteBack = ref(true)
 const value = ref()
 const options = [
-  { value: 1, label: '河北鹰眼智能科技', subText: '123131' },
-  { value: 2, label: '沈阳天荣电缆材料有限公司', subText: '123131' },
+  { value: 1, label: '智能科技', subText: '123131' },
+  { value: 2, label: '电缆材料有限公司', subText: '123131' },
   { value: 3, label: 'Option3', subText: '123131' },
   { value: 4, label: 'Option4', subText: '123131', disabled: true },
   { value: 5, label: 'Option5', subText: '123131' },

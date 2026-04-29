@@ -58,7 +58,7 @@ export default ({ mode }: ConfigEnv) => {
         { text: 'FFD', link: '/ffd', activeMatch: '/ffd/' },
       ],
       socialLinks: [
-        { icon: 'gitlab', link: 'http://10.168.2.105:8888/soft_group/yingmai/fe_group/fcl' },
+        { icon: 'gitlab', link: 'https://github.com/tjyuanpeng/fcl' },
       ],
       sidebar: {
         '/packages/': [

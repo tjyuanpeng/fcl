@@ -4,7 +4,7 @@ layout: home
 hero:
   name: "FCL"
   text: "falconix component library"
-  tagline: 鹰眼智能前端扩展组件库
+  tagline: 前端扩展组件库
   actions:
     - theme: big brand
       text: 组件文档

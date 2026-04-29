@@ -189,14 +189,14 @@
     },
     {
       "icon_id": "45758298",
-      "name": "导航-鹰眼币",
+      "name": "导航-币",
       "font_class": "daohang-yingyanbi",
       "unicode": "e614",
       "unicode_decimal": 58900
     },
     {
       "icon_id": "45758295",
-      "name": "导航-鹰眼币填充",
+      "name": "导航-币填充",
       "font_class": "daohang-yingyanbi-tianchong",
       "unicode": "e613",
       "unicode_decimal": 58899

@@ -30,6 +30,11 @@
     "lint-staged": "catalog:",
     "turbo": "catalog:"
   },
+  "pnpm": {
+    "overrides": {
+      "@falconix/fep": "file:./fep/falconix-fep-1.2.3.tgz"
+    }
+  },
   "lint-staged": {
     "*.{js,ts,jsx,tsx,vue,json,md,html,css,scss}": [
       "eslint --fix"

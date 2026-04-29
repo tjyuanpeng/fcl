@@ -2,6 +2,7 @@
 import axios from 'axios'
 import { rsort } from 'semver'
 import { onMounted, ref } from 'vue'
+import ajaxResults from './ajax-results'
 
 const ajax = axios.create({
   withCredentials: false,
@@ -10,6 +11,17 @@ const ajax = axios.create({
 ajax.interceptors.request.use((config) => {
   config.params = config.params || {}
   config.params[Date.now()] = ''
+  // mock
+  config.adapter = () => {
+    return Promise.resolve<any>({
+      data: ajaxResults[config.url as any],
+      status: 200,
+      statusText: 'OK',
+      headers: {},
+      config,
+      request: {},
+    })
+  }
   return config
 })
 

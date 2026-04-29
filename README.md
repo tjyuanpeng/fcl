@@ -1,6 +1,8 @@
 # fcl
 
-falconix component library
+frontend component library
+
+前端通用组件库
 
 ## package manager
 
@@ -55,7 +57,7 @@ after running the command, changeset will create a `.changeset/{UNIQUE_ID}.md` m
 
 ## publish
 
-[create a merge request](http://10.168.2.105:8888/soft_group/yingmai/fe_group/fcl/-/merge_requests/new)
+[create a merge request](http://xxxx/soft_group/yingmai/fe_group/fcl/-/merge_requests/new)
 
 create a merge request merging into main branch in the gitlab
 

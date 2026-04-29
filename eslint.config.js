@@ -10,4 +10,6 @@ export default antfu({
   ignores: [
     './pnpm-workspace.yaml',
   ],
+}).overrideRules({
+  'pnpm/json-prefer-workspace-settings': 'off',
 })

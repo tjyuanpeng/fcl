@@ -6,10 +6,10 @@
 
 ## 克隆代码
 
-从 [gitlab repo](http://10.168.2.105:8888/soft_group/yingmai/fe_group/fcl) 获取源代码
+从 [gitlab repo](http://xxxx/soft_group/yingmai/fe_group/fcl) 获取源代码
 
 ```shell
-git clone http://10.168.2.105:8888/soft_group/yingmai/fe_group/fcl
+git clone http://xxxx/soft_group/yingmai/fe_group/fcl
 ```
 
 安装依赖
@@ -185,7 +185,7 @@ pnpm changeset
 
 ### merge request
 
-在 [merge request](http://10.168.2.105:8888/soft_group/yingmai/fe_group/fcl/-/merge_requests) 中，创建 `merge request`
+在 [merge request](http://xxxx/soft_group/yingmai/fe_group/fcl/-/merge_requests) 中，创建 `merge request`
 
 选择需要合并到`main`的开发分支
 
@@ -197,10 +197,10 @@ pnpm changeset
 
 ### 发布完成
 
-通过 [pipelines](http://10.168.2.105:8888/soft_group/yingmai/fe_group/fcl/-/pipelines) 查看构建状态
+通过 [pipelines](http://xxxx/soft_group/yingmai/fe_group/fcl/-/pipelines) 查看构建状态
 
 成功之后：
 
 - 新版本会推送到私有npm
 - 合并 修改的代码 到`main`分支
-- 更新文档([FCL docs](http://10.168.2.182:3434/))
+- 更新文档([FCL docs](https://fcl.yingmai.net/))

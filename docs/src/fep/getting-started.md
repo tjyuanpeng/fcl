@@ -1,6 +1,6 @@
 # 快速开始
 
-[@falconix/fep](http://10.168.2.105:8888/soft_group/yingmai/fe_group/fep) 基础组件库
+[@falconix/fep](https://github.com/tjyuanpeng/fep) 基础组件库
 
 <img src="/fep.png" width="50" />
 
