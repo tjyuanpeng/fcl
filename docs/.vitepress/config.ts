@@ -35,6 +35,7 @@ export default ({ mode }: ConfigEnv) => {
   const pkgItems = getPkgsItems()
 
   return defineConfig({
+    base: '/fcl/',
     srcDir: isProd ? 'src' : '../',
     rewrites: isProd ? undefined : { 'docs/src/:path*': ':path*' },
     cleanUrls: true,
