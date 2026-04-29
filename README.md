@@ -1,8 +1,8 @@
 # fcl
 
-frontend component library
+frontend component library - 前端通用组件库
 
-前端通用组件库
+online preview：[https://tjyuanpeng.github.io/fcl/](https://tjyuanpeng.github.io/fcl/)
 
 ## package manager
 
